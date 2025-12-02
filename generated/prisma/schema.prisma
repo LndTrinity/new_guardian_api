@@ -1,0 +1,142 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id           String        @id @default(uuid()) @db.VarChar(60)
+  nome         String        @db.VarChar(45)
+  email        String        @unique @db.VarChar(45)
+  cpf          String        @unique @db.VarChar(11)
+  senha        String        @db.VarChar(60)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  deleted      Boolean       @default(false)
+  dispositivos Dispositivo[]
+  log          Usuario_log[]
+
+  @@map("usuarios")
+}
+
+model Tokens {
+  id        Int      @id @default(autoincrement())
+  codigo    String   @db.VarChar(6)
+  createdAt DateTime @default(now())
+  email     String   @db.VarChar(20)
+  deleted   Boolean  @default(false)
+}
+
+model Dispositivo {
+  id              String               @id @default(uuid()) @db.VarChar(60)
+  nome            String               @default("no_user") @db.VarChar(20)
+  modelo          String               @db.VarChar(45)
+  numero_de_serie String               @db.VarChar(45)
+  activade        Boolean              @default(false)
+  data_fabricacao DateTime
+  usuario         Usuario?             @relation(fields: [usuarioId], references: [id])
+  usuarioId       String?
+  bateria         Int                  @default(0)
+  status          Dispositivo_status   @default(Desligado)
+  config          Dispositivo_config[]
+  alertas         Alerta[]
+  localizacoes    Localizacao[]
+  logs            Dispositivo_log[]
+
+  @@map("dispositivos")
+}
+
+model Dispositivo_config {
+  id                  Int         @id @default(autoincrement())
+  intervalo_envio     Int
+  monitoramentoLigado Boolean     @default(true)
+  dispositivo         Dispositivo @relation(fields: [dispositivoId], references: [id])
+  dispositivoId       String
+
+  modo_eco             Boolean @default(false)
+  alerta_sem_sinal     Boolean @default(false)
+  alerta_bateria       Boolean @default(false)
+  alerta_bateria_valor Int     @default(15)
+
+  @@map("dispositivo_config")
+}
+
+model Alerta {
+  id            Int              @id @default(autoincrement())
+  descricao     String           @db.VarChar(45)
+  gravidede     Alerta_gravidade @default(Aviso_amarelo)
+  ativo         Boolean
+  dispositivo   Dispositivo      @relation(fields: [dispositivoId], references: [id], onDelete: Cascade)
+  dispositivoId String
+  alertaTipo    Alerta_tipo      @relation(fields: [alertaId], references: [id], onDelete: Cascade)
+  alertaId      Int
+  createdAt     DateTime         @default(now())
+
+  @@map("alertas")
+}
+
+model Alerta_tipo {
+  id     Int      @id @default(autoincrement())
+  nome   String   @db.VarChar(45)
+  regra  String   @db.VarChar(45)
+  valor  String   @default("") @db.VarChar(70)
+  alerta Alerta[]
+
+  @@map("alertas_tipo")
+}
+
+model Localizacao {
+  id            Int         @id @default(autoincrement())
+  longitude     Decimal
+  latitude      Decimal
+  data_hora     DateTime
+  dispositivo   Dispositivo @relation(fields: [dispositivoId], references: [id])
+  dispositivoId String
+
+  @@map("localizacoes")
+}
+
+model Dispositivo_log {
+  id             Int         @id @default(autoincrement())
+  data_hora      DateTime
+  status_bateria Int
+  descricao      String?     @db.VarChar(45)
+  banda_dados    String      @db.VarChar(45)
+  dispositivo    Dispositivo @relation(fields: [dispositivoId], references: [id])
+  dispositivoId  String
+
+  @@map("dispositivo_log")
+}
+
+model Usuario_log {
+  id        Int      @id @default(autoincrement())
+  descricao String   @db.VarChar(45)
+  data_hora DateTime
+  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
+  usuarioId String
+
+  @@map("usuario_log")
+}
+
+enum Alerta_gravidade {
+  Alerta_vermelho
+  Aviso_amarelo
+}
+
+enum Dispositivo_status {
+  Em_movimento
+  Parado
+  Ligado
+  Desligado
+  Standby
+}
