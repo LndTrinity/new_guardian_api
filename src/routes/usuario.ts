@@ -1,10 +1,10 @@
 import { Dispositivo, PrismaClient } from "../../generated/prisma"
 import { Router } from "express"
-import { validaSenha } from "../utils/utils"
+import { validaSenha } from "../../utils/utils"
 import bcrypt from 'bcrypt'
 import { Prisma } from "@prisma/client";
 
-import { enviaEmail, gerarString } from "../utils/utils"
+import { enviaEmail, gerarString } from "../../utils/utils"
 import { retorna_alertas_por_id, retorna_por_id } from "./dispositivo"
 import { error } from "console"
 

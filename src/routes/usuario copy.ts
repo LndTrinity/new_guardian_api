@@ -1,8 +1,8 @@
 import { PrismaClient } from "../../generated/prisma"
 import { Router } from "express"
-import { validaSenha } from "../utils/utils"
+import { validaSenha } from "../../utils/utils"
 
-import { enviaEmail, gerarString } from "../utils/utils"
+import { enviaEmail, gerarString } from "../../utils/utils"
 
 
 

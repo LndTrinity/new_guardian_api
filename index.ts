@@ -12,7 +12,7 @@ import localizacaoRoutes from './src/routes/localizacao'
 
 
 const app = express()
-const port = 3004
+
 
 app.use(cors())
 app.use(express.json())
