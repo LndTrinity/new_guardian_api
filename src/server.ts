@@ -1,14 +1,14 @@
 import express from 'express';
 import serverless from "serverless-http";
 import cors from "cors";
-import usuariosRoutes from './src/routes/usuario'
-import usuarios_logRoutes from './src/routes/usuario_log'
-import alertaRoutes from './src/routes/alerta'
-import alerta_tipoRoutes from './src/routes/alerta_tipo'
-import dispositivoRoutes from './src/routes/dispositivo'
-import dispositivo_logsRoutes from './src/routes/dispositivo_logs'
-import dispositivo_configRoutes from './src/routes/dispositivo_config'
-import localizacaoRoutes from './src/routes/localizacao'
+import usuariosRoutes from "./routes/usuario"
+import usuarios_logRoutes from './routes/usuario_log'
+import alertaRoutes from './routes/alerta'
+import alerta_tipoRoutes from './routes/alerta_tipo'
+import dispositivoRoutes from './routes/dispositivo'
+import dispositivo_logsRoutes from './routes/dispositivo_logs'
+import dispositivo_configRoutes from './routes/dispositivo_config'
+import localizacaoRoutes from './routes/localizacao'
 
 
 const app = express()

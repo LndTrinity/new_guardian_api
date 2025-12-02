@@ -1,0 +1,30 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.handler = void 0;
+const express_1 = __importDefault(require("express"));
+const serverless_http_1 = __importDefault(require("serverless-http"));
+const cors_1 = __importDefault(require("cors"));
+const usuario_1 = __importDefault(require("./routes/usuario"));
+const usuario_log_1 = __importDefault(require("./routes/usuario_log"));
+const alerta_1 = __importDefault(require("./routes/alerta"));
+const alerta_tipo_1 = __importDefault(require("./routes/alerta_tipo"));
+const dispositivo_1 = __importDefault(require("./routes/dispositivo"));
+const dispositivo_logs_1 = __importDefault(require("./routes/dispositivo_logs"));
+const dispositivo_config_1 = __importDefault(require("./routes/dispositivo_config"));
+const localizacao_1 = __importDefault(require("./routes/localizacao"));
+const app = (0, express_1.default)();
+app.use((0, cors_1.default)());
+app.use(express_1.default.json());
+app.use("/usuario", usuario_1.default);
+app.use("/usuario_log", usuario_log_1.default);
+app.use("/alerta", alerta_1.default);
+app.use("/alerta_tipo", alerta_tipo_1.default);
+app.use("/dispositivo", dispositivo_1.default);
+app.use("/dispositivo_log", dispositivo_logs_1.default);
+app.use("/dispositivo_config", dispositivo_config_1.default);
+app.use("/localizacao", localizacao_1.default);
+exports.handler = (0, serverless_http_1.default)(app);
+//# sourceMappingURL=server.js.map
