@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node api/index.js",
-    "dev": "tsx watch api/index.js",
+    "dev": "tsx watch api/index.ts",
     "postinstall": "prisma generate"
   },
   "keywords": [],
