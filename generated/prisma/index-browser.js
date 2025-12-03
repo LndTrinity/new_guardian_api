@@ -211,7 +211,7 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-exports.Dispositivo_status = exports.$Enums.Dispositivo_status = {
+exports.DispositivoStatus = exports.$Enums.DispositivoStatus = {
   Em_movimento: 'Em_movimento',
   Parado: 'Parado',
   Ligado: 'Ligado',
@@ -219,7 +219,7 @@ exports.Dispositivo_status = exports.$Enums.Dispositivo_status = {
   Standby: 'Standby'
 };
 
-exports.Alerta_gravidade = exports.$Enums.Alerta_gravidade = {
+exports.AlertaGravidade = exports.$Enums.AlertaGravidade = {
   Alerta_vermelho: 'Alerta_vermelho',
   Aviso_amarelo: 'Aviso_amarelo'
 };

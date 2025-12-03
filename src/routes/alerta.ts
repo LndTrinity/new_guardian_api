@@ -1,12 +1,12 @@
 import { error } from "console";
-import { Alerta_gravidade, PrismaClient } from "../../generated/prisma";
+import { AlertaGravidade, PrismaClient } from "../../generated/prisma";
 import { Router, Request, Response } from "express";
 
 const prisma = new PrismaClient();
 const router = Router();
 
 // CREATE
-export async function criarAlerta(descricao: string, ativo: boolean, dispositivoId: string, alertaId: number, gravidede: Alerta_gravidade) {
+export async function criarAlerta(descricao: string, ativo: boolean, dispositivoId: string, alertaId: number, gravidede: AlertaGravidade) {
   try {
     if (!descricao || ativo === undefined || !dispositivoId || !alertaId) {
       throw error

@@ -48,7 +48,7 @@ model Dispositivo{
   usuario          Usuario?    @relation(fields: [usuarioId], references: [id])
   usuarioId        String?
   bateria          Int                @default(0)
-  status           Dispositivo_status @default(Desligado)
+  status           DispositivoStatus @default(Desligado)
   config           Dispositivo_config[]
   alertas          Alerta[]
   localizacoes     Localizacao[]
@@ -76,7 +76,7 @@ model Dispositivo_config{
 model Alerta{
   id             Int            @id @default(autoincrement())
   descricao      String         @db.VarChar(45)
-  gravidede      Alerta_gravidade @default(Aviso_amarelo) 
+  gravidede      AlertaGravidade @default(Aviso_amarelo) 
   ativo          Boolean
   dispositivo    Dispositivo    @relation(fields: [dispositivoId], references: [id], onDelete: Cascade)
   dispositivoId  String
@@ -131,11 +131,11 @@ model Usuario_log{
   @@map("usuario_log")
 
 }
-enum Alerta_gravidade {
+enum AlertaGravidade {
   Alerta_vermelho
   Aviso_amarelo
 }
-enum Dispositivo_status {
+enum DispositivoStatus {
   Em_movimento
   Parado
   Ligado
