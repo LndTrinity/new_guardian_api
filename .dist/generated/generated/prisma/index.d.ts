@@ -63,7 +63,7 @@ export type Usuario_log = $Result.DefaultSelection<Prisma.$Usuario_logPayload>
  * Enums
  */
 export namespace $Enums {
-  export const Dispositivo_status: {
+  export const DispositivoStatus: {
   Em_movimento: 'Em_movimento',
   Parado: 'Parado',
   Ligado: 'Ligado',
@@ -71,25 +71,25 @@ export namespace $Enums {
   Standby: 'Standby'
 };
 
-export type Dispositivo_status = (typeof Dispositivo_status)[keyof typeof Dispositivo_status]
+export type DispositivoStatus = (typeof DispositivoStatus)[keyof typeof DispositivoStatus]
 
 
-export const Alerta_gravidade: {
+export const AlertaGravidade: {
   Alerta_vermelho: 'Alerta_vermelho',
   Aviso_amarelo: 'Aviso_amarelo'
 };
 
-export type Alerta_gravidade = (typeof Alerta_gravidade)[keyof typeof Alerta_gravidade]
+export type AlertaGravidade = (typeof AlertaGravidade)[keyof typeof AlertaGravidade]
 
 }
 
-export type Dispositivo_status = $Enums.Dispositivo_status
+export type DispositivoStatus = $Enums.DispositivoStatus
 
-export const Dispositivo_status: typeof $Enums.Dispositivo_status
+export const DispositivoStatus: typeof $Enums.DispositivoStatus
 
-export type Alerta_gravidade = $Enums.Alerta_gravidade
+export type AlertaGravidade = $Enums.AlertaGravidade
 
-export const Alerta_gravidade: typeof $Enums.Alerta_gravidade
+export const AlertaGravidade: typeof $Enums.AlertaGravidade
 
 /**
  * ##  Prisma Client ʲˢ
@@ -3547,7 +3547,7 @@ export namespace Prisma {
     data_fabricacao: Date | null
     usuarioId: string | null
     bateria: number | null
-    status: $Enums.Dispositivo_status | null
+    status: $Enums.DispositivoStatus | null
   }
 
   export type DispositivoMaxAggregateOutputType = {
@@ -3559,7 +3559,7 @@ export namespace Prisma {
     data_fabricacao: Date | null
     usuarioId: string | null
     bateria: number | null
-    status: $Enums.Dispositivo_status | null
+    status: $Enums.DispositivoStatus | null
   }
 
   export type DispositivoCountAggregateOutputType = {
@@ -3716,7 +3716,7 @@ export namespace Prisma {
     data_fabricacao: Date
     usuarioId: string | null
     bateria: number
-    status: $Enums.Dispositivo_status
+    status: $Enums.DispositivoStatus
     _count: DispositivoCountAggregateOutputType | null
     _avg: DispositivoAvgAggregateOutputType | null
     _sum: DispositivoSumAggregateOutputType | null
@@ -3796,7 +3796,7 @@ export namespace Prisma {
       data_fabricacao: Date
       usuarioId: string | null
       bateria: number
-      status: $Enums.Dispositivo_status
+      status: $Enums.DispositivoStatus
     }, ExtArgs["result"]["dispositivo"]>
     composites: {}
   }
@@ -4179,7 +4179,7 @@ export namespace Prisma {
     readonly data_fabricacao: FieldRef<"Dispositivo", 'DateTime'>
     readonly usuarioId: FieldRef<"Dispositivo", 'String'>
     readonly bateria: FieldRef<"Dispositivo", 'Int'>
-    readonly status: FieldRef<"Dispositivo", 'Dispositivo_status'>
+    readonly status: FieldRef<"Dispositivo", 'DispositivoStatus'>
   }
     
 
@@ -5567,7 +5567,7 @@ export namespace Prisma {
   export type AlertaMinAggregateOutputType = {
     id: number | null
     descricao: string | null
-    gravidede: $Enums.Alerta_gravidade | null
+    gravidede: $Enums.AlertaGravidade | null
     ativo: boolean | null
     dispositivoId: string | null
     alertaId: number | null
@@ -5577,7 +5577,7 @@ export namespace Prisma {
   export type AlertaMaxAggregateOutputType = {
     id: number | null
     descricao: string | null
-    gravidede: $Enums.Alerta_gravidade | null
+    gravidede: $Enums.AlertaGravidade | null
     ativo: boolean | null
     dispositivoId: string | null
     alertaId: number | null
@@ -5726,7 +5726,7 @@ export namespace Prisma {
   export type AlertaGroupByOutputType = {
     id: number
     descricao: string
-    gravidede: $Enums.Alerta_gravidade
+    gravidede: $Enums.AlertaGravidade
     ativo: boolean
     dispositivoId: string
     alertaId: number
@@ -5789,7 +5789,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       descricao: string
-      gravidede: $Enums.Alerta_gravidade
+      gravidede: $Enums.AlertaGravidade
       ativo: boolean
       dispositivoId: string
       alertaId: number
@@ -6167,7 +6167,7 @@ export namespace Prisma {
   interface AlertaFieldRefs {
     readonly id: FieldRef<"Alerta", 'Int'>
     readonly descricao: FieldRef<"Alerta", 'String'>
-    readonly gravidede: FieldRef<"Alerta", 'Alerta_gravidade'>
+    readonly gravidede: FieldRef<"Alerta", 'AlertaGravidade'>
     readonly ativo: FieldRef<"Alerta", 'Boolean'>
     readonly dispositivoId: FieldRef<"Alerta", 'String'>
     readonly alertaId: FieldRef<"Alerta", 'Int'>
@@ -10334,16 +10334,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Dispositivo_status'
+   * Reference to a field of type 'DispositivoStatus'
    */
-  export type EnumDispositivo_statusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Dispositivo_status'>
+  export type EnumDispositivoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DispositivoStatus'>
     
 
 
   /**
-   * Reference to a field of type 'Alerta_gravidade'
+   * Reference to a field of type 'AlertaGravidade'
    */
-  export type EnumAlerta_gravidadeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Alerta_gravidade'>
+  export type EnumAlertaGravidadeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AlertaGravidade'>
     
 
 
@@ -10503,7 +10503,7 @@ export namespace Prisma {
     data_fabricacao?: DateTimeFilter<"Dispositivo"> | Date | string
     usuarioId?: StringNullableFilter<"Dispositivo"> | string | null
     bateria?: IntFilter<"Dispositivo"> | number
-    status?: EnumDispositivo_statusFilter<"Dispositivo"> | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFilter<"Dispositivo"> | $Enums.DispositivoStatus
     usuario?: XOR<UsuarioNullableRelationFilter, UsuarioWhereInput> | null
     config?: Dispositivo_configListRelationFilter
     alertas?: AlertaListRelationFilter
@@ -10540,7 +10540,7 @@ export namespace Prisma {
     data_fabricacao?: DateTimeFilter<"Dispositivo"> | Date | string
     usuarioId?: StringNullableFilter<"Dispositivo"> | string | null
     bateria?: IntFilter<"Dispositivo"> | number
-    status?: EnumDispositivo_statusFilter<"Dispositivo"> | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFilter<"Dispositivo"> | $Enums.DispositivoStatus
     usuario?: XOR<UsuarioNullableRelationFilter, UsuarioWhereInput> | null
     config?: Dispositivo_configListRelationFilter
     alertas?: AlertaListRelationFilter
@@ -10577,7 +10577,7 @@ export namespace Prisma {
     data_fabricacao?: DateTimeWithAggregatesFilter<"Dispositivo"> | Date | string
     usuarioId?: StringNullableWithAggregatesFilter<"Dispositivo"> | string | null
     bateria?: IntWithAggregatesFilter<"Dispositivo"> | number
-    status?: EnumDispositivo_statusWithAggregatesFilter<"Dispositivo"> | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusWithAggregatesFilter<"Dispositivo"> | $Enums.DispositivoStatus
   }
 
   export type Dispositivo_configWhereInput = {
@@ -10658,7 +10658,7 @@ export namespace Prisma {
     NOT?: AlertaWhereInput | AlertaWhereInput[]
     id?: IntFilter<"Alerta"> | number
     descricao?: StringFilter<"Alerta"> | string
-    gravidede?: EnumAlerta_gravidadeFilter<"Alerta"> | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeFilter<"Alerta"> | $Enums.AlertaGravidade
     ativo?: BoolFilter<"Alerta"> | boolean
     dispositivoId?: StringFilter<"Alerta"> | string
     alertaId?: IntFilter<"Alerta"> | number
@@ -10685,7 +10685,7 @@ export namespace Prisma {
     OR?: AlertaWhereInput[]
     NOT?: AlertaWhereInput | AlertaWhereInput[]
     descricao?: StringFilter<"Alerta"> | string
-    gravidede?: EnumAlerta_gravidadeFilter<"Alerta"> | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeFilter<"Alerta"> | $Enums.AlertaGravidade
     ativo?: BoolFilter<"Alerta"> | boolean
     dispositivoId?: StringFilter<"Alerta"> | string
     alertaId?: IntFilter<"Alerta"> | number
@@ -10715,7 +10715,7 @@ export namespace Prisma {
     NOT?: AlertaScalarWhereWithAggregatesInput | AlertaScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Alerta"> | number
     descricao?: StringWithAggregatesFilter<"Alerta"> | string
-    gravidede?: EnumAlerta_gravidadeWithAggregatesFilter<"Alerta"> | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeWithAggregatesFilter<"Alerta"> | $Enums.AlertaGravidade
     ativo?: BoolWithAggregatesFilter<"Alerta"> | boolean
     dispositivoId?: StringWithAggregatesFilter<"Alerta"> | string
     alertaId?: IntWithAggregatesFilter<"Alerta"> | number
@@ -11091,7 +11091,7 @@ export namespace Prisma {
     activade?: boolean
     data_fabricacao: Date | string
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
     usuario?: UsuarioCreateNestedOneWithoutDispositivosInput
     config?: Dispositivo_configCreateNestedManyWithoutDispositivoInput
     alertas?: AlertaCreateNestedManyWithoutDispositivoInput
@@ -11108,7 +11108,7 @@ export namespace Prisma {
     data_fabricacao: Date | string
     usuarioId?: string | null
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
     config?: Dispositivo_configUncheckedCreateNestedManyWithoutDispositivoInput
     alertas?: AlertaUncheckedCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoUncheckedCreateNestedManyWithoutDispositivoInput
@@ -11123,7 +11123,7 @@ export namespace Prisma {
     activade?: BoolFieldUpdateOperationsInput | boolean
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
     usuario?: UsuarioUpdateOneWithoutDispositivosNestedInput
     config?: Dispositivo_configUpdateManyWithoutDispositivoNestedInput
     alertas?: AlertaUpdateManyWithoutDispositivoNestedInput
@@ -11140,7 +11140,7 @@ export namespace Prisma {
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     usuarioId?: NullableStringFieldUpdateOperationsInput | string | null
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
     config?: Dispositivo_configUncheckedUpdateManyWithoutDispositivoNestedInput
     alertas?: AlertaUncheckedUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUncheckedUpdateManyWithoutDispositivoNestedInput
@@ -11156,7 +11156,7 @@ export namespace Prisma {
     data_fabricacao: Date | string
     usuarioId?: string | null
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
   }
 
   export type DispositivoUpdateManyMutationInput = {
@@ -11167,7 +11167,7 @@ export namespace Prisma {
     activade?: BoolFieldUpdateOperationsInput | boolean
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
   }
 
   export type DispositivoUncheckedUpdateManyInput = {
@@ -11179,7 +11179,7 @@ export namespace Prisma {
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     usuarioId?: NullableStringFieldUpdateOperationsInput | string | null
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
   }
 
   export type Dispositivo_configCreateInput = {
@@ -11257,7 +11257,7 @@ export namespace Prisma {
 
   export type AlertaCreateInput = {
     descricao: string
-    gravidede?: $Enums.Alerta_gravidade
+    gravidede?: $Enums.AlertaGravidade
     ativo: boolean
     createdAt?: Date | string
     dispositivo: DispositivoCreateNestedOneWithoutAlertasInput
@@ -11267,7 +11267,7 @@ export namespace Prisma {
   export type AlertaUncheckedCreateInput = {
     id?: number
     descricao: string
-    gravidede?: $Enums.Alerta_gravidade
+    gravidede?: $Enums.AlertaGravidade
     ativo: boolean
     dispositivoId: string
     alertaId: number
@@ -11276,7 +11276,7 @@ export namespace Prisma {
 
   export type AlertaUpdateInput = {
     descricao?: StringFieldUpdateOperationsInput | string
-    gravidede?: EnumAlerta_gravidadeFieldUpdateOperationsInput | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dispositivo?: DispositivoUpdateOneRequiredWithoutAlertasNestedInput
@@ -11286,7 +11286,7 @@ export namespace Prisma {
   export type AlertaUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     descricao?: StringFieldUpdateOperationsInput | string
-    gravidede?: EnumAlerta_gravidadeFieldUpdateOperationsInput | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
     dispositivoId?: StringFieldUpdateOperationsInput | string
     alertaId?: IntFieldUpdateOperationsInput | number
@@ -11296,7 +11296,7 @@ export namespace Prisma {
   export type AlertaCreateManyInput = {
     id?: number
     descricao: string
-    gravidede?: $Enums.Alerta_gravidade
+    gravidede?: $Enums.AlertaGravidade
     ativo: boolean
     dispositivoId: string
     alertaId: number
@@ -11305,7 +11305,7 @@ export namespace Prisma {
 
   export type AlertaUpdateManyMutationInput = {
     descricao?: StringFieldUpdateOperationsInput | string
-    gravidede?: EnumAlerta_gravidadeFieldUpdateOperationsInput | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11313,7 +11313,7 @@ export namespace Prisma {
   export type AlertaUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     descricao?: StringFieldUpdateOperationsInput | string
-    gravidede?: EnumAlerta_gravidadeFieldUpdateOperationsInput | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
     dispositivoId?: StringFieldUpdateOperationsInput | string
     alertaId?: IntFieldUpdateOperationsInput | number
@@ -11721,11 +11721,11 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type EnumDispositivo_statusFilter<$PrismaModel = never> = {
-    equals?: $Enums.Dispositivo_status | EnumDispositivo_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.Dispositivo_status[]
-    notIn?: $Enums.Dispositivo_status[]
-    not?: NestedEnumDispositivo_statusFilter<$PrismaModel> | $Enums.Dispositivo_status
+  export type EnumDispositivoStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.DispositivoStatus | EnumDispositivoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.DispositivoStatus[]
+    notIn?: $Enums.DispositivoStatus[]
+    not?: NestedEnumDispositivoStatusFilter<$PrismaModel> | $Enums.DispositivoStatus
   }
 
   export type UsuarioNullableRelationFilter = {
@@ -11839,14 +11839,14 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type EnumDispositivo_statusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Dispositivo_status | EnumDispositivo_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.Dispositivo_status[]
-    notIn?: $Enums.Dispositivo_status[]
-    not?: NestedEnumDispositivo_statusWithAggregatesFilter<$PrismaModel> | $Enums.Dispositivo_status
+  export type EnumDispositivoStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.DispositivoStatus | EnumDispositivoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.DispositivoStatus[]
+    notIn?: $Enums.DispositivoStatus[]
+    not?: NestedEnumDispositivoStatusWithAggregatesFilter<$PrismaModel> | $Enums.DispositivoStatus
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumDispositivo_statusFilter<$PrismaModel>
-    _max?: NestedEnumDispositivo_statusFilter<$PrismaModel>
+    _min?: NestedEnumDispositivoStatusFilter<$PrismaModel>
+    _max?: NestedEnumDispositivoStatusFilter<$PrismaModel>
   }
 
   export type DispositivoRelationFilter = {
@@ -11899,11 +11899,11 @@ export namespace Prisma {
     alerta_bateria_valor?: SortOrder
   }
 
-  export type EnumAlerta_gravidadeFilter<$PrismaModel = never> = {
-    equals?: $Enums.Alerta_gravidade | EnumAlerta_gravidadeFieldRefInput<$PrismaModel>
-    in?: $Enums.Alerta_gravidade[]
-    notIn?: $Enums.Alerta_gravidade[]
-    not?: NestedEnumAlerta_gravidadeFilter<$PrismaModel> | $Enums.Alerta_gravidade
+  export type EnumAlertaGravidadeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AlertaGravidade | EnumAlertaGravidadeFieldRefInput<$PrismaModel>
+    in?: $Enums.AlertaGravidade[]
+    notIn?: $Enums.AlertaGravidade[]
+    not?: NestedEnumAlertaGravidadeFilter<$PrismaModel> | $Enums.AlertaGravidade
   }
 
   export type Alerta_tipoRelationFilter = {
@@ -11951,14 +11951,14 @@ export namespace Prisma {
     alertaId?: SortOrder
   }
 
-  export type EnumAlerta_gravidadeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Alerta_gravidade | EnumAlerta_gravidadeFieldRefInput<$PrismaModel>
-    in?: $Enums.Alerta_gravidade[]
-    notIn?: $Enums.Alerta_gravidade[]
-    not?: NestedEnumAlerta_gravidadeWithAggregatesFilter<$PrismaModel> | $Enums.Alerta_gravidade
+  export type EnumAlertaGravidadeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AlertaGravidade | EnumAlertaGravidadeFieldRefInput<$PrismaModel>
+    in?: $Enums.AlertaGravidade[]
+    notIn?: $Enums.AlertaGravidade[]
+    not?: NestedEnumAlertaGravidadeWithAggregatesFilter<$PrismaModel> | $Enums.AlertaGravidade
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumAlerta_gravidadeFilter<$PrismaModel>
-    _max?: NestedEnumAlerta_gravidadeFilter<$PrismaModel>
+    _min?: NestedEnumAlertaGravidadeFilter<$PrismaModel>
+    _max?: NestedEnumAlertaGravidadeFilter<$PrismaModel>
   }
 
   export type Alerta_tipoCountOrderByAggregateInput = {
@@ -12290,8 +12290,8 @@ export namespace Prisma {
     connect?: Dispositivo_logWhereUniqueInput | Dispositivo_logWhereUniqueInput[]
   }
 
-  export type EnumDispositivo_statusFieldUpdateOperationsInput = {
-    set?: $Enums.Dispositivo_status
+  export type EnumDispositivoStatusFieldUpdateOperationsInput = {
+    set?: $Enums.DispositivoStatus
   }
 
   export type UsuarioUpdateOneWithoutDispositivosNestedInput = {
@@ -12446,8 +12446,8 @@ export namespace Prisma {
     connect?: Alerta_tipoWhereUniqueInput
   }
 
-  export type EnumAlerta_gravidadeFieldUpdateOperationsInput = {
-    set?: $Enums.Alerta_gravidade
+  export type EnumAlertaGravidadeFieldUpdateOperationsInput = {
+    set?: $Enums.AlertaGravidade
   }
 
   export type DispositivoUpdateOneRequiredWithoutAlertasNestedInput = {
@@ -12679,11 +12679,11 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedEnumDispositivo_statusFilter<$PrismaModel = never> = {
-    equals?: $Enums.Dispositivo_status | EnumDispositivo_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.Dispositivo_status[]
-    notIn?: $Enums.Dispositivo_status[]
-    not?: NestedEnumDispositivo_statusFilter<$PrismaModel> | $Enums.Dispositivo_status
+  export type NestedEnumDispositivoStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.DispositivoStatus | EnumDispositivoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.DispositivoStatus[]
+    notIn?: $Enums.DispositivoStatus[]
+    not?: NestedEnumDispositivoStatusFilter<$PrismaModel> | $Enums.DispositivoStatus
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -12714,31 +12714,31 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedEnumDispositivo_statusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Dispositivo_status | EnumDispositivo_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.Dispositivo_status[]
-    notIn?: $Enums.Dispositivo_status[]
-    not?: NestedEnumDispositivo_statusWithAggregatesFilter<$PrismaModel> | $Enums.Dispositivo_status
+  export type NestedEnumDispositivoStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.DispositivoStatus | EnumDispositivoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.DispositivoStatus[]
+    notIn?: $Enums.DispositivoStatus[]
+    not?: NestedEnumDispositivoStatusWithAggregatesFilter<$PrismaModel> | $Enums.DispositivoStatus
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumDispositivo_statusFilter<$PrismaModel>
-    _max?: NestedEnumDispositivo_statusFilter<$PrismaModel>
+    _min?: NestedEnumDispositivoStatusFilter<$PrismaModel>
+    _max?: NestedEnumDispositivoStatusFilter<$PrismaModel>
   }
 
-  export type NestedEnumAlerta_gravidadeFilter<$PrismaModel = never> = {
-    equals?: $Enums.Alerta_gravidade | EnumAlerta_gravidadeFieldRefInput<$PrismaModel>
-    in?: $Enums.Alerta_gravidade[]
-    notIn?: $Enums.Alerta_gravidade[]
-    not?: NestedEnumAlerta_gravidadeFilter<$PrismaModel> | $Enums.Alerta_gravidade
+  export type NestedEnumAlertaGravidadeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AlertaGravidade | EnumAlertaGravidadeFieldRefInput<$PrismaModel>
+    in?: $Enums.AlertaGravidade[]
+    notIn?: $Enums.AlertaGravidade[]
+    not?: NestedEnumAlertaGravidadeFilter<$PrismaModel> | $Enums.AlertaGravidade
   }
 
-  export type NestedEnumAlerta_gravidadeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Alerta_gravidade | EnumAlerta_gravidadeFieldRefInput<$PrismaModel>
-    in?: $Enums.Alerta_gravidade[]
-    notIn?: $Enums.Alerta_gravidade[]
-    not?: NestedEnumAlerta_gravidadeWithAggregatesFilter<$PrismaModel> | $Enums.Alerta_gravidade
+  export type NestedEnumAlertaGravidadeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AlertaGravidade | EnumAlertaGravidadeFieldRefInput<$PrismaModel>
+    in?: $Enums.AlertaGravidade[]
+    notIn?: $Enums.AlertaGravidade[]
+    not?: NestedEnumAlertaGravidadeWithAggregatesFilter<$PrismaModel> | $Enums.AlertaGravidade
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumAlerta_gravidadeFilter<$PrismaModel>
-    _max?: NestedEnumAlerta_gravidadeFilter<$PrismaModel>
+    _min?: NestedEnumAlertaGravidadeFilter<$PrismaModel>
+    _max?: NestedEnumAlertaGravidadeFilter<$PrismaModel>
   }
 
   export type NestedDecimalFilter<$PrismaModel = never> = {
@@ -12776,7 +12776,7 @@ export namespace Prisma {
     activade?: boolean
     data_fabricacao: Date | string
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
     config?: Dispositivo_configCreateNestedManyWithoutDispositivoInput
     alertas?: AlertaCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoCreateNestedManyWithoutDispositivoInput
@@ -12791,7 +12791,7 @@ export namespace Prisma {
     activade?: boolean
     data_fabricacao: Date | string
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
     config?: Dispositivo_configUncheckedCreateNestedManyWithoutDispositivoInput
     alertas?: AlertaUncheckedCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoUncheckedCreateNestedManyWithoutDispositivoInput
@@ -12857,7 +12857,7 @@ export namespace Prisma {
     data_fabricacao?: DateTimeFilter<"Dispositivo"> | Date | string
     usuarioId?: StringNullableFilter<"Dispositivo"> | string | null
     bateria?: IntFilter<"Dispositivo"> | number
-    status?: EnumDispositivo_statusFilter<"Dispositivo"> | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFilter<"Dispositivo"> | $Enums.DispositivoStatus
   }
 
   export type Usuario_logUpsertWithWhereUniqueWithoutUsuarioInput = {
@@ -12946,7 +12946,7 @@ export namespace Prisma {
 
   export type AlertaCreateWithoutDispositivoInput = {
     descricao: string
-    gravidede?: $Enums.Alerta_gravidade
+    gravidede?: $Enums.AlertaGravidade
     ativo: boolean
     createdAt?: Date | string
     alertaTipo: Alerta_tipoCreateNestedOneWithoutAlertaInput
@@ -12955,7 +12955,7 @@ export namespace Prisma {
   export type AlertaUncheckedCreateWithoutDispositivoInput = {
     id?: number
     descricao: string
-    gravidede?: $Enums.Alerta_gravidade
+    gravidede?: $Enums.AlertaGravidade
     ativo: boolean
     alertaId: number
     createdAt?: Date | string
@@ -13106,7 +13106,7 @@ export namespace Prisma {
     NOT?: AlertaScalarWhereInput | AlertaScalarWhereInput[]
     id?: IntFilter<"Alerta"> | number
     descricao?: StringFilter<"Alerta"> | string
-    gravidede?: EnumAlerta_gravidadeFilter<"Alerta"> | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeFilter<"Alerta"> | $Enums.AlertaGravidade
     ativo?: BoolFilter<"Alerta"> | boolean
     dispositivoId?: StringFilter<"Alerta"> | string
     alertaId?: IntFilter<"Alerta"> | number
@@ -13176,7 +13176,7 @@ export namespace Prisma {
     activade?: boolean
     data_fabricacao: Date | string
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
     usuario?: UsuarioCreateNestedOneWithoutDispositivosInput
     alertas?: AlertaCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoCreateNestedManyWithoutDispositivoInput
@@ -13192,7 +13192,7 @@ export namespace Prisma {
     data_fabricacao: Date | string
     usuarioId?: string | null
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
     alertas?: AlertaUncheckedCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoUncheckedCreateNestedManyWithoutDispositivoInput
     logs?: Dispositivo_logUncheckedCreateNestedManyWithoutDispositivoInput
@@ -13222,7 +13222,7 @@ export namespace Prisma {
     activade?: BoolFieldUpdateOperationsInput | boolean
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
     usuario?: UsuarioUpdateOneWithoutDispositivosNestedInput
     alertas?: AlertaUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUpdateManyWithoutDispositivoNestedInput
@@ -13238,7 +13238,7 @@ export namespace Prisma {
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     usuarioId?: NullableStringFieldUpdateOperationsInput | string | null
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
     alertas?: AlertaUncheckedUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUncheckedUpdateManyWithoutDispositivoNestedInput
     logs?: Dispositivo_logUncheckedUpdateManyWithoutDispositivoNestedInput
@@ -13252,7 +13252,7 @@ export namespace Prisma {
     activade?: boolean
     data_fabricacao: Date | string
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
     usuario?: UsuarioCreateNestedOneWithoutDispositivosInput
     config?: Dispositivo_configCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoCreateNestedManyWithoutDispositivoInput
@@ -13268,7 +13268,7 @@ export namespace Prisma {
     data_fabricacao: Date | string
     usuarioId?: string | null
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
     config?: Dispositivo_configUncheckedCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoUncheckedCreateNestedManyWithoutDispositivoInput
     logs?: Dispositivo_logUncheckedCreateNestedManyWithoutDispositivoInput
@@ -13316,7 +13316,7 @@ export namespace Prisma {
     activade?: BoolFieldUpdateOperationsInput | boolean
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
     usuario?: UsuarioUpdateOneWithoutDispositivosNestedInput
     config?: Dispositivo_configUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUpdateManyWithoutDispositivoNestedInput
@@ -13332,7 +13332,7 @@ export namespace Prisma {
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     usuarioId?: NullableStringFieldUpdateOperationsInput | string | null
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
     config?: Dispositivo_configUncheckedUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUncheckedUpdateManyWithoutDispositivoNestedInput
     logs?: Dispositivo_logUncheckedUpdateManyWithoutDispositivoNestedInput
@@ -13364,7 +13364,7 @@ export namespace Prisma {
 
   export type AlertaCreateWithoutAlertaTipoInput = {
     descricao: string
-    gravidede?: $Enums.Alerta_gravidade
+    gravidede?: $Enums.AlertaGravidade
     ativo: boolean
     createdAt?: Date | string
     dispositivo: DispositivoCreateNestedOneWithoutAlertasInput
@@ -13373,7 +13373,7 @@ export namespace Prisma {
   export type AlertaUncheckedCreateWithoutAlertaTipoInput = {
     id?: number
     descricao: string
-    gravidede?: $Enums.Alerta_gravidade
+    gravidede?: $Enums.AlertaGravidade
     ativo: boolean
     dispositivoId: string
     createdAt?: Date | string
@@ -13413,7 +13413,7 @@ export namespace Prisma {
     activade?: boolean
     data_fabricacao: Date | string
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
     usuario?: UsuarioCreateNestedOneWithoutDispositivosInput
     config?: Dispositivo_configCreateNestedManyWithoutDispositivoInput
     alertas?: AlertaCreateNestedManyWithoutDispositivoInput
@@ -13429,7 +13429,7 @@ export namespace Prisma {
     data_fabricacao: Date | string
     usuarioId?: string | null
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
     config?: Dispositivo_configUncheckedCreateNestedManyWithoutDispositivoInput
     alertas?: AlertaUncheckedCreateNestedManyWithoutDispositivoInput
     logs?: Dispositivo_logUncheckedCreateNestedManyWithoutDispositivoInput
@@ -13459,7 +13459,7 @@ export namespace Prisma {
     activade?: BoolFieldUpdateOperationsInput | boolean
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
     usuario?: UsuarioUpdateOneWithoutDispositivosNestedInput
     config?: Dispositivo_configUpdateManyWithoutDispositivoNestedInput
     alertas?: AlertaUpdateManyWithoutDispositivoNestedInput
@@ -13475,7 +13475,7 @@ export namespace Prisma {
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     usuarioId?: NullableStringFieldUpdateOperationsInput | string | null
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
     config?: Dispositivo_configUncheckedUpdateManyWithoutDispositivoNestedInput
     alertas?: AlertaUncheckedUpdateManyWithoutDispositivoNestedInput
     logs?: Dispositivo_logUncheckedUpdateManyWithoutDispositivoNestedInput
@@ -13489,7 +13489,7 @@ export namespace Prisma {
     activade?: boolean
     data_fabricacao: Date | string
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
     usuario?: UsuarioCreateNestedOneWithoutDispositivosInput
     config?: Dispositivo_configCreateNestedManyWithoutDispositivoInput
     alertas?: AlertaCreateNestedManyWithoutDispositivoInput
@@ -13505,7 +13505,7 @@ export namespace Prisma {
     data_fabricacao: Date | string
     usuarioId?: string | null
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
     config?: Dispositivo_configUncheckedCreateNestedManyWithoutDispositivoInput
     alertas?: AlertaUncheckedCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoUncheckedCreateNestedManyWithoutDispositivoInput
@@ -13535,7 +13535,7 @@ export namespace Prisma {
     activade?: BoolFieldUpdateOperationsInput | boolean
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
     usuario?: UsuarioUpdateOneWithoutDispositivosNestedInput
     config?: Dispositivo_configUpdateManyWithoutDispositivoNestedInput
     alertas?: AlertaUpdateManyWithoutDispositivoNestedInput
@@ -13551,7 +13551,7 @@ export namespace Prisma {
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     usuarioId?: NullableStringFieldUpdateOperationsInput | string | null
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
     config?: Dispositivo_configUncheckedUpdateManyWithoutDispositivoNestedInput
     alertas?: AlertaUncheckedUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUncheckedUpdateManyWithoutDispositivoNestedInput
@@ -13629,7 +13629,7 @@ export namespace Prisma {
     activade?: boolean
     data_fabricacao: Date | string
     bateria?: number
-    status?: $Enums.Dispositivo_status
+    status?: $Enums.DispositivoStatus
   }
 
   export type Usuario_logCreateManyUsuarioInput = {
@@ -13646,7 +13646,7 @@ export namespace Prisma {
     activade?: BoolFieldUpdateOperationsInput | boolean
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
     config?: Dispositivo_configUpdateManyWithoutDispositivoNestedInput
     alertas?: AlertaUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUpdateManyWithoutDispositivoNestedInput
@@ -13661,7 +13661,7 @@ export namespace Prisma {
     activade?: BoolFieldUpdateOperationsInput | boolean
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
     config?: Dispositivo_configUncheckedUpdateManyWithoutDispositivoNestedInput
     alertas?: AlertaUncheckedUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUncheckedUpdateManyWithoutDispositivoNestedInput
@@ -13676,7 +13676,7 @@ export namespace Prisma {
     activade?: BoolFieldUpdateOperationsInput | boolean
     data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
     bateria?: IntFieldUpdateOperationsInput | number
-    status?: EnumDispositivo_statusFieldUpdateOperationsInput | $Enums.Dispositivo_status
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
   }
 
   export type Usuario_logUpdateWithoutUsuarioInput = {
@@ -13709,7 +13709,7 @@ export namespace Prisma {
   export type AlertaCreateManyDispositivoInput = {
     id?: number
     descricao: string
-    gravidede?: $Enums.Alerta_gravidade
+    gravidede?: $Enums.AlertaGravidade
     ativo: boolean
     alertaId: number
     createdAt?: Date | string
@@ -13761,7 +13761,7 @@ export namespace Prisma {
 
   export type AlertaUpdateWithoutDispositivoInput = {
     descricao?: StringFieldUpdateOperationsInput | string
-    gravidede?: EnumAlerta_gravidadeFieldUpdateOperationsInput | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     alertaTipo?: Alerta_tipoUpdateOneRequiredWithoutAlertaNestedInput
@@ -13770,7 +13770,7 @@ export namespace Prisma {
   export type AlertaUncheckedUpdateWithoutDispositivoInput = {
     id?: IntFieldUpdateOperationsInput | number
     descricao?: StringFieldUpdateOperationsInput | string
-    gravidede?: EnumAlerta_gravidadeFieldUpdateOperationsInput | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
     alertaId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13779,7 +13779,7 @@ export namespace Prisma {
   export type AlertaUncheckedUpdateManyWithoutDispositivoInput = {
     id?: IntFieldUpdateOperationsInput | number
     descricao?: StringFieldUpdateOperationsInput | string
-    gravidede?: EnumAlerta_gravidadeFieldUpdateOperationsInput | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
     alertaId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13831,7 +13831,7 @@ export namespace Prisma {
   export type AlertaCreateManyAlertaTipoInput = {
     id?: number
     descricao: string
-    gravidede?: $Enums.Alerta_gravidade
+    gravidede?: $Enums.AlertaGravidade
     ativo: boolean
     dispositivoId: string
     createdAt?: Date | string
@@ -13839,7 +13839,7 @@ export namespace Prisma {
 
   export type AlertaUpdateWithoutAlertaTipoInput = {
     descricao?: StringFieldUpdateOperationsInput | string
-    gravidede?: EnumAlerta_gravidadeFieldUpdateOperationsInput | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dispositivo?: DispositivoUpdateOneRequiredWithoutAlertasNestedInput
@@ -13848,7 +13848,7 @@ export namespace Prisma {
   export type AlertaUncheckedUpdateWithoutAlertaTipoInput = {
     id?: IntFieldUpdateOperationsInput | number
     descricao?: StringFieldUpdateOperationsInput | string
-    gravidede?: EnumAlerta_gravidadeFieldUpdateOperationsInput | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
     dispositivoId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13857,7 +13857,7 @@ export namespace Prisma {
   export type AlertaUncheckedUpdateManyWithoutAlertaTipoInput = {
     id?: IntFieldUpdateOperationsInput | number
     descricao?: StringFieldUpdateOperationsInput | string
-    gravidede?: EnumAlerta_gravidadeFieldUpdateOperationsInput | $Enums.Alerta_gravidade
+    gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
     dispositivoId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
