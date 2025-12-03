@@ -5,6 +5,7 @@ node_modules
 .vercel
 .env*.local
 
-# Prisma generated client - will be generated during npm install (postinstall)
+# Prisma generated client - will be regenerated with correct binaries on Vercel
 .prisma/
 !.prisma/migrations/
+generated/prisma/*.node
