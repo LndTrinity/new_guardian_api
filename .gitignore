@@ -5,7 +5,6 @@ node_modules
 .vercel
 .env*.local
 
-# Prisma generated client - will be regenerated with correct binaries on Vercel
+# Prisma - exclude only the runtime binaries/dlls, keep type definitions
 .prisma/
 !.prisma/migrations/
-generated/prisma/*.node

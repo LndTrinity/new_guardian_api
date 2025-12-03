@@ -1,7 +1,8 @@
-// Re-export PrismaClient from @prisma/client (installed in node_modules)
-// This ensures the client uses the correct binary for the runtime environment
-export { PrismaClient } from "@prisma/client";
-export type { Prisma } from "@prisma/client";
+// Import PrismaClient from the locally generated folder
+// This ensures the correct binary is used for each environment (Windows local, Linux Vercel)
+export { PrismaClient } from "../../generated/prisma";
+export type { Prisma } from "../../generated/prisma";
 
-// Re-export custom types from generated (only types, not runtime code)
+// Re-export types
 export type { Dispositivo, AlertaGravidade } from "../../generated/prisma";
+
