@@ -34,7 +34,7 @@ router.post('/cadastro', async (req, res) => {
       return
     }
 
-    const transaction = await prisma.$transaction(async (prisma) => {
+    const transaction = await prisma.$transaction(async (prisma: any) => {
       const dispositivo = await prisma.dispositivo.create({
         data:
         {

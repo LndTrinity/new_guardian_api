@@ -2,7 +2,7 @@ import { Dispositivo, PrismaClient } from "../../generated/prisma"
 import { Router } from "express"
 import { validaSenha } from "../utils/utils"
 import bcrypt from 'bcrypt'
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../../generated/prisma";
 
 import { enviaEmail, gerarString } from "../utils/utils"
 import { retorna_alertas_por_id, retorna_por_id } from "./dispositivo"
@@ -80,7 +80,7 @@ router.get("/dispos/:id", async (req, res) => {
       }
     });
 
-    const resultado = dispositivos.map(d => ({
+    const resultado = dispositivos.map((d: any) => ({
       ...d,
       ultimaAtt: d.localizacoes[0]?.data_hora || null
     }));
@@ -227,7 +227,7 @@ router.get('/alertas/historico/:usuarioId', async (req, res) => {
     }
 
     // 2️⃣ Extrai todos os IDs de dispositivos
-    const idsDispositivos = dispositivos.map(d => d.id);
+    const idsDispositivos = dispositivos.map((d: any) => d.id);
 
     const alertas = await prisma.alerta.findMany({
       where: {
@@ -268,7 +268,7 @@ router.get('/alertas/:usuarioId', async (req, res) => {
     }
 
     // 2️⃣ Extrai todos os IDs de dispositivos
-    const idsDispositivos = dispositivos.map(d => d.id);
+    const idsDispositivos = dispositivos.map((d: any) => d.id);
 
     const alertas = await prisma.alerta.findMany({
       where: {

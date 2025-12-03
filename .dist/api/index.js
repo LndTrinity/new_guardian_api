@@ -6,15 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = void 0;
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const usuario_1 = __importDefault(require("../routes/usuario"));
-const usuario_log_1 = __importDefault(require("../routes/usuario_log"));
-const alerta_1 = __importDefault(require("../routes/alerta"));
-const alerta_tipo_1 = __importDefault(require("../routes/alerta_tipo"));
-const dispositivo_1 = __importDefault(require("../routes/dispositivo"));
-const dispositivo_logs_1 = __importDefault(require("../routes/dispositivo_logs"));
-const dispositivo_config_1 = __importDefault(require("../routes/dispositivo_config"));
-const localizacao_1 = __importDefault(require("../routes/localizacao"));
-const serverless_http_1 = __importDefault(require("serverless-http"));
+const usuario_1 = __importDefault(require("../src/routes/usuario"));
+const usuario_log_1 = __importDefault(require("../src/routes/usuario_log"));
+const alerta_1 = __importDefault(require("../src/routes/alerta"));
+const alerta_tipo_1 = __importDefault(require("../src/routes/alerta_tipo"));
+const dispositivo_1 = __importDefault(require("../src/routes/dispositivo"));
+const dispositivo_logs_1 = __importDefault(require("../src/routes/dispositivo_logs"));
+const dispositivo_config_1 = __importDefault(require("../src/routes/dispositivo_config"));
+const localizacao_1 = __importDefault(require("../src/routes/localizacao"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
@@ -26,6 +25,23 @@ app.use("/dispositivo", dispositivo_1.default);
 app.use("/dispositivo_log", dispositivo_logs_1.default);
 app.use("/dispositivo_config", dispositivo_config_1.default);
 app.use("/localizacao", localizacao_1.default);
-exports.handler = (0, serverless_http_1.default)(app);
-exports.default = exports.handler;
-//# sourceMappingURL=index.js.map
+// optional: rota raiz para evitar 404 ao acessar /
+app.get("/", (_req, res) => {
+    res.send("API is running");
+}); // Added closing parenthesis
+// Export em ESM — Vercel aceitará o app ou uma função (req,res)
+exports.default = app;
+exports.handler = app;
+const PORT = process.env.PORT || 3000;
+const server = app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});
+server.on('error', (error) => {
+    console.error('Erro no servidor:', error);
+});
+process.on('uncaughtException', (error) => {
+    console.error('Exceção não capturada:', error);
+});
+process.on('unhandledRejection', (reason) => {
+    console.error('Rejeição não tratada:', reason);
+});
