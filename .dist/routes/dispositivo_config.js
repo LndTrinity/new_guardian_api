@@ -62,7 +62,7 @@ router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 router.put("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const { intervalo_envio, monitoramentoLigado, dispositivoId, alerta_sem_sinal, alerta_bateria_valor, alerta_bateria } = req.body;
-    console.log(intervalo_envio, monitoramentoLigado, dispositivoId, alerta_sem_sinal, alerta_bateria_valor, alerta_bateria);
+    // console.log(intervalo_envio, monitoramentoLigado, dispositivoId,alerta_sem_sinal, alerta_bateria_valor,alerta_bateria)
     // if( !intervalo_envio ||  monitoramentoLigado != Boolean || ! dispositivoId ||  alerta_sem_sinal != Boolean || !  alerta_bateria_valor ||  alerta_bateria != Boolean ){
     //   res.status(400).json("Erro")
     //   return
