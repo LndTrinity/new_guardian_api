@@ -6,7 +6,7 @@
     "build": "tsc",
     "start": "node .dist/api/index.js",
     "dev": "tsx watch api/index.ts",
-    "postinstall": "prisma generate"
+    "postinstall": "node scripts/generate-prisma-all-targets.js"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"

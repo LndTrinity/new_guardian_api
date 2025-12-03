@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npx prisma generate && npm run build",
+  "buildCommand": "node scripts/generate-prisma-all-targets.js && npm run build",
   "builds": [
     { 
       "src": ".dist/api/index.js", 
