@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "buildCommand": "npm install && npx prisma generate && npm run build",
+  "buildCommand": "npm run build",
   "builds": [
     { 
       "src": ".dist/api/index.js", 
-      "use": "@vercel/node",
-      "config": { "includeFiles": ".dist/**" }
+      "use": "@vercel/node"
     }
   ],
   "routes": [

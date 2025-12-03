@@ -4,3 +4,7 @@ node_modules
 
 .vercel
 .env*.local
+
+# Prisma generated client - will be generated during npm install (postinstall)
+.prisma/
+!.prisma/migrations/
