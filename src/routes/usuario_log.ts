@@ -1,4 +1,4 @@
-import { PrismaClient } from "../../generated/prisma";
+import { PrismaClient } from "../utils/prisma-client";
 import { Router, Request, Response } from "express";
 
 const prisma = new PrismaClient();

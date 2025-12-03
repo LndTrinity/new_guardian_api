@@ -1,5 +1,5 @@
 import { error } from "console";
-import { AlertaGravidade, PrismaClient } from "../../generated/prisma";
+import { AlertaGravidade, PrismaClient } from "../utils/prisma-client";
 import { Router, Request, Response } from "express";
 
 const prisma = new PrismaClient();

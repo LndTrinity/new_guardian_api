@@ -3,11 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const prisma_1 = require("../../generated/prisma");
+const prisma_client_1 = require("../utils/prisma-client");
 const express_1 = require("express");
 const utils_1 = require("../utils/utils");
 const bcrypt_1 = __importDefault(require("bcrypt"));
-const prisma = new prisma_1.PrismaClient();
+const prisma = new prisma_client_1.PrismaClient();
 const router = (0, express_1.Router)();
 //                                              CRUD
 // TOKEN

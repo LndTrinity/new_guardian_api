@@ -1,4 +1,4 @@
-import { PrismaClient } from "../../generated/prisma"
+import { PrismaClient } from "../utils/prisma-client"
 import bcrypt from 'bcrypt'
 import { Router } from "express"
 

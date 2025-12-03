@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.retorna_por_id = retorna_por_id;
 exports.retorna_alertas_por_id = retorna_alertas_por_id;
-const prisma_1 = require("../../generated/prisma");
+const prisma_client_1 = require("../utils/prisma-client");
 const express_1 = require("express");
-const prisma = new prisma_1.PrismaClient();
+const prisma = new prisma_client_1.PrismaClient();
 const router = (0, express_1.Router)();
 //                                              CRUD
 // CREATE

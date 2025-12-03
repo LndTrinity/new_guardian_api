@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const prisma_1 = require("../../generated/prisma");
+const prisma_client_1 = require("../utils/prisma-client");
 const express_1 = require("express");
-const prisma = new prisma_1.PrismaClient();
+const prisma = new prisma_client_1.PrismaClient();
 const router = (0, express_1.Router)();
 router.post('/signin', async (req, res) => {
     const { intervalo_envio, monitoramentoLigado, dispositivoId } = req.body;
