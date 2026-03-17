@@ -1,9 +1,24 @@
-// Import PrismaClient from @prisma/client
-// Our build script copies the generated client to node_modules/.prisma/client
-// which ensures the correct binaries are available for the runtime environment
-export { PrismaClient } from "@prisma/client";
-export type { Prisma } from "@prisma/client";
+import "dotenv/config";
+import path from "path";
+import { PrismaMariaDb } from "@prisma/adapter-mariadb";
+export type { Prisma, Dispositivo, AlertaGravidade } from "../../generated/prisma";
 
-// Re-export types from generated folder (type-only, no runtime code)
-export type { Dispositivo, AlertaGravidade } from "../../generated/prisma";
+const generatedClientPath = path.join(process.cwd(), "generated", "prisma");
+const { PrismaClient: GeneratedPrismaClient } = require(generatedClientPath) as {
+	PrismaClient: typeof import("../../generated/prisma").PrismaClient;
+};
+
+const connectionString = process.env.DATABASE_URL;
+
+if (!connectionString) {
+	throw new Error("DATABASE_URL is not defined");
+}
+
+const adapter = new PrismaMariaDb(connectionString);
+
+export class PrismaClient extends GeneratedPrismaClient {
+	constructor() {
+		super({ adapter });
+	}
+}
 
