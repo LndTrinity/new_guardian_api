@@ -14,7 +14,16 @@ if (!connectionString) {
 	throw new Error("DATABASE_URL is not defined");
 }
 
-const adapter = new PrismaMariaDb(connectionString);
+const url = new URL(connectionString);
+const adapter = new PrismaMariaDb({
+	host: url.hostname,
+	port: Number(url.port) || 3306,
+	user: url.username,
+	password: url.password,
+	database: url.pathname.slice(1),
+	allowPublicKeyRetrieval: true,
+	ssl: { rejectUnauthorized: false },
+});
 
 export class PrismaClient extends GeneratedPrismaClient {
 	constructor() {
