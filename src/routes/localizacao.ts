@@ -24,28 +24,28 @@ router.post("/", async (req: Request, res: Response) => {
 
   const dispositivoId = BuscaId[0].id
   // salva no log
-  // try {
-  //   if (longitude === undefined || latitude === undefined || BuscaId.length == 0){
-  //     throw error
-  //   }
-  //   if (!descricao ){
-  //     descricao_ = " "
-  //   }
+  try {
+    if (longitude === undefined || latitude === undefined || BuscaId.length == 0){
+      throw error
+    }
+    if (!descricao ){
+      descricao_ = " "
+    }
 
-  //   const log = await prisma.dispositivo_log.create({
-  //     data: {
-  //       data_hora: new Date(),
-  //       status_bateria,
-  //       descricao: descricao_,
-  //       banda_dados: banda_dados_.toString(),
-  //       dispositivoId,
-  //     },
-  //   });
+    const log = await prisma.dispositivo_log.create({
+      data: {
+        data_hora: new Date(),
+        status_bateria,
+        descricao: descricao_,
+        banda_dados: banda_dados_.toString(),
+        dispositivoId,
+      },
+    });
 
-  // } catch (error) {
-  //   console.log("erro: Erro ao criar log.", error)
+  } catch (error) {
+    console.log("erro: Erro ao criar log.", error)
 
-  // }
+  }
 
   try {
     const bateria_statu = await prisma.dispositivo.update({

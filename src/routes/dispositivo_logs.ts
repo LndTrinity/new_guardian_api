@@ -61,6 +61,42 @@ router.get("/", async (req: Request, res: Response) => {
   }
 });
 
+router.get("/banda/:numero_de_serie", async (req: Request, res: Response) => {
+  const { numero_de_serie } = req.params;
+  const { start, end } = req.query;
+
+  try {
+    const logs = await prisma.dispositivo_log.findMany({
+      where: {
+        dispositivo: {
+          numero_de_serie: String(numero_de_serie),
+        },
+        ...(start || end ? {
+          data_hora: {
+            ...(start ? { gte: new Date(start as string) } : {}),
+            ...(end ? { lte: new Date(end as string) } : {}),
+          }
+        } : {}),
+      },
+      orderBy: {
+        data_hora: "desc",
+      },
+    });
+    let soma = 0
+    for (const log of logs) {
+      soma += Number(log.banda_dados)
+    }
+    const resposta = { 
+      soma_banda_dados_Kb: `${soma}`,
+      data_inicial: start || null,
+      data_final: end || null,
+    };
+
+    res.json(resposta);
+  } catch (error) {
+    res.status(500).json({ erro: "Erro ao buscar logs.", detalhes: error });
+  }
+});
 /**
  * UPDATE - Atualiza um log por ID
  */
