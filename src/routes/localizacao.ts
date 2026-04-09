@@ -88,6 +88,53 @@ router.post("/", async (req: Request, res: Response) => {
 
 ;
 
+// HISTORICO
+router.post("/historico", async (req: Request, res: Response) => {
+  const { dispositivoId, start, limit } = req.body;
+
+  const where: any = {};
+  console.log(start)
+
+  if (dispositivoId) {
+    where.dispositivoId = Number(dispositivoId);
+  }
+
+
+
+  const data = new Date(start as string);
+  
+
+
+  console.log(data)
+
+  const fimDoDia = new Date(data);
+  fimDoDia.setHours(23+21, 59, 59);
+  console.log(data)
+  try {
+    const localizacoes = await prisma.localizacao.findMany({
+      where: {
+        data_hora: {
+          gte: data,
+          lte: fimDoDia
+        }
+
+      },
+      include: {
+        dispositivo: true,
+      },
+      orderBy: {
+        data_hora: "desc",
+      },
+      take: limit ? Number(limit) : undefined,
+    });
+
+    res.json(localizacoes);
+  } catch (error) {
+    // console.log(error)
+    res.status(500).json({ erro: "Erro ao buscar localizações.", detalhes: error });
+  }
+});
+
 // READ
 router.get("/:dispositivoId", async (req: Request, res: Response) => {
   const { dispositivoId } = req.params;
@@ -103,6 +150,41 @@ router.get("/:dispositivoId", async (req: Request, res: Response) => {
       orderBy: {
         data_hora: "desc",
       },
+    });
+
+    res.json(localizacoes);
+  } catch (error) {
+    res.status(500).json({ erro: "Erro ao buscar localizações.", detalhes: error });
+  }
+});
+
+// READ - Lista localizações com filtros opcionais
+router.get("/", async (req: Request, res: Response) => {
+  const { dispositivoId, start, end, limit } = req.query;
+
+  // Monta filtro condicionalmente
+  const where: any = {};
+
+  if (dispositivoId) {
+    where.dispositivoId = Number(dispositivoId);
+  }
+
+  if (start || end) {
+    where.data_hora = {};
+    if (start) where.data_hora.gte = new Date(start as string);
+    if (end) where.data_hora.lte = new Date(end as string);
+  }
+
+  try {
+    const localizacoes = await prisma.localizacao.findMany({
+      where,
+      include: {
+        dispositivo: true,
+      },
+      orderBy: {
+        data_hora: "desc",
+      },
+      take: limit ? Number(limit) : undefined,
     });
 
     res.json(localizacoes);
@@ -147,86 +229,6 @@ router.delete("/:id", async (req: Request, res: Response) => {
     res.json(localizacao);
   } catch (error) {
     res.status(400).json({ erro: "Erro ao deletar localização.", detalhes: error });
-  }
-});
-
-// READ - Lista localizações com filtros opcionais
-router.get("/", async (req: Request, res: Response) => {
-  const { dispositivoId, start, end, limit } = req.query;
-
-  // Monta filtro condicionalmente
-  const where: any = {};
-
-  if (dispositivoId) {
-    where.dispositivoId = Number(dispositivoId);
-  }
-
-  if (start || end) {
-    where.data_hora = {};
-    if (start) where.data_hora.gte = new Date(start as string);
-    if (end) where.data_hora.lte = new Date(end as string);
-  }
-
-  try {
-    const localizacoes = await prisma.localizacao.findMany({
-      where,
-      include: {
-        dispositivo: true,
-      },
-      orderBy: {
-        data_hora: "desc",
-      },
-      take: limit ? Number(limit) : undefined,
-    });
-
-    res.json(localizacoes);
-  } catch (error) {
-    res.status(500).json({ erro: "Erro ao buscar localizações.", detalhes: error });
-  }
-});
-router.post("/historico", async (req: Request, res: Response) => {
-  const { dispositivoId, start, limit } = req.body;
-
-  const where: any = {};
-  console.log(start)
-
-  if (dispositivoId) {
-    where.dispositivoId = Number(dispositivoId);
-  }
-
-
-
-  const data = new Date(start as string);
-  
-
-
-  console.log(data)
-
-  const fimDoDia = new Date(data);
-  fimDoDia.setHours(23+21, 59, 59);
-  console.log(data)
-  try {
-    const localizacoes = await prisma.localizacao.findMany({
-      where: {
-        data_hora: {
-          gte: data,
-          lte: fimDoDia
-        }
-
-      },
-      include: {
-        dispositivo: true,
-      },
-      orderBy: {
-        data_hora: "desc",
-      },
-      take: limit ? Number(limit) : undefined,
-    });
-
-    res.json(localizacoes);
-  } catch (error) {
-    // console.log(error)
-    res.status(500).json({ erro: "Erro ao buscar localizações.", detalhes: error });
   }
 });
 
