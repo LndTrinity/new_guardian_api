@@ -292,6 +292,47 @@ router.get('/alertas/:usuarioId', async (req, res) => {
     });
   }
 });
+//RETORNA TODOS ALERTAS 
+router.get('/alertas/all/:usuarioId', async (req, res) => {
+  const { usuarioId } = req.params;
+
+  try {
+    // 1️⃣ Busca todos os dispositivos do usuário
+    const dispositivos = await prisma.dispositivo.findMany({
+      where: { usuarioId },
+      select: { id: true }
+    });
+
+    if (dispositivos.length === 0) {
+      res.status(200).json(res.status(200).json([])
+    )
+    }
+
+    // 2️⃣ Extrai todos os IDs de dispositivos
+    const idsDispositivos = dispositivos.map((d: any) => d.id);
+
+    const alertas = await prisma.alerta.findMany({
+      where: {
+        dispositivoId: { in: idsDispositivos },
+
+        // opcional: adicionar filtros extras, ex: activade: true
+      },include: { dispositivo: true, alertaTipo:true },
+      orderBy: { createdAt: "desc" }
+    });
+    if (alertas.length === 0){
+      res.status(200).json([])
+    }
+    // 4️⃣ Retorna tudo num único JSON
+    res.status(200).json(alertas);
+
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({
+      erro: "Erro ao buscar alertas do usuário",
+      detalhes: error
+    });
+  }
+});
 
 
 //LOGIN
