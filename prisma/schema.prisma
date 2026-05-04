@@ -92,6 +92,7 @@ model Alerta_tipo{
   nome          String         @db.VarChar(45)
   regra         String         @db.VarChar(45)
   valor         String         @db.VarChar(70) @default("")
+  user_id    String         @db.VarChar(60) @default("")
   alerta        Alerta[]
 
   @@map("alertas_tipo")
