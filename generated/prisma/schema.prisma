@@ -87,13 +87,14 @@ model Alerta {
 }
 
 model Alerta_tipo {
-  id         Int      @id @default(autoincrement())
-  nome       String   @db.VarChar(45)
-  regra      String   @db.VarChar(45)
-  valor      String   @default("") @db.VarChar(70)
-  usuario_id String   @default("") @db.VarChar(60)
-  ativo      Boolean  @default(false)
-  alerta     Alerta[]
+  id             Int      @id @default(autoincrement())
+  nome           String   @db.VarChar(45)
+  regra          String   @db.VarChar(45)
+  valor          String   @default("") @db.VarChar(70)
+  usuario_id     String   @default("") @db.VarChar(60)
+  dispositivo_id String   @default("") @db.VarChar(60)
+  ativo          Boolean  @default(false)
+  alerta         Alerta[]
 
   @@map("alertas_tipo")
 }

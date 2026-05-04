@@ -10,12 +10,12 @@ const router = Router();
  * CREATE - Cria um novo tipo de alerta
  */
 router.post("/", async (req, res) => {
-  const { nome, regra, valor, usuario_id } = req.body;
+  const { nome, regra, valor, usuario_id, dispositivo_id } = req.body;
 
 
 
   try {
-    if (!nome || !regra || !usuario_id) {
+    if (!nome || !regra || !usuario_id || !dispositivo_id) {
       throw error;
     }
     // Verifica duplicidade de nome
@@ -33,6 +33,7 @@ router.post("/", async (req, res) => {
         regra,
         valor,
         usuario_id,
+        dispositivo_id,
         ativo: true
       },
     });
@@ -56,6 +57,17 @@ router.get("/", async (_req: Request, res: Response) => {
   }
 });
 // READ 
+router.get("/usr/:id", async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const tipos = await prisma.alerta_tipo.findMany({
+      where: {id : Number(id)}
+    });
+    res.json(tipos);
+  } catch (error) {
+    res.status(500).json({ erro: "Erro ao buscar tipos de alerta ativos.", detalhes: error });
+  }
+});
 
 
 router.get("/:id", async (req: Request, res: Response) => {
@@ -64,7 +76,18 @@ router.get("/:id", async (req: Request, res: Response) => {
     const tipos = await prisma.alerta_tipo.findMany({
       where: { usuario_id: { contains: id }, ativo: true },
     });
-    res.json(tipos);
+
+    const result = await Promise.all(
+      tipos.map(async (tipo) => {
+        const dispositivo = await prisma.dispositivo.findUnique({
+          where: { id: tipo.dispositivo_id },
+          select: { nome: true },
+        });
+        return { ...tipo, dispositivo_nome: dispositivo?.nome ?? null };
+      })
+    );
+
+    res.json(result);
   } catch (error) {
     res.status(500).json({ erro: "Erro ao buscar tipos de alerta ativos.", detalhes: error });
   }

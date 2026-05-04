@@ -178,6 +178,7 @@ exports.Prisma.Alerta_tipoScalarFieldEnum = {
   regra: 'regra',
   valor: 'valor',
   usuario_id: 'usuario_id',
+  dispositivo_id: 'dispositivo_id',
   ativo: 'ativo'
 };
 
@@ -249,7 +250,8 @@ exports.Prisma.Alerta_tipoOrderByRelevanceFieldEnum = {
   nome: 'nome',
   regra: 'regra',
   valor: 'valor',
-  usuario_id: 'usuario_id'
+  usuario_id: 'usuario_id',
+  dispositivo_id: 'dispositivo_id'
 };
 
 exports.Prisma.LocalizacaoOrderByRelevanceFieldEnum = {
