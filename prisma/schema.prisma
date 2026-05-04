@@ -93,6 +93,7 @@ model Alerta_tipo{
   regra         String         @db.VarChar(45)
   valor         String         @db.VarChar(70) @default("")
   usuario_id    String         @db.VarChar(60) @default("")
+  dispositivo_id String        @db.VarChar(60) @default("")
   ativo         Boolean        @default(false)
   alerta        Alerta[]
 
