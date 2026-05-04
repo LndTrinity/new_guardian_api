@@ -32,7 +32,8 @@ router.post("/", async (req, res) => {
         nome,
         regra,
         valor,
-        usuario_id
+        usuario_id,
+        ativo: true
       },
     });
 
@@ -61,7 +62,7 @@ router.get("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     const tipos = await prisma.alerta_tipo.findMany({
-      where: { usuario_id: String(id), ativo: true },
+      where: { usuario_id: { contains: id }, ativo: true },
     });
     res.json(tipos);
   } catch (error) {
