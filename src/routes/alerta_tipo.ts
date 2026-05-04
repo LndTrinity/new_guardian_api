@@ -10,12 +10,12 @@ const router = Router();
  * CREATE - Cria um novo tipo de alerta
  */
 router.post("/", async (req, res) => {
-  const { nome, regra,valor } = req.body;
+  const { nome, regra, valor, user_id } = req.body;
 
 
 
   try {
-    if (!nome || !regra) {
+    if (!nome || !regra || !user_id) {
       throw error;
     }
     // Verifica duplicidade de nome
@@ -31,7 +31,8 @@ router.post("/", async (req, res) => {
       data: {
         nome,
         regra,
-        valor
+        valor,
+        user_id
       },
     });
 
