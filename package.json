@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": ".dist/api/index.js",
   "scripts": {
-    "build": "npx prisma migrate deploy && tsc",
+    "build": "npx prisma migrate deploy && npx prisma generate && tsc",
     "start": "node .dist/api/index.js",
     "dev": "tsx watch api/index.ts",
     "postinstall": "node scripts/generate-prisma-all-targets.js"
