@@ -6801,6 +6801,8 @@ export namespace Prisma {
     nome: string | null
     regra: string | null
     valor: string | null
+    usuario_id: string | null
+    ativo: boolean | null
   }
 
   export type Alerta_tipoMaxAggregateOutputType = {
@@ -6808,6 +6810,8 @@ export namespace Prisma {
     nome: string | null
     regra: string | null
     valor: string | null
+    usuario_id: string | null
+    ativo: boolean | null
   }
 
   export type Alerta_tipoCountAggregateOutputType = {
@@ -6815,6 +6819,8 @@ export namespace Prisma {
     nome: number
     regra: number
     valor: number
+    usuario_id: number
+    ativo: number
     _all: number
   }
 
@@ -6832,6 +6838,8 @@ export namespace Prisma {
     nome?: true
     regra?: true
     valor?: true
+    usuario_id?: true
+    ativo?: true
   }
 
   export type Alerta_tipoMaxAggregateInputType = {
@@ -6839,6 +6847,8 @@ export namespace Prisma {
     nome?: true
     regra?: true
     valor?: true
+    usuario_id?: true
+    ativo?: true
   }
 
   export type Alerta_tipoCountAggregateInputType = {
@@ -6846,6 +6856,8 @@ export namespace Prisma {
     nome?: true
     regra?: true
     valor?: true
+    usuario_id?: true
+    ativo?: true
     _all?: true
   }
 
@@ -6940,6 +6952,8 @@ export namespace Prisma {
     nome: string
     regra: string
     valor: string
+    usuario_id: string
+    ativo: boolean
     _count: Alerta_tipoCountAggregateOutputType | null
     _avg: Alerta_tipoAvgAggregateOutputType | null
     _sum: Alerta_tipoSumAggregateOutputType | null
@@ -6966,6 +6980,8 @@ export namespace Prisma {
     nome?: boolean
     regra?: boolean
     valor?: boolean
+    usuario_id?: boolean
+    ativo?: boolean
     alerta?: boolean | Alerta_tipo$alertaArgs<ExtArgs>
     _count?: boolean | Alerta_tipoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["alerta_tipo"]>
@@ -6977,9 +6993,11 @@ export namespace Prisma {
     nome?: boolean
     regra?: boolean
     valor?: boolean
+    usuario_id?: boolean
+    ativo?: boolean
   }
 
-  export type Alerta_tipoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "regra" | "valor", ExtArgs["result"]["alerta_tipo"]>
+  export type Alerta_tipoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "regra" | "valor" | "usuario_id" | "ativo", ExtArgs["result"]["alerta_tipo"]>
   export type Alerta_tipoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     alerta?: boolean | Alerta_tipo$alertaArgs<ExtArgs>
     _count?: boolean | Alerta_tipoCountOutputTypeDefaultArgs<ExtArgs>
@@ -6995,6 +7013,8 @@ export namespace Prisma {
       nome: string
       regra: string
       valor: string
+      usuario_id: string
+      ativo: boolean
     }, ExtArgs["result"]["alerta_tipo"]>
     composites: {}
   }
@@ -7369,6 +7389,8 @@ export namespace Prisma {
     readonly nome: FieldRef<"Alerta_tipo", 'String'>
     readonly regra: FieldRef<"Alerta_tipo", 'String'>
     readonly valor: FieldRef<"Alerta_tipo", 'String'>
+    readonly usuario_id: FieldRef<"Alerta_tipo", 'String'>
+    readonly ativo: FieldRef<"Alerta_tipo", 'Boolean'>
   }
     
 
@@ -10760,7 +10782,9 @@ export namespace Prisma {
     id: 'id',
     nome: 'nome',
     regra: 'regra',
-    valor: 'valor'
+    valor: 'valor',
+    usuario_id: 'usuario_id',
+    ativo: 'ativo'
   };
 
   export type Alerta_tipoScalarFieldEnum = (typeof Alerta_tipoScalarFieldEnum)[keyof typeof Alerta_tipoScalarFieldEnum]
@@ -10863,7 +10887,8 @@ export namespace Prisma {
   export const Alerta_tipoOrderByRelevanceFieldEnum: {
     nome: 'nome',
     regra: 'regra',
-    valor: 'valor'
+    valor: 'valor',
+    usuario_id: 'usuario_id'
   };
 
   export type Alerta_tipoOrderByRelevanceFieldEnum = (typeof Alerta_tipoOrderByRelevanceFieldEnum)[keyof typeof Alerta_tipoOrderByRelevanceFieldEnum]
@@ -11328,6 +11353,8 @@ export namespace Prisma {
     nome?: StringFilter<"Alerta_tipo"> | string
     regra?: StringFilter<"Alerta_tipo"> | string
     valor?: StringFilter<"Alerta_tipo"> | string
+    usuario_id?: StringFilter<"Alerta_tipo"> | string
+    ativo?: BoolFilter<"Alerta_tipo"> | boolean
     alerta?: AlertaListRelationFilter
   }
 
@@ -11336,6 +11363,8 @@ export namespace Prisma {
     nome?: SortOrder
     regra?: SortOrder
     valor?: SortOrder
+    usuario_id?: SortOrder
+    ativo?: SortOrder
     alerta?: AlertaOrderByRelationAggregateInput
     _relevance?: Alerta_tipoOrderByRelevanceInput
   }
@@ -11348,6 +11377,8 @@ export namespace Prisma {
     nome?: StringFilter<"Alerta_tipo"> | string
     regra?: StringFilter<"Alerta_tipo"> | string
     valor?: StringFilter<"Alerta_tipo"> | string
+    usuario_id?: StringFilter<"Alerta_tipo"> | string
+    ativo?: BoolFilter<"Alerta_tipo"> | boolean
     alerta?: AlertaListRelationFilter
   }, "id">
 
@@ -11356,6 +11387,8 @@ export namespace Prisma {
     nome?: SortOrder
     regra?: SortOrder
     valor?: SortOrder
+    usuario_id?: SortOrder
+    ativo?: SortOrder
     _count?: Alerta_tipoCountOrderByAggregateInput
     _avg?: Alerta_tipoAvgOrderByAggregateInput
     _max?: Alerta_tipoMaxOrderByAggregateInput
@@ -11371,6 +11404,8 @@ export namespace Prisma {
     nome?: StringWithAggregatesFilter<"Alerta_tipo"> | string
     regra?: StringWithAggregatesFilter<"Alerta_tipo"> | string
     valor?: StringWithAggregatesFilter<"Alerta_tipo"> | string
+    usuario_id?: StringWithAggregatesFilter<"Alerta_tipo"> | string
+    ativo?: BoolWithAggregatesFilter<"Alerta_tipo"> | boolean
   }
 
   export type LocalizacaoWhereInput = {
@@ -11926,6 +11961,8 @@ export namespace Prisma {
     nome: string
     regra: string
     valor?: string
+    usuario_id?: string
+    ativo?: boolean
     alerta?: AlertaCreateNestedManyWithoutAlertaTipoInput
   }
 
@@ -11934,6 +11971,8 @@ export namespace Prisma {
     nome: string
     regra: string
     valor?: string
+    usuario_id?: string
+    ativo?: boolean
     alerta?: AlertaUncheckedCreateNestedManyWithoutAlertaTipoInput
   }
 
@@ -11941,6 +11980,8 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     regra?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
     alerta?: AlertaUpdateManyWithoutAlertaTipoNestedInput
   }
 
@@ -11949,6 +11990,8 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     regra?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
     alerta?: AlertaUncheckedUpdateManyWithoutAlertaTipoNestedInput
   }
 
@@ -11957,12 +12000,16 @@ export namespace Prisma {
     nome: string
     regra: string
     valor?: string
+    usuario_id?: string
+    ativo?: boolean
   }
 
   export type Alerta_tipoUpdateManyMutationInput = {
     nome?: StringFieldUpdateOperationsInput | string
     regra?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type Alerta_tipoUncheckedUpdateManyInput = {
@@ -11970,6 +12017,8 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     regra?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type LocalizacaoCreateInput = {
@@ -12608,6 +12657,8 @@ export namespace Prisma {
     nome?: SortOrder
     regra?: SortOrder
     valor?: SortOrder
+    usuario_id?: SortOrder
+    ativo?: SortOrder
   }
 
   export type Alerta_tipoAvgOrderByAggregateInput = {
@@ -12619,6 +12670,8 @@ export namespace Prisma {
     nome?: SortOrder
     regra?: SortOrder
     valor?: SortOrder
+    usuario_id?: SortOrder
+    ativo?: SortOrder
   }
 
   export type Alerta_tipoMinOrderByAggregateInput = {
@@ -12626,6 +12679,8 @@ export namespace Prisma {
     nome?: SortOrder
     regra?: SortOrder
     valor?: SortOrder
+    usuario_id?: SortOrder
+    ativo?: SortOrder
   }
 
   export type Alerta_tipoSumOrderByAggregateInput = {
@@ -13947,6 +14002,8 @@ export namespace Prisma {
     nome: string
     regra: string
     valor?: string
+    usuario_id?: string
+    ativo?: boolean
   }
 
   export type Alerta_tipoUncheckedCreateWithoutAlertaInput = {
@@ -13954,6 +14011,8 @@ export namespace Prisma {
     nome: string
     regra: string
     valor?: string
+    usuario_id?: string
+    ativo?: boolean
   }
 
   export type Alerta_tipoCreateOrConnectWithoutAlertaInput = {
@@ -14017,6 +14076,8 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     regra?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type Alerta_tipoUncheckedUpdateWithoutAlertaInput = {
@@ -14024,6 +14085,8 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     regra?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type AlertaCreateWithoutAlertaTipoInput = {

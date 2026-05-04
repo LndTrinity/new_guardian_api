@@ -54,6 +54,20 @@ router.get("/", async (_req: Request, res: Response) => {
     res.status(500).json({ erro: "Erro ao buscar tipos de alerta.", detalhes: error });
   }
 });
+// READ 
+
+
+router.get("/:id", async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const tipos = await prisma.alerta_tipo.findMany({
+      where: { usuario_id: String(id), ativo: true },
+    });
+    res.json(tipos);
+  } catch (error) {
+    res.status(500).json({ erro: "Erro ao buscar tipos de alerta ativos.", detalhes: error });
+  }
+});
 
 // UPDATE 
 
