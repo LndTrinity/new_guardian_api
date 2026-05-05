@@ -26,6 +26,7 @@ model Usuario {
   deleted      Boolean       @default(false)
   dispositivos Dispositivo[]
   log          Usuario_log[]
+  alertas_tipo Alerta_tipo[]
 
   @@map("usuarios")
 }
@@ -53,6 +54,7 @@ model Dispositivo {
   alertas         Alerta[]
   localizacoes    Localizacao[]
   logs            Dispositivo_log[]
+  alertas_tipo    Alerta_tipo[]
 
   @@map("dispositivos")
 }
@@ -73,28 +75,31 @@ model Dispositivo_config {
 }
 
 model Alerta {
-  id            Int             @id @default(autoincrement())
+  id            String          @id @default(uuid()) @db.VarChar(60)
   descricao     String          @db.VarChar(45)
   gravidede     AlertaGravidade @default(Aviso_amarelo)
   ativo         Boolean
   dispositivo   Dispositivo     @relation(fields: [dispositivoId], references: [id], onDelete: Cascade)
   dispositivoId String
   alertaTipo    Alerta_tipo     @relation(fields: [alertaId], references: [id], onDelete: Cascade)
-  alertaId      Int
+  alertaId      String
   createdAt     DateTime        @default(now())
 
   @@map("alertas")
 }
 
 model Alerta_tipo {
-  id             Int      @id @default(autoincrement())
-  nome           String   @db.VarChar(45)
-  regra          String   @db.VarChar(45)
-  valor          String   @default("") @db.VarChar(70)
-  usuario_id     String   @default("") @db.VarChar(60)
-  dispositivo_id String   @default("") @db.VarChar(60)
-  ativo          Boolean  @default(false)
-  alerta         Alerta[]
+  id            String      @id @default(uuid()) @db.VarChar(60)
+  nome          String      @db.VarChar(45)
+  regra         String      @db.VarChar(45)
+  valor         String      @default("") @db.VarChar(180)
+  usuario_id    String      @default("") @db.VarChar(60)
+  dispositivo   Dispositivo @relation(fields: [dispositivoId], references: [id], onDelete: Cascade)
+  dispositivoId String
+  usuario       Usuario?    @relation(fields: [usuarioId], references: [id])
+  usuarioId     String?
+  ativo         Boolean     @default(false)
+  alerta        Alerta[]
 
   @@map("alertas_tipo")
 }

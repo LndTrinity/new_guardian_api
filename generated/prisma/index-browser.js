@@ -178,7 +178,8 @@ exports.Prisma.Alerta_tipoScalarFieldEnum = {
   regra: 'regra',
   valor: 'valor',
   usuario_id: 'usuario_id',
-  dispositivo_id: 'dispositivo_id',
+  dispositivoId: 'dispositivoId',
+  usuarioId: 'usuarioId',
   ativo: 'ativo'
 };
 
@@ -242,16 +243,20 @@ exports.Prisma.Dispositivo_configOrderByRelevanceFieldEnum = {
 };
 
 exports.Prisma.AlertaOrderByRelevanceFieldEnum = {
+  id: 'id',
   descricao: 'descricao',
-  dispositivoId: 'dispositivoId'
+  dispositivoId: 'dispositivoId',
+  alertaId: 'alertaId'
 };
 
 exports.Prisma.Alerta_tipoOrderByRelevanceFieldEnum = {
+  id: 'id',
   nome: 'nome',
   regra: 'regra',
   valor: 'valor',
   usuario_id: 'usuario_id',
-  dispositivo_id: 'dispositivo_id'
+  dispositivoId: 'dispositivoId',
+  usuarioId: 'usuarioId'
 };
 
 exports.Prisma.LocalizacaoOrderByRelevanceFieldEnum = {

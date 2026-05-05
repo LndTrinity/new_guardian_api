@@ -9,26 +9,26 @@ const router = Router();
 /**
  * CREATE - Cria um novo tipo de alerta
  */
-export function criarAlertaTipo(nome: string, regra: string, valor: string, usuario_id: string, dispositivo_id: string) {
+export function criarAlertaTipo(nome: string, regra: string, valor: string, usuario_id: string, dispositivoId: string) {
   return prisma.alerta_tipo.create({
     data: {
       nome,
       regra,
       valor,
       usuario_id,
-      dispositivo_id,
+      dispositivoId,
       ativo: true
     },
   });
 }
 
 router.post("/", async (req, res) => {
-  const { nome, regra, valor, usuario_id, dispositivo_id } = req.body;
+  const { nome, regra, valor, usuario_id, dispositivo_id: dispositivoId } = req.body;
 
 
 
   try {
-    if (!nome || !regra || !usuario_id || !dispositivo_id) {
+    if (!nome || !regra || !usuario_id || !dispositivoId) {
       throw new Error("Todos os campos são obrigatórios.");
     }
     // Verifica duplicidade de nome
@@ -46,7 +46,7 @@ router.post("/", async (req, res) => {
         regra,
         valor,
         usuario_id,
-        dispositivo_id,
+        dispositivoId: dispositivoId,
         ativo: true
       },
     });
@@ -74,7 +74,7 @@ router.get("/usr/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     const tipos = await prisma.alerta_tipo.findMany({
-      where: {id : Number(id)}
+      where: {id : id}
     });
     res.json(tipos);
   } catch (error) {
@@ -93,7 +93,7 @@ router.get("/:id", async (req: Request, res: Response) => {
     const result = await Promise.all(
       tipos.map(async (tipo) => {
         const dispositivo = await prisma.dispositivo.findUnique({
-          where: { id: tipo.dispositivo_id },
+          where: { id: tipo.dispositivoId },
           select: { nome: true },
         });
         return { ...tipo, dispositivo_nome: dispositivo?.nome ?? null };
@@ -115,7 +115,7 @@ router.put("/:id", async (req: Request, res: Response) => {
   try {
   
     const tipo = await prisma.alerta_tipo.update({
-      where: { id: Number(id) },
+      where: { id: id },
       data: { nome, regra },
     });
 
@@ -132,7 +132,7 @@ router.delete("/:id", async (req: Request, res: Response) => {
 
   try {
     const tipo = await prisma.alerta_tipo.delete({
-      where: { id: Number(id) }
+      where: { id: id }
     });
 
     res.json(tipo);

@@ -1556,11 +1556,13 @@ export namespace Prisma {
   export type UsuarioCountOutputType = {
     dispositivos: number
     log: number
+    alertas_tipo: number
   }
 
   export type UsuarioCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     dispositivos?: boolean | UsuarioCountOutputTypeCountDispositivosArgs
     log?: boolean | UsuarioCountOutputTypeCountLogArgs
+    alertas_tipo?: boolean | UsuarioCountOutputTypeCountAlertas_tipoArgs
   }
 
   // Custom InputTypes
@@ -1588,6 +1590,13 @@ export namespace Prisma {
     where?: Usuario_logWhereInput
   }
 
+  /**
+   * UsuarioCountOutputType without action
+   */
+  export type UsuarioCountOutputTypeCountAlertas_tipoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Alerta_tipoWhereInput
+  }
+
 
   /**
    * Count Type DispositivoCountOutputType
@@ -1598,6 +1607,7 @@ export namespace Prisma {
     alertas: number
     localizacoes: number
     logs: number
+    alertas_tipo: number
   }
 
   export type DispositivoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1605,6 +1615,7 @@ export namespace Prisma {
     alertas?: boolean | DispositivoCountOutputTypeCountAlertasArgs
     localizacoes?: boolean | DispositivoCountOutputTypeCountLocalizacoesArgs
     logs?: boolean | DispositivoCountOutputTypeCountLogsArgs
+    alertas_tipo?: boolean | DispositivoCountOutputTypeCountAlertas_tipoArgs
   }
 
   // Custom InputTypes
@@ -1644,6 +1655,13 @@ export namespace Prisma {
    */
   export type DispositivoCountOutputTypeCountLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: Dispositivo_logWhereInput
+  }
+
+  /**
+   * DispositivoCountOutputType without action
+   */
+  export type DispositivoCountOutputTypeCountAlertas_tipoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Alerta_tipoWhereInput
   }
 
 
@@ -1872,6 +1890,7 @@ export namespace Prisma {
     deleted?: boolean
     dispositivos?: boolean | Usuario$dispositivosArgs<ExtArgs>
     log?: boolean | Usuario$logArgs<ExtArgs>
+    alertas_tipo?: boolean | Usuario$alertas_tipoArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["usuario"]>
 
@@ -1892,6 +1911,7 @@ export namespace Prisma {
   export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     dispositivos?: boolean | Usuario$dispositivosArgs<ExtArgs>
     log?: boolean | Usuario$logArgs<ExtArgs>
+    alertas_tipo?: boolean | Usuario$alertas_tipoArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -1900,6 +1920,7 @@ export namespace Prisma {
     objects: {
       dispositivos: Prisma.$DispositivoPayload<ExtArgs>[]
       log: Prisma.$Usuario_logPayload<ExtArgs>[]
+      alertas_tipo: Prisma.$Alerta_tipoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2252,6 +2273,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     dispositivos<T extends Usuario$dispositivosArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$dispositivosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     log<T extends Usuario$logArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$logArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Usuario_logPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    alertas_tipo<T extends Usuario$alertas_tipoArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$alertas_tipoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Alerta_tipoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2682,6 +2704,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Usuario_logScalarFieldEnum | Usuario_logScalarFieldEnum[]
+  }
+
+  /**
+   * Usuario.alertas_tipo
+   */
+  export type Usuario$alertas_tipoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Alerta_tipo
+     */
+    select?: Alerta_tipoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Alerta_tipo
+     */
+    omit?: Alerta_tipoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Alerta_tipoInclude<ExtArgs> | null
+    where?: Alerta_tipoWhereInput
+    orderBy?: Alerta_tipoOrderByWithRelationInput | Alerta_tipoOrderByWithRelationInput[]
+    cursor?: Alerta_tipoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Alerta_tipoScalarFieldEnum | Alerta_tipoScalarFieldEnum[]
   }
 
   /**
@@ -3859,6 +3905,7 @@ export namespace Prisma {
     alertas?: boolean | Dispositivo$alertasArgs<ExtArgs>
     localizacoes?: boolean | Dispositivo$localizacoesArgs<ExtArgs>
     logs?: boolean | Dispositivo$logsArgs<ExtArgs>
+    alertas_tipo?: boolean | Dispositivo$alertas_tipoArgs<ExtArgs>
     _count?: boolean | DispositivoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dispositivo"]>
 
@@ -3883,6 +3930,7 @@ export namespace Prisma {
     alertas?: boolean | Dispositivo$alertasArgs<ExtArgs>
     localizacoes?: boolean | Dispositivo$localizacoesArgs<ExtArgs>
     logs?: boolean | Dispositivo$logsArgs<ExtArgs>
+    alertas_tipo?: boolean | Dispositivo$alertas_tipoArgs<ExtArgs>
     _count?: boolean | DispositivoCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -3894,6 +3942,7 @@ export namespace Prisma {
       alertas: Prisma.$AlertaPayload<ExtArgs>[]
       localizacoes: Prisma.$LocalizacaoPayload<ExtArgs>[]
       logs: Prisma.$Dispositivo_logPayload<ExtArgs>[]
+      alertas_tipo: Prisma.$Alerta_tipoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4250,6 +4299,7 @@ export namespace Prisma {
     alertas<T extends Dispositivo$alertasArgs<ExtArgs> = {}>(args?: Subset<T, Dispositivo$alertasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlertaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     localizacoes<T extends Dispositivo$localizacoesArgs<ExtArgs> = {}>(args?: Subset<T, Dispositivo$localizacoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocalizacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     logs<T extends Dispositivo$logsArgs<ExtArgs> = {}>(args?: Subset<T, Dispositivo$logsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Dispositivo_logPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    alertas_tipo<T extends Dispositivo$alertas_tipoArgs<ExtArgs> = {}>(args?: Subset<T, Dispositivo$alertas_tipoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Alerta_tipoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4748,6 +4798,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Dispositivo_logScalarFieldEnum | Dispositivo_logScalarFieldEnum[]
+  }
+
+  /**
+   * Dispositivo.alertas_tipo
+   */
+  export type Dispositivo$alertas_tipoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Alerta_tipo
+     */
+    select?: Alerta_tipoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Alerta_tipo
+     */
+    omit?: Alerta_tipoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Alerta_tipoInclude<ExtArgs> | null
+    where?: Alerta_tipoWhereInput
+    orderBy?: Alerta_tipoOrderByWithRelationInput | Alerta_tipoOrderByWithRelationInput[]
+    cursor?: Alerta_tipoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Alerta_tipoScalarFieldEnum | Alerta_tipoScalarFieldEnum[]
   }
 
   /**
@@ -5784,39 +5858,27 @@ export namespace Prisma {
 
   export type AggregateAlerta = {
     _count: AlertaCountAggregateOutputType | null
-    _avg: AlertaAvgAggregateOutputType | null
-    _sum: AlertaSumAggregateOutputType | null
     _min: AlertaMinAggregateOutputType | null
     _max: AlertaMaxAggregateOutputType | null
   }
 
-  export type AlertaAvgAggregateOutputType = {
-    id: number | null
-    alertaId: number | null
-  }
-
-  export type AlertaSumAggregateOutputType = {
-    id: number | null
-    alertaId: number | null
-  }
-
   export type AlertaMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     descricao: string | null
     gravidede: $Enums.AlertaGravidade | null
     ativo: boolean | null
     dispositivoId: string | null
-    alertaId: number | null
+    alertaId: string | null
     createdAt: Date | null
   }
 
   export type AlertaMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     descricao: string | null
     gravidede: $Enums.AlertaGravidade | null
     ativo: boolean | null
     dispositivoId: string | null
-    alertaId: number | null
+    alertaId: string | null
     createdAt: Date | null
   }
 
@@ -5831,16 +5893,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type AlertaAvgAggregateInputType = {
-    id?: true
-    alertaId?: true
-  }
-
-  export type AlertaSumAggregateInputType = {
-    id?: true
-    alertaId?: true
-  }
 
   export type AlertaMinAggregateInputType = {
     id?: true
@@ -5911,18 +5963,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: AlertaAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: AlertaSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: AlertaMinAggregateInputType
@@ -5953,23 +5993,19 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: AlertaCountAggregateInputType | true
-    _avg?: AlertaAvgAggregateInputType
-    _sum?: AlertaSumAggregateInputType
     _min?: AlertaMinAggregateInputType
     _max?: AlertaMaxAggregateInputType
   }
 
   export type AlertaGroupByOutputType = {
-    id: number
+    id: string
     descricao: string
     gravidede: $Enums.AlertaGravidade
     ativo: boolean
     dispositivoId: string
-    alertaId: number
+    alertaId: string
     createdAt: Date
     _count: AlertaCountAggregateOutputType | null
-    _avg: AlertaAvgAggregateOutputType | null
-    _sum: AlertaSumAggregateOutputType | null
     _min: AlertaMinAggregateOutputType | null
     _max: AlertaMaxAggregateOutputType | null
   }
@@ -6025,12 +6061,12 @@ export namespace Prisma {
       alertaTipo: Prisma.$Alerta_tipoPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       descricao: string
       gravidede: $Enums.AlertaGravidade
       ativo: boolean
       dispositivoId: string
-      alertaId: number
+      alertaId: string
       createdAt: Date
     }, ExtArgs["result"]["alerta"]>
     composites: {}
@@ -6403,12 +6439,12 @@ export namespace Prisma {
    * Fields of the Alerta model
    */
   interface AlertaFieldRefs {
-    readonly id: FieldRef<"Alerta", 'Int'>
+    readonly id: FieldRef<"Alerta", 'String'>
     readonly descricao: FieldRef<"Alerta", 'String'>
     readonly gravidede: FieldRef<"Alerta", 'AlertaGravidade'>
     readonly ativo: FieldRef<"Alerta", 'Boolean'>
     readonly dispositivoId: FieldRef<"Alerta", 'String'>
-    readonly alertaId: FieldRef<"Alerta", 'Int'>
+    readonly alertaId: FieldRef<"Alerta", 'String'>
     readonly createdAt: FieldRef<"Alerta", 'DateTime'>
   }
     
@@ -6782,37 +6818,29 @@ export namespace Prisma {
 
   export type AggregateAlerta_tipo = {
     _count: Alerta_tipoCountAggregateOutputType | null
-    _avg: Alerta_tipoAvgAggregateOutputType | null
-    _sum: Alerta_tipoSumAggregateOutputType | null
     _min: Alerta_tipoMinAggregateOutputType | null
     _max: Alerta_tipoMaxAggregateOutputType | null
   }
 
-  export type Alerta_tipoAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type Alerta_tipoSumAggregateOutputType = {
-    id: number | null
-  }
-
   export type Alerta_tipoMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     nome: string | null
     regra: string | null
     valor: string | null
     usuario_id: string | null
-    dispositivo_id: string | null
+    dispositivoId: string | null
+    usuarioId: string | null
     ativo: boolean | null
   }
 
   export type Alerta_tipoMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     nome: string | null
     regra: string | null
     valor: string | null
     usuario_id: string | null
-    dispositivo_id: string | null
+    dispositivoId: string | null
+    usuarioId: string | null
     ativo: boolean | null
   }
 
@@ -6822,19 +6850,12 @@ export namespace Prisma {
     regra: number
     valor: number
     usuario_id: number
-    dispositivo_id: number
+    dispositivoId: number
+    usuarioId: number
     ativo: number
     _all: number
   }
 
-
-  export type Alerta_tipoAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type Alerta_tipoSumAggregateInputType = {
-    id?: true
-  }
 
   export type Alerta_tipoMinAggregateInputType = {
     id?: true
@@ -6842,7 +6863,8 @@ export namespace Prisma {
     regra?: true
     valor?: true
     usuario_id?: true
-    dispositivo_id?: true
+    dispositivoId?: true
+    usuarioId?: true
     ativo?: true
   }
 
@@ -6852,7 +6874,8 @@ export namespace Prisma {
     regra?: true
     valor?: true
     usuario_id?: true
-    dispositivo_id?: true
+    dispositivoId?: true
+    usuarioId?: true
     ativo?: true
   }
 
@@ -6862,7 +6885,8 @@ export namespace Prisma {
     regra?: true
     valor?: true
     usuario_id?: true
-    dispositivo_id?: true
+    dispositivoId?: true
+    usuarioId?: true
     ativo?: true
     _all?: true
   }
@@ -6905,18 +6929,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: Alerta_tipoAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Alerta_tipoSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: Alerta_tipoMinAggregateInputType
@@ -6947,23 +6959,20 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: Alerta_tipoCountAggregateInputType | true
-    _avg?: Alerta_tipoAvgAggregateInputType
-    _sum?: Alerta_tipoSumAggregateInputType
     _min?: Alerta_tipoMinAggregateInputType
     _max?: Alerta_tipoMaxAggregateInputType
   }
 
   export type Alerta_tipoGroupByOutputType = {
-    id: number
+    id: string
     nome: string
     regra: string
     valor: string
     usuario_id: string
-    dispositivo_id: string
+    dispositivoId: string
+    usuarioId: string | null
     ativo: boolean
     _count: Alerta_tipoCountAggregateOutputType | null
-    _avg: Alerta_tipoAvgAggregateOutputType | null
-    _sum: Alerta_tipoSumAggregateOutputType | null
     _min: Alerta_tipoMinAggregateOutputType | null
     _max: Alerta_tipoMaxAggregateOutputType | null
   }
@@ -6988,8 +6997,11 @@ export namespace Prisma {
     regra?: boolean
     valor?: boolean
     usuario_id?: boolean
-    dispositivo_id?: boolean
+    dispositivoId?: boolean
+    usuarioId?: boolean
     ativo?: boolean
+    dispositivo?: boolean | DispositivoDefaultArgs<ExtArgs>
+    usuario?: boolean | Alerta_tipo$usuarioArgs<ExtArgs>
     alerta?: boolean | Alerta_tipo$alertaArgs<ExtArgs>
     _count?: boolean | Alerta_tipoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["alerta_tipo"]>
@@ -7002,12 +7014,15 @@ export namespace Prisma {
     regra?: boolean
     valor?: boolean
     usuario_id?: boolean
-    dispositivo_id?: boolean
+    dispositivoId?: boolean
+    usuarioId?: boolean
     ativo?: boolean
   }
 
-  export type Alerta_tipoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "regra" | "valor" | "usuario_id" | "dispositivo_id" | "ativo", ExtArgs["result"]["alerta_tipo"]>
+  export type Alerta_tipoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "regra" | "valor" | "usuario_id" | "dispositivoId" | "usuarioId" | "ativo", ExtArgs["result"]["alerta_tipo"]>
   export type Alerta_tipoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    dispositivo?: boolean | DispositivoDefaultArgs<ExtArgs>
+    usuario?: boolean | Alerta_tipo$usuarioArgs<ExtArgs>
     alerta?: boolean | Alerta_tipo$alertaArgs<ExtArgs>
     _count?: boolean | Alerta_tipoCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -7015,15 +7030,18 @@ export namespace Prisma {
   export type $Alerta_tipoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Alerta_tipo"
     objects: {
+      dispositivo: Prisma.$DispositivoPayload<ExtArgs>
+      usuario: Prisma.$UsuarioPayload<ExtArgs> | null
       alerta: Prisma.$AlertaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       nome: string
       regra: string
       valor: string
       usuario_id: string
-      dispositivo_id: string
+      dispositivoId: string
+      usuarioId: string | null
       ativo: boolean
     }, ExtArgs["result"]["alerta_tipo"]>
     composites: {}
@@ -7365,6 +7383,8 @@ export namespace Prisma {
    */
   export interface Prisma__Alerta_tipoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    dispositivo<T extends DispositivoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DispositivoDefaultArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    usuario<T extends Alerta_tipo$usuarioArgs<ExtArgs> = {}>(args?: Subset<T, Alerta_tipo$usuarioArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     alerta<T extends Alerta_tipo$alertaArgs<ExtArgs> = {}>(args?: Subset<T, Alerta_tipo$alertaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlertaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7395,12 +7415,13 @@ export namespace Prisma {
    * Fields of the Alerta_tipo model
    */
   interface Alerta_tipoFieldRefs {
-    readonly id: FieldRef<"Alerta_tipo", 'Int'>
+    readonly id: FieldRef<"Alerta_tipo", 'String'>
     readonly nome: FieldRef<"Alerta_tipo", 'String'>
     readonly regra: FieldRef<"Alerta_tipo", 'String'>
     readonly valor: FieldRef<"Alerta_tipo", 'String'>
     readonly usuario_id: FieldRef<"Alerta_tipo", 'String'>
-    readonly dispositivo_id: FieldRef<"Alerta_tipo", 'String'>
+    readonly dispositivoId: FieldRef<"Alerta_tipo", 'String'>
+    readonly usuarioId: FieldRef<"Alerta_tipo", 'String'>
     readonly ativo: FieldRef<"Alerta_tipo", 'Boolean'>
   }
     
@@ -7747,6 +7768,25 @@ export namespace Prisma {
      * Limit how many Alerta_tipos to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Alerta_tipo.usuario
+   */
+  export type Alerta_tipo$usuarioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Usuario
+     */
+    select?: UsuarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Usuario
+     */
+    omit?: UsuarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    where?: UsuarioWhereInput
   }
 
   /**
@@ -10795,7 +10835,8 @@ export namespace Prisma {
     regra: 'regra',
     valor: 'valor',
     usuario_id: 'usuario_id',
-    dispositivo_id: 'dispositivo_id',
+    dispositivoId: 'dispositivoId',
+    usuarioId: 'usuarioId',
     ativo: 'ativo'
   };
 
@@ -10889,19 +10930,23 @@ export namespace Prisma {
 
 
   export const AlertaOrderByRelevanceFieldEnum: {
+    id: 'id',
     descricao: 'descricao',
-    dispositivoId: 'dispositivoId'
+    dispositivoId: 'dispositivoId',
+    alertaId: 'alertaId'
   };
 
   export type AlertaOrderByRelevanceFieldEnum = (typeof AlertaOrderByRelevanceFieldEnum)[keyof typeof AlertaOrderByRelevanceFieldEnum]
 
 
   export const Alerta_tipoOrderByRelevanceFieldEnum: {
+    id: 'id',
     nome: 'nome',
     regra: 'regra',
     valor: 'valor',
     usuario_id: 'usuario_id',
-    dispositivo_id: 'dispositivo_id'
+    dispositivoId: 'dispositivoId',
+    usuarioId: 'usuarioId'
   };
 
   export type Alerta_tipoOrderByRelevanceFieldEnum = (typeof Alerta_tipoOrderByRelevanceFieldEnum)[keyof typeof Alerta_tipoOrderByRelevanceFieldEnum]
@@ -11009,6 +11054,7 @@ export namespace Prisma {
     deleted?: BoolFilter<"Usuario"> | boolean
     dispositivos?: DispositivoListRelationFilter
     log?: Usuario_logListRelationFilter
+    alertas_tipo?: Alerta_tipoListRelationFilter
   }
 
   export type UsuarioOrderByWithRelationInput = {
@@ -11022,6 +11068,7 @@ export namespace Prisma {
     deleted?: SortOrder
     dispositivos?: DispositivoOrderByRelationAggregateInput
     log?: Usuario_logOrderByRelationAggregateInput
+    alertas_tipo?: Alerta_tipoOrderByRelationAggregateInput
     _relevance?: UsuarioOrderByRelevanceInput
   }
 
@@ -11039,6 +11086,7 @@ export namespace Prisma {
     deleted?: BoolFilter<"Usuario"> | boolean
     dispositivos?: DispositivoListRelationFilter
     log?: Usuario_logListRelationFilter
+    alertas_tipo?: Alerta_tipoListRelationFilter
   }, "id" | "email" | "cpf">
 
   export type UsuarioOrderByWithAggregationInput = {
@@ -11142,6 +11190,7 @@ export namespace Prisma {
     alertas?: AlertaListRelationFilter
     localizacoes?: LocalizacaoListRelationFilter
     logs?: Dispositivo_logListRelationFilter
+    alertas_tipo?: Alerta_tipoListRelationFilter
   }
 
   export type DispositivoOrderByWithRelationInput = {
@@ -11159,6 +11208,7 @@ export namespace Prisma {
     alertas?: AlertaOrderByRelationAggregateInput
     localizacoes?: LocalizacaoOrderByRelationAggregateInput
     logs?: Dispositivo_logOrderByRelationAggregateInput
+    alertas_tipo?: Alerta_tipoOrderByRelationAggregateInput
     _relevance?: DispositivoOrderByRelevanceInput
   }
 
@@ -11180,6 +11230,7 @@ export namespace Prisma {
     alertas?: AlertaListRelationFilter
     localizacoes?: LocalizacaoListRelationFilter
     logs?: Dispositivo_logListRelationFilter
+    alertas_tipo?: Alerta_tipoListRelationFilter
   }, "id">
 
   export type DispositivoOrderByWithAggregationInput = {
@@ -11291,12 +11342,12 @@ export namespace Prisma {
     AND?: AlertaWhereInput | AlertaWhereInput[]
     OR?: AlertaWhereInput[]
     NOT?: AlertaWhereInput | AlertaWhereInput[]
-    id?: IntFilter<"Alerta"> | number
+    id?: StringFilter<"Alerta"> | string
     descricao?: StringFilter<"Alerta"> | string
     gravidede?: EnumAlertaGravidadeFilter<"Alerta"> | $Enums.AlertaGravidade
     ativo?: BoolFilter<"Alerta"> | boolean
     dispositivoId?: StringFilter<"Alerta"> | string
-    alertaId?: IntFilter<"Alerta"> | number
+    alertaId?: StringFilter<"Alerta"> | string
     createdAt?: DateTimeFilter<"Alerta"> | Date | string
     dispositivo?: XOR<DispositivoScalarRelationFilter, DispositivoWhereInput>
     alertaTipo?: XOR<Alerta_tipoScalarRelationFilter, Alerta_tipoWhereInput>
@@ -11316,7 +11367,7 @@ export namespace Prisma {
   }
 
   export type AlertaWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: AlertaWhereInput | AlertaWhereInput[]
     OR?: AlertaWhereInput[]
     NOT?: AlertaWhereInput | AlertaWhereInput[]
@@ -11324,7 +11375,7 @@ export namespace Prisma {
     gravidede?: EnumAlertaGravidadeFilter<"Alerta"> | $Enums.AlertaGravidade
     ativo?: BoolFilter<"Alerta"> | boolean
     dispositivoId?: StringFilter<"Alerta"> | string
-    alertaId?: IntFilter<"Alerta"> | number
+    alertaId?: StringFilter<"Alerta"> | string
     createdAt?: DateTimeFilter<"Alerta"> | Date | string
     dispositivo?: XOR<DispositivoScalarRelationFilter, DispositivoWhereInput>
     alertaTipo?: XOR<Alerta_tipoScalarRelationFilter, Alerta_tipoWhereInput>
@@ -11339,22 +11390,20 @@ export namespace Prisma {
     alertaId?: SortOrder
     createdAt?: SortOrder
     _count?: AlertaCountOrderByAggregateInput
-    _avg?: AlertaAvgOrderByAggregateInput
     _max?: AlertaMaxOrderByAggregateInput
     _min?: AlertaMinOrderByAggregateInput
-    _sum?: AlertaSumOrderByAggregateInput
   }
 
   export type AlertaScalarWhereWithAggregatesInput = {
     AND?: AlertaScalarWhereWithAggregatesInput | AlertaScalarWhereWithAggregatesInput[]
     OR?: AlertaScalarWhereWithAggregatesInput[]
     NOT?: AlertaScalarWhereWithAggregatesInput | AlertaScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Alerta"> | number
+    id?: StringWithAggregatesFilter<"Alerta"> | string
     descricao?: StringWithAggregatesFilter<"Alerta"> | string
     gravidede?: EnumAlertaGravidadeWithAggregatesFilter<"Alerta"> | $Enums.AlertaGravidade
     ativo?: BoolWithAggregatesFilter<"Alerta"> | boolean
     dispositivoId?: StringWithAggregatesFilter<"Alerta"> | string
-    alertaId?: IntWithAggregatesFilter<"Alerta"> | number
+    alertaId?: StringWithAggregatesFilter<"Alerta"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Alerta"> | Date | string
   }
 
@@ -11362,13 +11411,16 @@ export namespace Prisma {
     AND?: Alerta_tipoWhereInput | Alerta_tipoWhereInput[]
     OR?: Alerta_tipoWhereInput[]
     NOT?: Alerta_tipoWhereInput | Alerta_tipoWhereInput[]
-    id?: IntFilter<"Alerta_tipo"> | number
+    id?: StringFilter<"Alerta_tipo"> | string
     nome?: StringFilter<"Alerta_tipo"> | string
     regra?: StringFilter<"Alerta_tipo"> | string
     valor?: StringFilter<"Alerta_tipo"> | string
     usuario_id?: StringFilter<"Alerta_tipo"> | string
-    dispositivo_id?: StringFilter<"Alerta_tipo"> | string
+    dispositivoId?: StringFilter<"Alerta_tipo"> | string
+    usuarioId?: StringNullableFilter<"Alerta_tipo"> | string | null
     ativo?: BoolFilter<"Alerta_tipo"> | boolean
+    dispositivo?: XOR<DispositivoScalarRelationFilter, DispositivoWhereInput>
+    usuario?: XOR<UsuarioNullableScalarRelationFilter, UsuarioWhereInput> | null
     alerta?: AlertaListRelationFilter
   }
 
@@ -11378,14 +11430,17 @@ export namespace Prisma {
     regra?: SortOrder
     valor?: SortOrder
     usuario_id?: SortOrder
-    dispositivo_id?: SortOrder
+    dispositivoId?: SortOrder
+    usuarioId?: SortOrderInput | SortOrder
     ativo?: SortOrder
+    dispositivo?: DispositivoOrderByWithRelationInput
+    usuario?: UsuarioOrderByWithRelationInput
     alerta?: AlertaOrderByRelationAggregateInput
     _relevance?: Alerta_tipoOrderByRelevanceInput
   }
 
   export type Alerta_tipoWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: Alerta_tipoWhereInput | Alerta_tipoWhereInput[]
     OR?: Alerta_tipoWhereInput[]
     NOT?: Alerta_tipoWhereInput | Alerta_tipoWhereInput[]
@@ -11393,8 +11448,11 @@ export namespace Prisma {
     regra?: StringFilter<"Alerta_tipo"> | string
     valor?: StringFilter<"Alerta_tipo"> | string
     usuario_id?: StringFilter<"Alerta_tipo"> | string
-    dispositivo_id?: StringFilter<"Alerta_tipo"> | string
+    dispositivoId?: StringFilter<"Alerta_tipo"> | string
+    usuarioId?: StringNullableFilter<"Alerta_tipo"> | string | null
     ativo?: BoolFilter<"Alerta_tipo"> | boolean
+    dispositivo?: XOR<DispositivoScalarRelationFilter, DispositivoWhereInput>
+    usuario?: XOR<UsuarioNullableScalarRelationFilter, UsuarioWhereInput> | null
     alerta?: AlertaListRelationFilter
   }, "id">
 
@@ -11404,25 +11462,25 @@ export namespace Prisma {
     regra?: SortOrder
     valor?: SortOrder
     usuario_id?: SortOrder
-    dispositivo_id?: SortOrder
+    dispositivoId?: SortOrder
+    usuarioId?: SortOrderInput | SortOrder
     ativo?: SortOrder
     _count?: Alerta_tipoCountOrderByAggregateInput
-    _avg?: Alerta_tipoAvgOrderByAggregateInput
     _max?: Alerta_tipoMaxOrderByAggregateInput
     _min?: Alerta_tipoMinOrderByAggregateInput
-    _sum?: Alerta_tipoSumOrderByAggregateInput
   }
 
   export type Alerta_tipoScalarWhereWithAggregatesInput = {
     AND?: Alerta_tipoScalarWhereWithAggregatesInput | Alerta_tipoScalarWhereWithAggregatesInput[]
     OR?: Alerta_tipoScalarWhereWithAggregatesInput[]
     NOT?: Alerta_tipoScalarWhereWithAggregatesInput | Alerta_tipoScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Alerta_tipo"> | number
+    id?: StringWithAggregatesFilter<"Alerta_tipo"> | string
     nome?: StringWithAggregatesFilter<"Alerta_tipo"> | string
     regra?: StringWithAggregatesFilter<"Alerta_tipo"> | string
     valor?: StringWithAggregatesFilter<"Alerta_tipo"> | string
     usuario_id?: StringWithAggregatesFilter<"Alerta_tipo"> | string
-    dispositivo_id?: StringWithAggregatesFilter<"Alerta_tipo"> | string
+    dispositivoId?: StringWithAggregatesFilter<"Alerta_tipo"> | string
+    usuarioId?: StringNullableWithAggregatesFilter<"Alerta_tipo"> | string | null
     ativo?: BoolWithAggregatesFilter<"Alerta_tipo"> | boolean
   }
 
@@ -11611,6 +11669,7 @@ export namespace Prisma {
     deleted?: boolean
     dispositivos?: DispositivoCreateNestedManyWithoutUsuarioInput
     log?: Usuario_logCreateNestedManyWithoutUsuarioInput
+    alertas_tipo?: Alerta_tipoCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateInput = {
@@ -11624,6 +11683,7 @@ export namespace Prisma {
     deleted?: boolean
     dispositivos?: DispositivoUncheckedCreateNestedManyWithoutUsuarioInput
     log?: Usuario_logUncheckedCreateNestedManyWithoutUsuarioInput
+    alertas_tipo?: Alerta_tipoUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUpdateInput = {
@@ -11637,6 +11697,7 @@ export namespace Prisma {
     deleted?: BoolFieldUpdateOperationsInput | boolean
     dispositivos?: DispositivoUpdateManyWithoutUsuarioNestedInput
     log?: Usuario_logUpdateManyWithoutUsuarioNestedInput
+    alertas_tipo?: Alerta_tipoUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateInput = {
@@ -11650,6 +11711,7 @@ export namespace Prisma {
     deleted?: BoolFieldUpdateOperationsInput | boolean
     dispositivos?: DispositivoUncheckedUpdateManyWithoutUsuarioNestedInput
     log?: Usuario_logUncheckedUpdateManyWithoutUsuarioNestedInput
+    alertas_tipo?: Alerta_tipoUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioCreateManyInput = {
@@ -11752,6 +11814,7 @@ export namespace Prisma {
     alertas?: AlertaCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoCreateNestedManyWithoutDispositivoInput
     logs?: Dispositivo_logCreateNestedManyWithoutDispositivoInput
+    alertas_tipo?: Alerta_tipoCreateNestedManyWithoutDispositivoInput
   }
 
   export type DispositivoUncheckedCreateInput = {
@@ -11768,6 +11831,7 @@ export namespace Prisma {
     alertas?: AlertaUncheckedCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoUncheckedCreateNestedManyWithoutDispositivoInput
     logs?: Dispositivo_logUncheckedCreateNestedManyWithoutDispositivoInput
+    alertas_tipo?: Alerta_tipoUncheckedCreateNestedManyWithoutDispositivoInput
   }
 
   export type DispositivoUpdateInput = {
@@ -11784,6 +11848,7 @@ export namespace Prisma {
     alertas?: AlertaUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUpdateManyWithoutDispositivoNestedInput
     logs?: Dispositivo_logUpdateManyWithoutDispositivoNestedInput
+    alertas_tipo?: Alerta_tipoUpdateManyWithoutDispositivoNestedInput
   }
 
   export type DispositivoUncheckedUpdateInput = {
@@ -11800,6 +11865,7 @@ export namespace Prisma {
     alertas?: AlertaUncheckedUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUncheckedUpdateManyWithoutDispositivoNestedInput
     logs?: Dispositivo_logUncheckedUpdateManyWithoutDispositivoNestedInput
+    alertas_tipo?: Alerta_tipoUncheckedUpdateManyWithoutDispositivoNestedInput
   }
 
   export type DispositivoCreateManyInput = {
@@ -11911,6 +11977,7 @@ export namespace Prisma {
   }
 
   export type AlertaCreateInput = {
+    id?: string
     descricao: string
     gravidede?: $Enums.AlertaGravidade
     ativo: boolean
@@ -11920,16 +11987,17 @@ export namespace Prisma {
   }
 
   export type AlertaUncheckedCreateInput = {
-    id?: number
+    id?: string
     descricao: string
     gravidede?: $Enums.AlertaGravidade
     ativo: boolean
     dispositivoId: string
-    alertaId: number
+    alertaId: string
     createdAt?: Date | string
   }
 
   export type AlertaUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -11939,26 +12007,27 @@ export namespace Prisma {
   }
 
   export type AlertaUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
     dispositivoId?: StringFieldUpdateOperationsInput | string
-    alertaId?: IntFieldUpdateOperationsInput | number
+    alertaId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AlertaCreateManyInput = {
-    id?: number
+    id?: string
     descricao: string
     gravidede?: $Enums.AlertaGravidade
     ativo: boolean
     dispositivoId: string
-    alertaId: number
+    alertaId: string
     createdAt?: Date | string
   }
 
   export type AlertaUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -11966,83 +12035,91 @@ export namespace Prisma {
   }
 
   export type AlertaUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
     dispositivoId?: StringFieldUpdateOperationsInput | string
-    alertaId?: IntFieldUpdateOperationsInput | number
+    alertaId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type Alerta_tipoCreateInput = {
+    id?: string
     nome: string
     regra: string
     valor?: string
     usuario_id?: string
-    dispositivo_id?: string
     ativo?: boolean
+    dispositivo: DispositivoCreateNestedOneWithoutAlertas_tipoInput
+    usuario?: UsuarioCreateNestedOneWithoutAlertas_tipoInput
     alerta?: AlertaCreateNestedManyWithoutAlertaTipoInput
   }
 
   export type Alerta_tipoUncheckedCreateInput = {
-    id?: number
+    id?: string
     nome: string
     regra: string
     valor?: string
     usuario_id?: string
-    dispositivo_id?: string
+    dispositivoId: string
+    usuarioId?: string | null
     ativo?: boolean
     alerta?: AlertaUncheckedCreateNestedManyWithoutAlertaTipoInput
   }
 
   export type Alerta_tipoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     regra?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
     usuario_id?: StringFieldUpdateOperationsInput | string
-    dispositivo_id?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
+    dispositivo?: DispositivoUpdateOneRequiredWithoutAlertas_tipoNestedInput
+    usuario?: UsuarioUpdateOneWithoutAlertas_tipoNestedInput
     alerta?: AlertaUpdateManyWithoutAlertaTipoNestedInput
   }
 
   export type Alerta_tipoUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     regra?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
     usuario_id?: StringFieldUpdateOperationsInput | string
-    dispositivo_id?: StringFieldUpdateOperationsInput | string
+    dispositivoId?: StringFieldUpdateOperationsInput | string
+    usuarioId?: NullableStringFieldUpdateOperationsInput | string | null
     ativo?: BoolFieldUpdateOperationsInput | boolean
     alerta?: AlertaUncheckedUpdateManyWithoutAlertaTipoNestedInput
   }
 
   export type Alerta_tipoCreateManyInput = {
-    id?: number
+    id?: string
     nome: string
     regra: string
     valor?: string
     usuario_id?: string
-    dispositivo_id?: string
+    dispositivoId: string
+    usuarioId?: string | null
     ativo?: boolean
   }
 
   export type Alerta_tipoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     regra?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
     usuario_id?: StringFieldUpdateOperationsInput | string
-    dispositivo_id?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type Alerta_tipoUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     regra?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
     usuario_id?: StringFieldUpdateOperationsInput | string
-    dispositivo_id?: StringFieldUpdateOperationsInput | string
+    dispositivoId?: StringFieldUpdateOperationsInput | string
+    usuarioId?: NullableStringFieldUpdateOperationsInput | string | null
     ativo?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -12245,11 +12322,21 @@ export namespace Prisma {
     none?: Usuario_logWhereInput
   }
 
+  export type Alerta_tipoListRelationFilter = {
+    every?: Alerta_tipoWhereInput
+    some?: Alerta_tipoWhereInput
+    none?: Alerta_tipoWhereInput
+  }
+
   export type DispositivoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type Usuario_logOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type Alerta_tipoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12631,11 +12718,6 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
-  export type AlertaAvgOrderByAggregateInput = {
-    id?: SortOrder
-    alertaId?: SortOrder
-  }
-
   export type AlertaMaxOrderByAggregateInput = {
     id?: SortOrder
     descricao?: SortOrder
@@ -12654,11 +12736,6 @@ export namespace Prisma {
     dispositivoId?: SortOrder
     alertaId?: SortOrder
     createdAt?: SortOrder
-  }
-
-  export type AlertaSumOrderByAggregateInput = {
-    id?: SortOrder
-    alertaId?: SortOrder
   }
 
   export type EnumAlertaGravidadeWithAggregatesFilter<$PrismaModel = never> = {
@@ -12683,12 +12760,9 @@ export namespace Prisma {
     regra?: SortOrder
     valor?: SortOrder
     usuario_id?: SortOrder
-    dispositivo_id?: SortOrder
+    dispositivoId?: SortOrder
+    usuarioId?: SortOrder
     ativo?: SortOrder
-  }
-
-  export type Alerta_tipoAvgOrderByAggregateInput = {
-    id?: SortOrder
   }
 
   export type Alerta_tipoMaxOrderByAggregateInput = {
@@ -12697,7 +12771,8 @@ export namespace Prisma {
     regra?: SortOrder
     valor?: SortOrder
     usuario_id?: SortOrder
-    dispositivo_id?: SortOrder
+    dispositivoId?: SortOrder
+    usuarioId?: SortOrder
     ativo?: SortOrder
   }
 
@@ -12707,12 +12782,9 @@ export namespace Prisma {
     regra?: SortOrder
     valor?: SortOrder
     usuario_id?: SortOrder
-    dispositivo_id?: SortOrder
+    dispositivoId?: SortOrder
+    usuarioId?: SortOrder
     ativo?: SortOrder
-  }
-
-  export type Alerta_tipoSumOrderByAggregateInput = {
-    id?: SortOrder
   }
 
   export type DecimalFilter<$PrismaModel = never> = {
@@ -12881,6 +12953,13 @@ export namespace Prisma {
     connect?: Usuario_logWhereUniqueInput | Usuario_logWhereUniqueInput[]
   }
 
+  export type Alerta_tipoCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<Alerta_tipoCreateWithoutUsuarioInput, Alerta_tipoUncheckedCreateWithoutUsuarioInput> | Alerta_tipoCreateWithoutUsuarioInput[] | Alerta_tipoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: Alerta_tipoCreateOrConnectWithoutUsuarioInput | Alerta_tipoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: Alerta_tipoCreateManyUsuarioInputEnvelope
+    connect?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+  }
+
   export type DispositivoUncheckedCreateNestedManyWithoutUsuarioInput = {
     create?: XOR<DispositivoCreateWithoutUsuarioInput, DispositivoUncheckedCreateWithoutUsuarioInput> | DispositivoCreateWithoutUsuarioInput[] | DispositivoUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: DispositivoCreateOrConnectWithoutUsuarioInput | DispositivoCreateOrConnectWithoutUsuarioInput[]
@@ -12893,6 +12972,13 @@ export namespace Prisma {
     connectOrCreate?: Usuario_logCreateOrConnectWithoutUsuarioInput | Usuario_logCreateOrConnectWithoutUsuarioInput[]
     createMany?: Usuario_logCreateManyUsuarioInputEnvelope
     connect?: Usuario_logWhereUniqueInput | Usuario_logWhereUniqueInput[]
+  }
+
+  export type Alerta_tipoUncheckedCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<Alerta_tipoCreateWithoutUsuarioInput, Alerta_tipoUncheckedCreateWithoutUsuarioInput> | Alerta_tipoCreateWithoutUsuarioInput[] | Alerta_tipoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: Alerta_tipoCreateOrConnectWithoutUsuarioInput | Alerta_tipoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: Alerta_tipoCreateManyUsuarioInputEnvelope
+    connect?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -12935,6 +13021,20 @@ export namespace Prisma {
     deleteMany?: Usuario_logScalarWhereInput | Usuario_logScalarWhereInput[]
   }
 
+  export type Alerta_tipoUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<Alerta_tipoCreateWithoutUsuarioInput, Alerta_tipoUncheckedCreateWithoutUsuarioInput> | Alerta_tipoCreateWithoutUsuarioInput[] | Alerta_tipoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: Alerta_tipoCreateOrConnectWithoutUsuarioInput | Alerta_tipoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: Alerta_tipoUpsertWithWhereUniqueWithoutUsuarioInput | Alerta_tipoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: Alerta_tipoCreateManyUsuarioInputEnvelope
+    set?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    disconnect?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    delete?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    connect?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    update?: Alerta_tipoUpdateWithWhereUniqueWithoutUsuarioInput | Alerta_tipoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: Alerta_tipoUpdateManyWithWhereWithoutUsuarioInput | Alerta_tipoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: Alerta_tipoScalarWhereInput | Alerta_tipoScalarWhereInput[]
+  }
+
   export type DispositivoUncheckedUpdateManyWithoutUsuarioNestedInput = {
     create?: XOR<DispositivoCreateWithoutUsuarioInput, DispositivoUncheckedCreateWithoutUsuarioInput> | DispositivoCreateWithoutUsuarioInput[] | DispositivoUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: DispositivoCreateOrConnectWithoutUsuarioInput | DispositivoCreateOrConnectWithoutUsuarioInput[]
@@ -12961,6 +13061,20 @@ export namespace Prisma {
     update?: Usuario_logUpdateWithWhereUniqueWithoutUsuarioInput | Usuario_logUpdateWithWhereUniqueWithoutUsuarioInput[]
     updateMany?: Usuario_logUpdateManyWithWhereWithoutUsuarioInput | Usuario_logUpdateManyWithWhereWithoutUsuarioInput[]
     deleteMany?: Usuario_logScalarWhereInput | Usuario_logScalarWhereInput[]
+  }
+
+  export type Alerta_tipoUncheckedUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<Alerta_tipoCreateWithoutUsuarioInput, Alerta_tipoUncheckedCreateWithoutUsuarioInput> | Alerta_tipoCreateWithoutUsuarioInput[] | Alerta_tipoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: Alerta_tipoCreateOrConnectWithoutUsuarioInput | Alerta_tipoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: Alerta_tipoUpsertWithWhereUniqueWithoutUsuarioInput | Alerta_tipoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: Alerta_tipoCreateManyUsuarioInputEnvelope
+    set?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    disconnect?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    delete?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    connect?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    update?: Alerta_tipoUpdateWithWhereUniqueWithoutUsuarioInput | Alerta_tipoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: Alerta_tipoUpdateManyWithWhereWithoutUsuarioInput | Alerta_tipoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: Alerta_tipoScalarWhereInput | Alerta_tipoScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -13005,6 +13119,13 @@ export namespace Prisma {
     connect?: Dispositivo_logWhereUniqueInput | Dispositivo_logWhereUniqueInput[]
   }
 
+  export type Alerta_tipoCreateNestedManyWithoutDispositivoInput = {
+    create?: XOR<Alerta_tipoCreateWithoutDispositivoInput, Alerta_tipoUncheckedCreateWithoutDispositivoInput> | Alerta_tipoCreateWithoutDispositivoInput[] | Alerta_tipoUncheckedCreateWithoutDispositivoInput[]
+    connectOrCreate?: Alerta_tipoCreateOrConnectWithoutDispositivoInput | Alerta_tipoCreateOrConnectWithoutDispositivoInput[]
+    createMany?: Alerta_tipoCreateManyDispositivoInputEnvelope
+    connect?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+  }
+
   export type Dispositivo_configUncheckedCreateNestedManyWithoutDispositivoInput = {
     create?: XOR<Dispositivo_configCreateWithoutDispositivoInput, Dispositivo_configUncheckedCreateWithoutDispositivoInput> | Dispositivo_configCreateWithoutDispositivoInput[] | Dispositivo_configUncheckedCreateWithoutDispositivoInput[]
     connectOrCreate?: Dispositivo_configCreateOrConnectWithoutDispositivoInput | Dispositivo_configCreateOrConnectWithoutDispositivoInput[]
@@ -13031,6 +13152,13 @@ export namespace Prisma {
     connectOrCreate?: Dispositivo_logCreateOrConnectWithoutDispositivoInput | Dispositivo_logCreateOrConnectWithoutDispositivoInput[]
     createMany?: Dispositivo_logCreateManyDispositivoInputEnvelope
     connect?: Dispositivo_logWhereUniqueInput | Dispositivo_logWhereUniqueInput[]
+  }
+
+  export type Alerta_tipoUncheckedCreateNestedManyWithoutDispositivoInput = {
+    create?: XOR<Alerta_tipoCreateWithoutDispositivoInput, Alerta_tipoUncheckedCreateWithoutDispositivoInput> | Alerta_tipoCreateWithoutDispositivoInput[] | Alerta_tipoUncheckedCreateWithoutDispositivoInput[]
+    connectOrCreate?: Alerta_tipoCreateOrConnectWithoutDispositivoInput | Alerta_tipoCreateOrConnectWithoutDispositivoInput[]
+    createMany?: Alerta_tipoCreateManyDispositivoInputEnvelope
+    connect?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
   }
 
   export type EnumDispositivoStatusFieldUpdateOperationsInput = {
@@ -13103,6 +13231,20 @@ export namespace Prisma {
     deleteMany?: Dispositivo_logScalarWhereInput | Dispositivo_logScalarWhereInput[]
   }
 
+  export type Alerta_tipoUpdateManyWithoutDispositivoNestedInput = {
+    create?: XOR<Alerta_tipoCreateWithoutDispositivoInput, Alerta_tipoUncheckedCreateWithoutDispositivoInput> | Alerta_tipoCreateWithoutDispositivoInput[] | Alerta_tipoUncheckedCreateWithoutDispositivoInput[]
+    connectOrCreate?: Alerta_tipoCreateOrConnectWithoutDispositivoInput | Alerta_tipoCreateOrConnectWithoutDispositivoInput[]
+    upsert?: Alerta_tipoUpsertWithWhereUniqueWithoutDispositivoInput | Alerta_tipoUpsertWithWhereUniqueWithoutDispositivoInput[]
+    createMany?: Alerta_tipoCreateManyDispositivoInputEnvelope
+    set?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    disconnect?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    delete?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    connect?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    update?: Alerta_tipoUpdateWithWhereUniqueWithoutDispositivoInput | Alerta_tipoUpdateWithWhereUniqueWithoutDispositivoInput[]
+    updateMany?: Alerta_tipoUpdateManyWithWhereWithoutDispositivoInput | Alerta_tipoUpdateManyWithWhereWithoutDispositivoInput[]
+    deleteMany?: Alerta_tipoScalarWhereInput | Alerta_tipoScalarWhereInput[]
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
@@ -13163,6 +13305,20 @@ export namespace Prisma {
     deleteMany?: Dispositivo_logScalarWhereInput | Dispositivo_logScalarWhereInput[]
   }
 
+  export type Alerta_tipoUncheckedUpdateManyWithoutDispositivoNestedInput = {
+    create?: XOR<Alerta_tipoCreateWithoutDispositivoInput, Alerta_tipoUncheckedCreateWithoutDispositivoInput> | Alerta_tipoCreateWithoutDispositivoInput[] | Alerta_tipoUncheckedCreateWithoutDispositivoInput[]
+    connectOrCreate?: Alerta_tipoCreateOrConnectWithoutDispositivoInput | Alerta_tipoCreateOrConnectWithoutDispositivoInput[]
+    upsert?: Alerta_tipoUpsertWithWhereUniqueWithoutDispositivoInput | Alerta_tipoUpsertWithWhereUniqueWithoutDispositivoInput[]
+    createMany?: Alerta_tipoCreateManyDispositivoInputEnvelope
+    set?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    disconnect?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    delete?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    connect?: Alerta_tipoWhereUniqueInput | Alerta_tipoWhereUniqueInput[]
+    update?: Alerta_tipoUpdateWithWhereUniqueWithoutDispositivoInput | Alerta_tipoUpdateWithWhereUniqueWithoutDispositivoInput[]
+    updateMany?: Alerta_tipoUpdateManyWithWhereWithoutDispositivoInput | Alerta_tipoUpdateManyWithWhereWithoutDispositivoInput[]
+    deleteMany?: Alerta_tipoScalarWhereInput | Alerta_tipoScalarWhereInput[]
+  }
+
   export type DispositivoCreateNestedOneWithoutConfigInput = {
     create?: XOR<DispositivoCreateWithoutConfigInput, DispositivoUncheckedCreateWithoutConfigInput>
     connectOrCreate?: DispositivoCreateOrConnectWithoutConfigInput
@@ -13209,6 +13365,18 @@ export namespace Prisma {
     update?: XOR<XOR<Alerta_tipoUpdateToOneWithWhereWithoutAlertaInput, Alerta_tipoUpdateWithoutAlertaInput>, Alerta_tipoUncheckedUpdateWithoutAlertaInput>
   }
 
+  export type DispositivoCreateNestedOneWithoutAlertas_tipoInput = {
+    create?: XOR<DispositivoCreateWithoutAlertas_tipoInput, DispositivoUncheckedCreateWithoutAlertas_tipoInput>
+    connectOrCreate?: DispositivoCreateOrConnectWithoutAlertas_tipoInput
+    connect?: DispositivoWhereUniqueInput
+  }
+
+  export type UsuarioCreateNestedOneWithoutAlertas_tipoInput = {
+    create?: XOR<UsuarioCreateWithoutAlertas_tipoInput, UsuarioUncheckedCreateWithoutAlertas_tipoInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutAlertas_tipoInput
+    connect?: UsuarioWhereUniqueInput
+  }
+
   export type AlertaCreateNestedManyWithoutAlertaTipoInput = {
     create?: XOR<AlertaCreateWithoutAlertaTipoInput, AlertaUncheckedCreateWithoutAlertaTipoInput> | AlertaCreateWithoutAlertaTipoInput[] | AlertaUncheckedCreateWithoutAlertaTipoInput[]
     connectOrCreate?: AlertaCreateOrConnectWithoutAlertaTipoInput | AlertaCreateOrConnectWithoutAlertaTipoInput[]
@@ -13221,6 +13389,24 @@ export namespace Prisma {
     connectOrCreate?: AlertaCreateOrConnectWithoutAlertaTipoInput | AlertaCreateOrConnectWithoutAlertaTipoInput[]
     createMany?: AlertaCreateManyAlertaTipoInputEnvelope
     connect?: AlertaWhereUniqueInput | AlertaWhereUniqueInput[]
+  }
+
+  export type DispositivoUpdateOneRequiredWithoutAlertas_tipoNestedInput = {
+    create?: XOR<DispositivoCreateWithoutAlertas_tipoInput, DispositivoUncheckedCreateWithoutAlertas_tipoInput>
+    connectOrCreate?: DispositivoCreateOrConnectWithoutAlertas_tipoInput
+    upsert?: DispositivoUpsertWithoutAlertas_tipoInput
+    connect?: DispositivoWhereUniqueInput
+    update?: XOR<XOR<DispositivoUpdateToOneWithWhereWithoutAlertas_tipoInput, DispositivoUpdateWithoutAlertas_tipoInput>, DispositivoUncheckedUpdateWithoutAlertas_tipoInput>
+  }
+
+  export type UsuarioUpdateOneWithoutAlertas_tipoNestedInput = {
+    create?: XOR<UsuarioCreateWithoutAlertas_tipoInput, UsuarioUncheckedCreateWithoutAlertas_tipoInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutAlertas_tipoInput
+    upsert?: UsuarioUpsertWithoutAlertas_tipoInput
+    disconnect?: UsuarioWhereInput | boolean
+    delete?: UsuarioWhereInput | boolean
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutAlertas_tipoInput, UsuarioUpdateWithoutAlertas_tipoInput>, UsuarioUncheckedUpdateWithoutAlertas_tipoInput>
   }
 
   export type AlertaUpdateManyWithoutAlertaTipoNestedInput = {
@@ -13528,6 +13714,7 @@ export namespace Prisma {
     alertas?: AlertaCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoCreateNestedManyWithoutDispositivoInput
     logs?: Dispositivo_logCreateNestedManyWithoutDispositivoInput
+    alertas_tipo?: Alerta_tipoCreateNestedManyWithoutDispositivoInput
   }
 
   export type DispositivoUncheckedCreateWithoutUsuarioInput = {
@@ -13543,6 +13730,7 @@ export namespace Prisma {
     alertas?: AlertaUncheckedCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoUncheckedCreateNestedManyWithoutDispositivoInput
     logs?: Dispositivo_logUncheckedCreateNestedManyWithoutDispositivoInput
+    alertas_tipo?: Alerta_tipoUncheckedCreateNestedManyWithoutDispositivoInput
   }
 
   export type DispositivoCreateOrConnectWithoutUsuarioInput = {
@@ -13573,6 +13761,38 @@ export namespace Prisma {
 
   export type Usuario_logCreateManyUsuarioInputEnvelope = {
     data: Usuario_logCreateManyUsuarioInput | Usuario_logCreateManyUsuarioInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type Alerta_tipoCreateWithoutUsuarioInput = {
+    id?: string
+    nome: string
+    regra: string
+    valor?: string
+    usuario_id?: string
+    ativo?: boolean
+    dispositivo: DispositivoCreateNestedOneWithoutAlertas_tipoInput
+    alerta?: AlertaCreateNestedManyWithoutAlertaTipoInput
+  }
+
+  export type Alerta_tipoUncheckedCreateWithoutUsuarioInput = {
+    id?: string
+    nome: string
+    regra: string
+    valor?: string
+    usuario_id?: string
+    dispositivoId: string
+    ativo?: boolean
+    alerta?: AlertaUncheckedCreateNestedManyWithoutAlertaTipoInput
+  }
+
+  export type Alerta_tipoCreateOrConnectWithoutUsuarioInput = {
+    where: Alerta_tipoWhereUniqueInput
+    create: XOR<Alerta_tipoCreateWithoutUsuarioInput, Alerta_tipoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type Alerta_tipoCreateManyUsuarioInputEnvelope = {
+    data: Alerta_tipoCreateManyUsuarioInput | Alerta_tipoCreateManyUsuarioInput[]
     skipDuplicates?: boolean
   }
 
@@ -13633,6 +13853,36 @@ export namespace Prisma {
     usuarioId?: StringFilter<"Usuario_log"> | string
   }
 
+  export type Alerta_tipoUpsertWithWhereUniqueWithoutUsuarioInput = {
+    where: Alerta_tipoWhereUniqueInput
+    update: XOR<Alerta_tipoUpdateWithoutUsuarioInput, Alerta_tipoUncheckedUpdateWithoutUsuarioInput>
+    create: XOR<Alerta_tipoCreateWithoutUsuarioInput, Alerta_tipoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type Alerta_tipoUpdateWithWhereUniqueWithoutUsuarioInput = {
+    where: Alerta_tipoWhereUniqueInput
+    data: XOR<Alerta_tipoUpdateWithoutUsuarioInput, Alerta_tipoUncheckedUpdateWithoutUsuarioInput>
+  }
+
+  export type Alerta_tipoUpdateManyWithWhereWithoutUsuarioInput = {
+    where: Alerta_tipoScalarWhereInput
+    data: XOR<Alerta_tipoUpdateManyMutationInput, Alerta_tipoUncheckedUpdateManyWithoutUsuarioInput>
+  }
+
+  export type Alerta_tipoScalarWhereInput = {
+    AND?: Alerta_tipoScalarWhereInput | Alerta_tipoScalarWhereInput[]
+    OR?: Alerta_tipoScalarWhereInput[]
+    NOT?: Alerta_tipoScalarWhereInput | Alerta_tipoScalarWhereInput[]
+    id?: StringFilter<"Alerta_tipo"> | string
+    nome?: StringFilter<"Alerta_tipo"> | string
+    regra?: StringFilter<"Alerta_tipo"> | string
+    valor?: StringFilter<"Alerta_tipo"> | string
+    usuario_id?: StringFilter<"Alerta_tipo"> | string
+    dispositivoId?: StringFilter<"Alerta_tipo"> | string
+    usuarioId?: StringNullableFilter<"Alerta_tipo"> | string | null
+    ativo?: BoolFilter<"Alerta_tipo"> | boolean
+  }
+
   export type UsuarioCreateWithoutDispositivosInput = {
     id?: string
     nome: string
@@ -13643,6 +13893,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     deleted?: boolean
     log?: Usuario_logCreateNestedManyWithoutUsuarioInput
+    alertas_tipo?: Alerta_tipoCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateWithoutDispositivosInput = {
@@ -13655,6 +13906,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     deleted?: boolean
     log?: Usuario_logUncheckedCreateNestedManyWithoutUsuarioInput
+    alertas_tipo?: Alerta_tipoUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioCreateOrConnectWithoutDispositivosInput = {
@@ -13692,6 +13944,7 @@ export namespace Prisma {
   }
 
   export type AlertaCreateWithoutDispositivoInput = {
+    id?: string
     descricao: string
     gravidede?: $Enums.AlertaGravidade
     ativo: boolean
@@ -13700,11 +13953,11 @@ export namespace Prisma {
   }
 
   export type AlertaUncheckedCreateWithoutDispositivoInput = {
-    id?: number
+    id?: string
     descricao: string
     gravidede?: $Enums.AlertaGravidade
     ativo: boolean
-    alertaId: number
+    alertaId: string
     createdAt?: Date | string
   }
 
@@ -13766,6 +14019,38 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type Alerta_tipoCreateWithoutDispositivoInput = {
+    id?: string
+    nome: string
+    regra: string
+    valor?: string
+    usuario_id?: string
+    ativo?: boolean
+    usuario?: UsuarioCreateNestedOneWithoutAlertas_tipoInput
+    alerta?: AlertaCreateNestedManyWithoutAlertaTipoInput
+  }
+
+  export type Alerta_tipoUncheckedCreateWithoutDispositivoInput = {
+    id?: string
+    nome: string
+    regra: string
+    valor?: string
+    usuario_id?: string
+    usuarioId?: string | null
+    ativo?: boolean
+    alerta?: AlertaUncheckedCreateNestedManyWithoutAlertaTipoInput
+  }
+
+  export type Alerta_tipoCreateOrConnectWithoutDispositivoInput = {
+    where: Alerta_tipoWhereUniqueInput
+    create: XOR<Alerta_tipoCreateWithoutDispositivoInput, Alerta_tipoUncheckedCreateWithoutDispositivoInput>
+  }
+
+  export type Alerta_tipoCreateManyDispositivoInputEnvelope = {
+    data: Alerta_tipoCreateManyDispositivoInput | Alerta_tipoCreateManyDispositivoInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UsuarioUpsertWithoutDispositivosInput = {
     update: XOR<UsuarioUpdateWithoutDispositivosInput, UsuarioUncheckedUpdateWithoutDispositivosInput>
     create: XOR<UsuarioCreateWithoutDispositivosInput, UsuarioUncheckedCreateWithoutDispositivosInput>
@@ -13787,6 +14072,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     log?: Usuario_logUpdateManyWithoutUsuarioNestedInput
+    alertas_tipo?: Alerta_tipoUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateWithoutDispositivosInput = {
@@ -13799,6 +14085,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     log?: Usuario_logUncheckedUpdateManyWithoutUsuarioNestedInput
+    alertas_tipo?: Alerta_tipoUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type Dispositivo_configUpsertWithWhereUniqueWithoutDispositivoInput = {
@@ -13851,12 +14138,12 @@ export namespace Prisma {
     AND?: AlertaScalarWhereInput | AlertaScalarWhereInput[]
     OR?: AlertaScalarWhereInput[]
     NOT?: AlertaScalarWhereInput | AlertaScalarWhereInput[]
-    id?: IntFilter<"Alerta"> | number
+    id?: StringFilter<"Alerta"> | string
     descricao?: StringFilter<"Alerta"> | string
     gravidede?: EnumAlertaGravidadeFilter<"Alerta"> | $Enums.AlertaGravidade
     ativo?: BoolFilter<"Alerta"> | boolean
     dispositivoId?: StringFilter<"Alerta"> | string
-    alertaId?: IntFilter<"Alerta"> | number
+    alertaId?: StringFilter<"Alerta"> | string
     createdAt?: DateTimeFilter<"Alerta"> | Date | string
   }
 
@@ -13915,6 +14202,22 @@ export namespace Prisma {
     dispositivoId?: StringFilter<"Dispositivo_log"> | string
   }
 
+  export type Alerta_tipoUpsertWithWhereUniqueWithoutDispositivoInput = {
+    where: Alerta_tipoWhereUniqueInput
+    update: XOR<Alerta_tipoUpdateWithoutDispositivoInput, Alerta_tipoUncheckedUpdateWithoutDispositivoInput>
+    create: XOR<Alerta_tipoCreateWithoutDispositivoInput, Alerta_tipoUncheckedCreateWithoutDispositivoInput>
+  }
+
+  export type Alerta_tipoUpdateWithWhereUniqueWithoutDispositivoInput = {
+    where: Alerta_tipoWhereUniqueInput
+    data: XOR<Alerta_tipoUpdateWithoutDispositivoInput, Alerta_tipoUncheckedUpdateWithoutDispositivoInput>
+  }
+
+  export type Alerta_tipoUpdateManyWithWhereWithoutDispositivoInput = {
+    where: Alerta_tipoScalarWhereInput
+    data: XOR<Alerta_tipoUpdateManyMutationInput, Alerta_tipoUncheckedUpdateManyWithoutDispositivoInput>
+  }
+
   export type DispositivoCreateWithoutConfigInput = {
     id?: string
     nome?: string
@@ -13928,6 +14231,7 @@ export namespace Prisma {
     alertas?: AlertaCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoCreateNestedManyWithoutDispositivoInput
     logs?: Dispositivo_logCreateNestedManyWithoutDispositivoInput
+    alertas_tipo?: Alerta_tipoCreateNestedManyWithoutDispositivoInput
   }
 
   export type DispositivoUncheckedCreateWithoutConfigInput = {
@@ -13943,6 +14247,7 @@ export namespace Prisma {
     alertas?: AlertaUncheckedCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoUncheckedCreateNestedManyWithoutDispositivoInput
     logs?: Dispositivo_logUncheckedCreateNestedManyWithoutDispositivoInput
+    alertas_tipo?: Alerta_tipoUncheckedCreateNestedManyWithoutDispositivoInput
   }
 
   export type DispositivoCreateOrConnectWithoutConfigInput = {
@@ -13974,6 +14279,7 @@ export namespace Prisma {
     alertas?: AlertaUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUpdateManyWithoutDispositivoNestedInput
     logs?: Dispositivo_logUpdateManyWithoutDispositivoNestedInput
+    alertas_tipo?: Alerta_tipoUpdateManyWithoutDispositivoNestedInput
   }
 
   export type DispositivoUncheckedUpdateWithoutConfigInput = {
@@ -13989,6 +14295,7 @@ export namespace Prisma {
     alertas?: AlertaUncheckedUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUncheckedUpdateManyWithoutDispositivoNestedInput
     logs?: Dispositivo_logUncheckedUpdateManyWithoutDispositivoNestedInput
+    alertas_tipo?: Alerta_tipoUncheckedUpdateManyWithoutDispositivoNestedInput
   }
 
   export type DispositivoCreateWithoutAlertasInput = {
@@ -14004,6 +14311,7 @@ export namespace Prisma {
     config?: Dispositivo_configCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoCreateNestedManyWithoutDispositivoInput
     logs?: Dispositivo_logCreateNestedManyWithoutDispositivoInput
+    alertas_tipo?: Alerta_tipoCreateNestedManyWithoutDispositivoInput
   }
 
   export type DispositivoUncheckedCreateWithoutAlertasInput = {
@@ -14019,6 +14327,7 @@ export namespace Prisma {
     config?: Dispositivo_configUncheckedCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoUncheckedCreateNestedManyWithoutDispositivoInput
     logs?: Dispositivo_logUncheckedCreateNestedManyWithoutDispositivoInput
+    alertas_tipo?: Alerta_tipoUncheckedCreateNestedManyWithoutDispositivoInput
   }
 
   export type DispositivoCreateOrConnectWithoutAlertasInput = {
@@ -14027,21 +14336,24 @@ export namespace Prisma {
   }
 
   export type Alerta_tipoCreateWithoutAlertaInput = {
+    id?: string
     nome: string
     regra: string
     valor?: string
     usuario_id?: string
-    dispositivo_id?: string
     ativo?: boolean
+    dispositivo: DispositivoCreateNestedOneWithoutAlertas_tipoInput
+    usuario?: UsuarioCreateNestedOneWithoutAlertas_tipoInput
   }
 
   export type Alerta_tipoUncheckedCreateWithoutAlertaInput = {
-    id?: number
+    id?: string
     nome: string
     regra: string
     valor?: string
     usuario_id?: string
-    dispositivo_id?: string
+    dispositivoId: string
+    usuarioId?: string | null
     ativo?: boolean
   }
 
@@ -14074,6 +14386,7 @@ export namespace Prisma {
     config?: Dispositivo_configUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUpdateManyWithoutDispositivoNestedInput
     logs?: Dispositivo_logUpdateManyWithoutDispositivoNestedInput
+    alertas_tipo?: Alerta_tipoUpdateManyWithoutDispositivoNestedInput
   }
 
   export type DispositivoUncheckedUpdateWithoutAlertasInput = {
@@ -14089,6 +14402,7 @@ export namespace Prisma {
     config?: Dispositivo_configUncheckedUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUncheckedUpdateManyWithoutDispositivoNestedInput
     logs?: Dispositivo_logUncheckedUpdateManyWithoutDispositivoNestedInput
+    alertas_tipo?: Alerta_tipoUncheckedUpdateManyWithoutDispositivoNestedInput
   }
 
   export type Alerta_tipoUpsertWithoutAlertaInput = {
@@ -14103,25 +14417,97 @@ export namespace Prisma {
   }
 
   export type Alerta_tipoUpdateWithoutAlertaInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     regra?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
     usuario_id?: StringFieldUpdateOperationsInput | string
-    dispositivo_id?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
+    dispositivo?: DispositivoUpdateOneRequiredWithoutAlertas_tipoNestedInput
+    usuario?: UsuarioUpdateOneWithoutAlertas_tipoNestedInput
   }
 
   export type Alerta_tipoUncheckedUpdateWithoutAlertaInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     regra?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
     usuario_id?: StringFieldUpdateOperationsInput | string
-    dispositivo_id?: StringFieldUpdateOperationsInput | string
+    dispositivoId?: StringFieldUpdateOperationsInput | string
+    usuarioId?: NullableStringFieldUpdateOperationsInput | string | null
     ativo?: BoolFieldUpdateOperationsInput | boolean
   }
 
+  export type DispositivoCreateWithoutAlertas_tipoInput = {
+    id?: string
+    nome?: string
+    modelo: string
+    numero_de_serie: string
+    activade?: boolean
+    data_fabricacao: Date | string
+    bateria?: number
+    status?: $Enums.DispositivoStatus
+    usuario?: UsuarioCreateNestedOneWithoutDispositivosInput
+    config?: Dispositivo_configCreateNestedManyWithoutDispositivoInput
+    alertas?: AlertaCreateNestedManyWithoutDispositivoInput
+    localizacoes?: LocalizacaoCreateNestedManyWithoutDispositivoInput
+    logs?: Dispositivo_logCreateNestedManyWithoutDispositivoInput
+  }
+
+  export type DispositivoUncheckedCreateWithoutAlertas_tipoInput = {
+    id?: string
+    nome?: string
+    modelo: string
+    numero_de_serie: string
+    activade?: boolean
+    data_fabricacao: Date | string
+    usuarioId?: string | null
+    bateria?: number
+    status?: $Enums.DispositivoStatus
+    config?: Dispositivo_configUncheckedCreateNestedManyWithoutDispositivoInput
+    alertas?: AlertaUncheckedCreateNestedManyWithoutDispositivoInput
+    localizacoes?: LocalizacaoUncheckedCreateNestedManyWithoutDispositivoInput
+    logs?: Dispositivo_logUncheckedCreateNestedManyWithoutDispositivoInput
+  }
+
+  export type DispositivoCreateOrConnectWithoutAlertas_tipoInput = {
+    where: DispositivoWhereUniqueInput
+    create: XOR<DispositivoCreateWithoutAlertas_tipoInput, DispositivoUncheckedCreateWithoutAlertas_tipoInput>
+  }
+
+  export type UsuarioCreateWithoutAlertas_tipoInput = {
+    id?: string
+    nome: string
+    email: string
+    cpf: string
+    senha: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deleted?: boolean
+    dispositivos?: DispositivoCreateNestedManyWithoutUsuarioInput
+    log?: Usuario_logCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioUncheckedCreateWithoutAlertas_tipoInput = {
+    id?: string
+    nome: string
+    email: string
+    cpf: string
+    senha: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deleted?: boolean
+    dispositivos?: DispositivoUncheckedCreateNestedManyWithoutUsuarioInput
+    log?: Usuario_logUncheckedCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioCreateOrConnectWithoutAlertas_tipoInput = {
+    where: UsuarioWhereUniqueInput
+    create: XOR<UsuarioCreateWithoutAlertas_tipoInput, UsuarioUncheckedCreateWithoutAlertas_tipoInput>
+  }
+
   export type AlertaCreateWithoutAlertaTipoInput = {
+    id?: string
     descricao: string
     gravidede?: $Enums.AlertaGravidade
     ativo: boolean
@@ -14130,7 +14516,7 @@ export namespace Prisma {
   }
 
   export type AlertaUncheckedCreateWithoutAlertaTipoInput = {
-    id?: number
+    id?: string
     descricao: string
     gravidede?: $Enums.AlertaGravidade
     ativo: boolean
@@ -14146,6 +14532,86 @@ export namespace Prisma {
   export type AlertaCreateManyAlertaTipoInputEnvelope = {
     data: AlertaCreateManyAlertaTipoInput | AlertaCreateManyAlertaTipoInput[]
     skipDuplicates?: boolean
+  }
+
+  export type DispositivoUpsertWithoutAlertas_tipoInput = {
+    update: XOR<DispositivoUpdateWithoutAlertas_tipoInput, DispositivoUncheckedUpdateWithoutAlertas_tipoInput>
+    create: XOR<DispositivoCreateWithoutAlertas_tipoInput, DispositivoUncheckedCreateWithoutAlertas_tipoInput>
+    where?: DispositivoWhereInput
+  }
+
+  export type DispositivoUpdateToOneWithWhereWithoutAlertas_tipoInput = {
+    where?: DispositivoWhereInput
+    data: XOR<DispositivoUpdateWithoutAlertas_tipoInput, DispositivoUncheckedUpdateWithoutAlertas_tipoInput>
+  }
+
+  export type DispositivoUpdateWithoutAlertas_tipoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    modelo?: StringFieldUpdateOperationsInput | string
+    numero_de_serie?: StringFieldUpdateOperationsInput | string
+    activade?: BoolFieldUpdateOperationsInput | boolean
+    data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    bateria?: IntFieldUpdateOperationsInput | number
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
+    usuario?: UsuarioUpdateOneWithoutDispositivosNestedInput
+    config?: Dispositivo_configUpdateManyWithoutDispositivoNestedInput
+    alertas?: AlertaUpdateManyWithoutDispositivoNestedInput
+    localizacoes?: LocalizacaoUpdateManyWithoutDispositivoNestedInput
+    logs?: Dispositivo_logUpdateManyWithoutDispositivoNestedInput
+  }
+
+  export type DispositivoUncheckedUpdateWithoutAlertas_tipoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    modelo?: StringFieldUpdateOperationsInput | string
+    numero_de_serie?: StringFieldUpdateOperationsInput | string
+    activade?: BoolFieldUpdateOperationsInput | boolean
+    data_fabricacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuarioId?: NullableStringFieldUpdateOperationsInput | string | null
+    bateria?: IntFieldUpdateOperationsInput | number
+    status?: EnumDispositivoStatusFieldUpdateOperationsInput | $Enums.DispositivoStatus
+    config?: Dispositivo_configUncheckedUpdateManyWithoutDispositivoNestedInput
+    alertas?: AlertaUncheckedUpdateManyWithoutDispositivoNestedInput
+    localizacoes?: LocalizacaoUncheckedUpdateManyWithoutDispositivoNestedInput
+    logs?: Dispositivo_logUncheckedUpdateManyWithoutDispositivoNestedInput
+  }
+
+  export type UsuarioUpsertWithoutAlertas_tipoInput = {
+    update: XOR<UsuarioUpdateWithoutAlertas_tipoInput, UsuarioUncheckedUpdateWithoutAlertas_tipoInput>
+    create: XOR<UsuarioCreateWithoutAlertas_tipoInput, UsuarioUncheckedCreateWithoutAlertas_tipoInput>
+    where?: UsuarioWhereInput
+  }
+
+  export type UsuarioUpdateToOneWithWhereWithoutAlertas_tipoInput = {
+    where?: UsuarioWhereInput
+    data: XOR<UsuarioUpdateWithoutAlertas_tipoInput, UsuarioUncheckedUpdateWithoutAlertas_tipoInput>
+  }
+
+  export type UsuarioUpdateWithoutAlertas_tipoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
+    dispositivos?: DispositivoUpdateManyWithoutUsuarioNestedInput
+    log?: Usuario_logUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type UsuarioUncheckedUpdateWithoutAlertas_tipoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
+    dispositivos?: DispositivoUncheckedUpdateManyWithoutUsuarioNestedInput
+    log?: Usuario_logUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type AlertaUpsertWithWhereUniqueWithoutAlertaTipoInput = {
@@ -14177,6 +14643,7 @@ export namespace Prisma {
     config?: Dispositivo_configCreateNestedManyWithoutDispositivoInput
     alertas?: AlertaCreateNestedManyWithoutDispositivoInput
     logs?: Dispositivo_logCreateNestedManyWithoutDispositivoInput
+    alertas_tipo?: Alerta_tipoCreateNestedManyWithoutDispositivoInput
   }
 
   export type DispositivoUncheckedCreateWithoutLocalizacoesInput = {
@@ -14192,6 +14659,7 @@ export namespace Prisma {
     config?: Dispositivo_configUncheckedCreateNestedManyWithoutDispositivoInput
     alertas?: AlertaUncheckedCreateNestedManyWithoutDispositivoInput
     logs?: Dispositivo_logUncheckedCreateNestedManyWithoutDispositivoInput
+    alertas_tipo?: Alerta_tipoUncheckedCreateNestedManyWithoutDispositivoInput
   }
 
   export type DispositivoCreateOrConnectWithoutLocalizacoesInput = {
@@ -14223,6 +14691,7 @@ export namespace Prisma {
     config?: Dispositivo_configUpdateManyWithoutDispositivoNestedInput
     alertas?: AlertaUpdateManyWithoutDispositivoNestedInput
     logs?: Dispositivo_logUpdateManyWithoutDispositivoNestedInput
+    alertas_tipo?: Alerta_tipoUpdateManyWithoutDispositivoNestedInput
   }
 
   export type DispositivoUncheckedUpdateWithoutLocalizacoesInput = {
@@ -14238,6 +14707,7 @@ export namespace Prisma {
     config?: Dispositivo_configUncheckedUpdateManyWithoutDispositivoNestedInput
     alertas?: AlertaUncheckedUpdateManyWithoutDispositivoNestedInput
     logs?: Dispositivo_logUncheckedUpdateManyWithoutDispositivoNestedInput
+    alertas_tipo?: Alerta_tipoUncheckedUpdateManyWithoutDispositivoNestedInput
   }
 
   export type DispositivoCreateWithoutLogsInput = {
@@ -14253,6 +14723,7 @@ export namespace Prisma {
     config?: Dispositivo_configCreateNestedManyWithoutDispositivoInput
     alertas?: AlertaCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoCreateNestedManyWithoutDispositivoInput
+    alertas_tipo?: Alerta_tipoCreateNestedManyWithoutDispositivoInput
   }
 
   export type DispositivoUncheckedCreateWithoutLogsInput = {
@@ -14268,6 +14739,7 @@ export namespace Prisma {
     config?: Dispositivo_configUncheckedCreateNestedManyWithoutDispositivoInput
     alertas?: AlertaUncheckedCreateNestedManyWithoutDispositivoInput
     localizacoes?: LocalizacaoUncheckedCreateNestedManyWithoutDispositivoInput
+    alertas_tipo?: Alerta_tipoUncheckedCreateNestedManyWithoutDispositivoInput
   }
 
   export type DispositivoCreateOrConnectWithoutLogsInput = {
@@ -14299,6 +14771,7 @@ export namespace Prisma {
     config?: Dispositivo_configUpdateManyWithoutDispositivoNestedInput
     alertas?: AlertaUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUpdateManyWithoutDispositivoNestedInput
+    alertas_tipo?: Alerta_tipoUpdateManyWithoutDispositivoNestedInput
   }
 
   export type DispositivoUncheckedUpdateWithoutLogsInput = {
@@ -14314,6 +14787,7 @@ export namespace Prisma {
     config?: Dispositivo_configUncheckedUpdateManyWithoutDispositivoNestedInput
     alertas?: AlertaUncheckedUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUncheckedUpdateManyWithoutDispositivoNestedInput
+    alertas_tipo?: Alerta_tipoUncheckedUpdateManyWithoutDispositivoNestedInput
   }
 
   export type UsuarioCreateWithoutLogInput = {
@@ -14326,6 +14800,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     deleted?: boolean
     dispositivos?: DispositivoCreateNestedManyWithoutUsuarioInput
+    alertas_tipo?: Alerta_tipoCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateWithoutLogInput = {
@@ -14338,6 +14813,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     deleted?: boolean
     dispositivos?: DispositivoUncheckedCreateNestedManyWithoutUsuarioInput
+    alertas_tipo?: Alerta_tipoUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioCreateOrConnectWithoutLogInput = {
@@ -14366,6 +14842,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     dispositivos?: DispositivoUpdateManyWithoutUsuarioNestedInput
+    alertas_tipo?: Alerta_tipoUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateWithoutLogInput = {
@@ -14378,6 +14855,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     dispositivos?: DispositivoUncheckedUpdateManyWithoutUsuarioNestedInput
+    alertas_tipo?: Alerta_tipoUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type DispositivoCreateManyUsuarioInput = {
@@ -14397,6 +14875,16 @@ export namespace Prisma {
     data_hora: Date | string
   }
 
+  export type Alerta_tipoCreateManyUsuarioInput = {
+    id?: string
+    nome: string
+    regra: string
+    valor?: string
+    usuario_id?: string
+    dispositivoId: string
+    ativo?: boolean
+  }
+
   export type DispositivoUpdateWithoutUsuarioInput = {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
@@ -14410,6 +14898,7 @@ export namespace Prisma {
     alertas?: AlertaUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUpdateManyWithoutDispositivoNestedInput
     logs?: Dispositivo_logUpdateManyWithoutDispositivoNestedInput
+    alertas_tipo?: Alerta_tipoUpdateManyWithoutDispositivoNestedInput
   }
 
   export type DispositivoUncheckedUpdateWithoutUsuarioInput = {
@@ -14425,6 +14914,7 @@ export namespace Prisma {
     alertas?: AlertaUncheckedUpdateManyWithoutDispositivoNestedInput
     localizacoes?: LocalizacaoUncheckedUpdateManyWithoutDispositivoNestedInput
     logs?: Dispositivo_logUncheckedUpdateManyWithoutDispositivoNestedInput
+    alertas_tipo?: Alerta_tipoUncheckedUpdateManyWithoutDispositivoNestedInput
   }
 
   export type DispositivoUncheckedUpdateManyWithoutUsuarioInput = {
@@ -14455,6 +14945,38 @@ export namespace Prisma {
     data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type Alerta_tipoUpdateWithoutUsuarioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    regra?: StringFieldUpdateOperationsInput | string
+    valor?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    dispositivo?: DispositivoUpdateOneRequiredWithoutAlertas_tipoNestedInput
+    alerta?: AlertaUpdateManyWithoutAlertaTipoNestedInput
+  }
+
+  export type Alerta_tipoUncheckedUpdateWithoutUsuarioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    regra?: StringFieldUpdateOperationsInput | string
+    valor?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    dispositivoId?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    alerta?: AlertaUncheckedUpdateManyWithoutAlertaTipoNestedInput
+  }
+
+  export type Alerta_tipoUncheckedUpdateManyWithoutUsuarioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    regra?: StringFieldUpdateOperationsInput | string
+    valor?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    dispositivoId?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+  }
+
   export type Dispositivo_configCreateManyDispositivoInput = {
     id?: number
     intervalo_envio: number
@@ -14466,11 +14988,11 @@ export namespace Prisma {
   }
 
   export type AlertaCreateManyDispositivoInput = {
-    id?: number
+    id?: string
     descricao: string
     gravidede?: $Enums.AlertaGravidade
     ativo: boolean
-    alertaId: number
+    alertaId: string
     createdAt?: Date | string
   }
 
@@ -14487,6 +15009,16 @@ export namespace Prisma {
     status_bateria: number
     descricao?: string | null
     banda_dados: string
+  }
+
+  export type Alerta_tipoCreateManyDispositivoInput = {
+    id?: string
+    nome: string
+    regra: string
+    valor?: string
+    usuario_id?: string
+    usuarioId?: string | null
+    ativo?: boolean
   }
 
   export type Dispositivo_configUpdateWithoutDispositivoInput = {
@@ -14519,6 +15051,7 @@ export namespace Prisma {
   }
 
   export type AlertaUpdateWithoutDispositivoInput = {
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -14527,20 +15060,20 @@ export namespace Prisma {
   }
 
   export type AlertaUncheckedUpdateWithoutDispositivoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
-    alertaId?: IntFieldUpdateOperationsInput | number
+    alertaId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AlertaUncheckedUpdateManyWithoutDispositivoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
-    alertaId?: IntFieldUpdateOperationsInput | number
+    alertaId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -14587,8 +15120,40 @@ export namespace Prisma {
     banda_dados?: StringFieldUpdateOperationsInput | string
   }
 
+  export type Alerta_tipoUpdateWithoutDispositivoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    regra?: StringFieldUpdateOperationsInput | string
+    valor?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    usuario?: UsuarioUpdateOneWithoutAlertas_tipoNestedInput
+    alerta?: AlertaUpdateManyWithoutAlertaTipoNestedInput
+  }
+
+  export type Alerta_tipoUncheckedUpdateWithoutDispositivoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    regra?: StringFieldUpdateOperationsInput | string
+    valor?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    usuarioId?: NullableStringFieldUpdateOperationsInput | string | null
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    alerta?: AlertaUncheckedUpdateManyWithoutAlertaTipoNestedInput
+  }
+
+  export type Alerta_tipoUncheckedUpdateManyWithoutDispositivoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    regra?: StringFieldUpdateOperationsInput | string
+    valor?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    usuarioId?: NullableStringFieldUpdateOperationsInput | string | null
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+  }
+
   export type AlertaCreateManyAlertaTipoInput = {
-    id?: number
+    id?: string
     descricao: string
     gravidede?: $Enums.AlertaGravidade
     ativo: boolean
@@ -14597,6 +15162,7 @@ export namespace Prisma {
   }
 
   export type AlertaUpdateWithoutAlertaTipoInput = {
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -14605,7 +15171,7 @@ export namespace Prisma {
   }
 
   export type AlertaUncheckedUpdateWithoutAlertaTipoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -14614,7 +15180,7 @@ export namespace Prisma {
   }
 
   export type AlertaUncheckedUpdateManyWithoutAlertaTipoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     gravidede?: EnumAlertaGravidadeFieldUpdateOperationsInput | $Enums.AlertaGravidade
     ativo?: BoolFieldUpdateOperationsInput | boolean
