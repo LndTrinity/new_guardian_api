@@ -87,7 +87,7 @@ router.get("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     const tipos = await prisma.alerta_tipo.findMany({
-      where: { usuario_id: { contains: id }, ativo: true },
+      where: { usuario_id: { contains: id }},
     });
 
     const result = await Promise.all(
