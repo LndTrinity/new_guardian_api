@@ -110,13 +110,13 @@ router.get("/:id", async (req: Request, res: Response) => {
 
 router.put("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { nome, regra } = req.body;
+  const { nome, regra, valor, usuario_id, dispositivoId, ativo } = req.body;
 
   try {
   
     const tipo = await prisma.alerta_tipo.update({
       where: { id: id },
-      data: { nome, regra },
+      data: { nome, regra, valor, usuario_id, dispositivoId, ativo },
     });
 
     res.json(tipo);
