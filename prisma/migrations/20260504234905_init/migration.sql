@@ -73,6 +73,9 @@ CREATE TABLE `alertas_tipo` (
     `nome` VARCHAR(45) NOT NULL,
     `regra` VARCHAR(45) NOT NULL,
     `valor` VARCHAR(70) NOT NULL DEFAULT '',
+    `usuario_id` VARCHAR(60) NOT NULL DEFAULT '',
+    `dispositivo_id` VARCHAR(60) NOT NULL DEFAULT '',
+    `ativo` BOOLEAN NOT NULL DEFAULT false,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
