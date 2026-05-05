@@ -56,12 +56,12 @@ CREATE TABLE `dispositivo_config` (
 
 -- CreateTable
 CREATE TABLE `alertas` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `id` VARCHAR(60) NOT NULL,
     `descricao` VARCHAR(45) NOT NULL,
     `gravidede` ENUM('Alerta_vermelho', 'Aviso_amarelo') NOT NULL DEFAULT 'Aviso_amarelo',
     `ativo` BOOLEAN NOT NULL,
     `dispositivoId` VARCHAR(191) NOT NULL,
-    `alertaId` INTEGER NOT NULL,
+    `alertaId` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     PRIMARY KEY (`id`)
@@ -69,12 +69,13 @@ CREATE TABLE `alertas` (
 
 -- CreateTable
 CREATE TABLE `alertas_tipo` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `id` VARCHAR(60) NOT NULL,
     `nome` VARCHAR(45) NOT NULL,
     `regra` VARCHAR(45) NOT NULL,
-    `valor` VARCHAR(70) NOT NULL DEFAULT '',
+    `valor` VARCHAR(180) NOT NULL DEFAULT '',
     `usuario_id` VARCHAR(60) NOT NULL DEFAULT '',
-    `dispositivo_id` VARCHAR(60) NOT NULL DEFAULT '',
+    `dispositivoId` VARCHAR(191) NOT NULL,
+    `usuarioId` VARCHAR(191) NULL,
     `ativo` BOOLEAN NOT NULL DEFAULT false,
 
     PRIMARY KEY (`id`)
@@ -124,6 +125,12 @@ ALTER TABLE `alertas` ADD CONSTRAINT `alertas_dispositivoId_fkey` FOREIGN KEY (`
 
 -- AddForeignKey
 ALTER TABLE `alertas` ADD CONSTRAINT `alertas_alertaId_fkey` FOREIGN KEY (`alertaId`) REFERENCES `alertas_tipo`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `alertas_tipo` ADD CONSTRAINT `alertas_tipo_dispositivoId_fkey` FOREIGN KEY (`dispositivoId`) REFERENCES `dispositivos`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `alertas_tipo` ADD CONSTRAINT `alertas_tipo_usuarioId_fkey` FOREIGN KEY (`usuarioId`) REFERENCES `usuarios`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `localizacoes` ADD CONSTRAINT `localizacoes_dispositivoId_fkey` FOREIGN KEY (`dispositivoId`) REFERENCES `dispositivos`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
