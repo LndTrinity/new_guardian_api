@@ -13,6 +13,10 @@ ALTER TABLE `alertas` DROP FOREIGN KEY `alertas_alertaId_fkey`;
 -- DropIndex
 DROP INDEX `alertas_alertaId_fkey` ON `alertas`;
 
+-- Truncate tables to allow schema changes (no data to preserve)
+TRUNCATE TABLE `alertas`;
+TRUNCATE TABLE `alertas_tipo`;
+
 -- AlterTable
 ALTER TABLE `alertas` DROP PRIMARY KEY,
     MODIFY `id` VARCHAR(60) NOT NULL,
