@@ -9,6 +9,19 @@ const router = Router();
 /**
  * CREATE - Cria um novo tipo de alerta
  */
+export function criarAlertaTipo(nome: string, regra: string, valor: string, usuario_id: string, dispositivo_id: string) {
+  return prisma.alerta_tipo.create({
+    data: {
+      nome,
+      regra,
+      valor,
+      usuario_id,
+      dispositivo_id,
+      ativo: true
+    },
+  });
+}
+
 router.post("/", async (req, res) => {
   const { nome, regra, valor, usuario_id, dispositivo_id } = req.body;
 
@@ -16,7 +29,7 @@ router.post("/", async (req, res) => {
 
   try {
     if (!nome || !regra || !usuario_id || !dispositivo_id) {
-      throw error;
+      throw new Error("Todos os campos são obrigatórios.");
     }
     // Verifica duplicidade de nome
     const nomeExiste = await prisma.alerta_tipo.findFirst({
@@ -24,7 +37,7 @@ router.post("/", async (req, res) => {
     });
 
     if (nomeExiste) {
-      throw error;
+      throw new Error("Nome já existe.");
     }
 
     const tipo = await prisma.alerta_tipo.create({

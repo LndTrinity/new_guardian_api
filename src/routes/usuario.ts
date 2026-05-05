@@ -3,6 +3,7 @@ import { Router } from "express"
 import { validaSenha } from "../utils/utils"
 import bcrypt from 'bcrypt'
 
+import { criarAlertaTipo } from "./alerta_tipo"
 import { enviaEmail, gerarString } from "../utils/utils"
 import { retorna_alertas_por_id, retorna_por_id } from "./dispositivo"
 import { error } from "console"
@@ -386,9 +387,7 @@ router.post('/vincularDispositivo', async (req, res) => {
   const dispositivos = await prisma.dispositivo.findMany({
     where: { numero_de_serie: numero_dispositivo }
   })
-  console.log(numero_dispositivo)
-  console.log(nome_dispositivo)
-  console.log(id_usuario)
+  
   if (dispositivos.length <= 0) {
     res.status(400).json({ erro: "Dispositivo não encontrado" })
     console.log("!")
@@ -420,6 +419,9 @@ router.post('/vincularDispositivo', async (req, res) => {
          const vincular = await prisma.dispositivo.update({ where: { id: dispositivos[0].id }, data:{ activade: true, usuarioId: id_usuario} });
         res.status(201).json(vincular)
       }
+      await criarAlertaTipo("Sem sinal", "Regra Padrão", "Valor Padrão", id_usuario, dispositivos[0].id);
+      await criarAlertaTipo("Bateria baixa", "Bateria >", "15", id_usuario, dispositivos[0].id);
+      
     } catch (error) {  
     res.status(400).json(error)
   }
