@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 const router = Router();
 
 // CREATE
-export async function criarAlerta(descricao: string, ativo: boolean, dispositivoId: string, alertaId: number, gravidede: AlertaGravidade) {
+export async function criarAlerta(descricao: string, ativo: boolean, dispositivoId: string, alertaId: string, gravidede: AlertaGravidade) {
   try {
     if (!descricao || ativo === undefined || !dispositivoId || !alertaId) {
       throw error
@@ -96,7 +96,7 @@ router.put("/:id", async (req: Request, res: Response) => {
 
   try {
     const alerta = await prisma.alerta.update({
-      where: { id: Number(id) },
+      where: { id: id },
       data: {
         descricao,
         ativo,
@@ -115,7 +115,7 @@ router.patch("/:id", async (req: Request, res: Response) => {
 
   try {
     const alerta = await prisma.alerta.update({
-      where: { id: Number(id) },
+      where: { id: id },
       data: dados
 
     });
@@ -132,7 +132,7 @@ router.delete("/:id", async (req: Request, res: Response) => {
 
   try {
     const alerta = await prisma.alerta.delete({
-      where: { id: Number(id) },
+      where: { id: id },
     });
     res.json(alerta);
   } catch (error) {

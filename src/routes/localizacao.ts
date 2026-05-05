@@ -63,7 +63,7 @@ router.post("/", async (req: Request, res: Response) => {
       console.log("!")
       const descricao = "Bateria Baixa"
       const ativo = true
-      const alertaId = 1
+      const alertaId = "1"
       const gravidede = "Aviso_amarelo"
 
       const criar = criarAlerta(descricao, ativo, dispositivoId, alertaId, gravidede)
