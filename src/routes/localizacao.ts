@@ -129,13 +129,16 @@ router.get("/verificar/:usuario_id", async (req: Request, res: Response) => {
 
 router.post("/", async (req: Request, res: Response) => {
   const jsonString = JSON.stringify(req.body);
-  const { longitude, latitude, NumSerie, status_bateria, banda_dados, satellites, hdop, csq, creg, sapbr } = req.body;
+  const { longitude, latitude, NumSerie, status_bateria, banda_dados, satellites, hdop, csq: csqRaw, creg, sapbr } = req.body;
+  const csqMatch = String(csqRaw).match(/\+CSQ:\s*(\d+)/);
+  const csq = csqMatch ? Number(csqMatch[1]) : Number(csqRaw);
   let descricao = ""
   let gps = ""
   let gprs = ""
   const BuscaId = await prisma.dispositivo.findMany({
     where: { numero_de_serie: String(NumSerie) }, select: { id: true, usuarioId: true }
   })
+  console.log(csq)
 
   BuscaId[0].usuarioId && verificaAlertasTipo(BuscaId[0].usuarioId, status_bateria, latitude, longitude)
 
