@@ -214,6 +214,8 @@ router.post("/", async (req: Request, res: Response) => {
         latitude,
         data_hora: new Date(),
         dispositivoId,
+        gprs: gprs ,
+        gps: gps,
       },
     });
 
