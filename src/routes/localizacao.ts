@@ -129,8 +129,10 @@ router.get("/verificar/:usuario_id", async (req: Request, res: Response) => {
 
 router.post("/", async (req: Request, res: Response) => {
   const jsonString = JSON.stringify(req.body);
-  const { longitude, latitude, NumSerie, descricao, status_bateria, banda_dados } = req.body;
-  let descricao_ = descricao
+  const { longitude, latitude, NumSerie, status_bateria, banda_dados, satellites, hdop, csq, creg, sapbr } = req.body;
+  let descricao = ""
+  let gps = ""
+  let gprs = ""
   const BuscaId = await prisma.dispositivo.findMany({
     where: { numero_de_serie: String(NumSerie) }, select: { id: true, usuarioId: true }
   })
@@ -139,25 +141,24 @@ router.post("/", async (req: Request, res: Response) => {
 
 
   var banda_dados_ = 0
+
   const bytes_quant = Buffer.byteLength(jsonString, "utf8");
   const kilobytes = Number(bytes_quant / 1024);
   banda_dados_ = kilobytes
 
   const dispositivoId = BuscaId[0].id
   // salva no log
+
+  descricao = `Satellites: ${satellites}, HDOP: ${hdop}, CSQ: ${csq}, CREG: ${creg}, SAPBR: ${sapbr}`;
   try {
     if (longitude === undefined || latitude === undefined || BuscaId.length == 0) {
       throw error
     }
-    if (!descricao) {
-      descricao_ = " "
-    }
-
     const log = await prisma.dispositivo_log.create({
       data: {
         data_hora: new Date(),
         status_bateria,
-        descricao: descricao_,
+        descricao: descricao,
         banda_dados: banda_dados_.toString(),
         dispositivoId,
       },
@@ -185,7 +186,26 @@ router.post("/", async (req: Request, res: Response) => {
         where: { id: dispositivoId }, data: { status: "Ligado" }
       })
 
-  
+  if (hdop > 0 && hdop <= 1) {
+    gps = "Excelente";
+  } else if (hdop > 1 && hdop <= 2) {
+    gps = "Bom";
+  } else if (hdop > 2 && hdop <= 5) {
+    gps = "Moderado";
+  } else if (hdop > 5 && hdop <= 10) {
+    gps = "Fraco";
+  }
+  if (csq >= 20) {
+    gprs = "Excelente";
+  } else if (csq >= 15 && csq < 20) {
+    gprs = "Bom";
+  } else if (csq >= 10 && csq < 15) {
+    gprs = "Moderado";
+  } else if (csq >= 5 && csq < 10) {
+    gprs = "Fraco";
+  } else if (csq < 5 || csq == 99) {
+    gprs = "Sem sinal";
+  }
 
 
     const localizacao = await prisma.localizacao.create({
@@ -194,6 +214,8 @@ router.post("/", async (req: Request, res: Response) => {
         latitude,
         data_hora: new Date(),
         dispositivoId,
+        gprs: gprs,
+        gps: gps,
       },
     });
 
