@@ -1,17 +1,51 @@
-import { Dispositivo, PrismaClient, Prisma } from "../utils/prisma-client"
-import { Router } from "express"
-import { validaSenha } from "../utils/utils"
 import bcrypt from 'bcrypt'
+import { Router } from "express"
+import { PrismaClient } from "../utils/prisma-client"
+import { validaSenha } from "../utils/utils"
 
 import { criarAlertaTipo } from "./alerta_tipo"
-import { enviaEmail, gerarString } from "../utils/utils"
-import { retorna_alertas_por_id, retorna_por_id } from "./dispositivo"
-import { error } from "console"
 
 
 
 const prisma = new PrismaClient()
 const router = Router()
+
+export async function buscarAlertasPorUsuarioId(usuarioId: string){
+ 
+  try {
+    // 1️⃣ Busca todos os dispositivos do usuário
+    const dispositivos = await prisma.dispositivo.findMany({
+      where: { usuarioId },
+      select: { id: true }
+    });
+
+    if (dispositivos.length === 0) {
+      return [];
+    }
+
+    // 2️⃣ Extrai todos os IDs de dispositivos
+    const idsDispositivos = dispositivos.map((d: any) => d.id);
+
+    const alertas = await prisma.alerta.findMany({
+      where: {
+        dispositivoId: { in: idsDispositivos },
+        ativo: true
+
+        // opcional: adicionar filtros extras, ex: activade: true
+      },include: { dispositivo: true, alertaTipo:true },
+      orderBy: { createdAt: "desc" }
+    });
+    if (alertas.length === 0){
+      return [];
+    }
+    // 4️⃣ Retorna tudo num único JSON
+    return alertas;
+
+  } catch (error) {
+    console.error(error);
+    throw new Error(error instanceof Error ? error.message : String(error));
+    }
+  }
 
 //                                              CRUD
 // TOKEN
@@ -263,8 +297,8 @@ router.get('/alertas/:usuarioId', async (req, res) => {
     });
 
     if (dispositivos.length === 0) {
-      res.status(200).json(res.status(200).json([])
-    )
+      res.status(200).json([]);
+      return;
     }
 
     // 2️⃣ Extrai todos os IDs de dispositivos
@@ -280,7 +314,8 @@ router.get('/alertas/:usuarioId', async (req, res) => {
       orderBy: { createdAt: "desc" }
     });
     if (alertas.length === 0){
-      res.status(200).json([])
+      res.status(200).json([]);
+      return;
     }
     // 4️⃣ Retorna tudo num único JSON
     res.status(200).json(alertas);
@@ -289,7 +324,7 @@ router.get('/alertas/:usuarioId', async (req, res) => {
     console.error(error);
     res.status(400).json({
       erro: "Erro ao buscar alertas do usuário",
-      detalhes: error
+      detalhes: error instanceof Error ? error.message : String(error)
     });
   }
 });
@@ -305,8 +340,8 @@ router.get('/alertas/all/:usuarioId', async (req, res) => {
     });
 
     if (dispositivos.length === 0) {
-      res.status(200).json(res.status(200).json([])
-    )
+      res.status(200).json([]);
+      return;
     }
 
     // 2️⃣ Extrai todos os IDs de dispositivos
@@ -321,7 +356,8 @@ router.get('/alertas/all/:usuarioId', async (req, res) => {
       orderBy: { createdAt: "desc" }
     });
     if (alertas.length === 0){
-      res.status(200).json([])
+      res.status(200).json([]);
+      return;
     }
     // 4️⃣ Retorna tudo num único JSON
     res.status(200).json(alertas);
@@ -330,7 +366,7 @@ router.get('/alertas/all/:usuarioId', async (req, res) => {
     console.error(error);
     res.status(400).json({
       erro: "Erro ao buscar alertas do usuário",
-      detalhes: error
+      detalhes: error instanceof Error ? error.message : String(error)
     });
   }
 });

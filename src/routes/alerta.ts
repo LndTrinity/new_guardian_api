@@ -5,7 +5,7 @@ import { Router, Request, Response } from "express";
 const prisma = new PrismaClient();
 const router = Router();
 
-// CREATE
+
 export async function criarAlerta(descricao: string, ativo: boolean, dispositivoId: string, alertaId: string, gravidede: AlertaGravidade) {
   try {
     if (!descricao || ativo === undefined || !dispositivoId || !alertaId) {
@@ -25,12 +25,18 @@ export async function criarAlerta(descricao: string, ativo: boolean, dispositivo
     return error
   }
 }
+// CREATE
 router.post("/", async (req: Request, res: Response) => {
   const { descricao, ativo, dispositivoId, alertaId, gravidede } = req.body;
 
   try {
     if (!descricao || ativo === undefined || !dispositivoId || !alertaId) {
       throw error
+    }
+    const dispositivo = await prisma.dispositivo.findUnique({ where: { id: dispositivoId } });
+    if (!dispositivo) {
+      res.status(404).json({ erro: "Dispositivo não encontrado", dispositivoId });
+      return;
     }
     const alerta = await prisma.alerta.create({
       data: {
@@ -80,7 +86,7 @@ router.get("/_/:idDispositivo", async (req: Request, res: Response) => {
 
   try {
     const alertas = await prisma.alerta.findMany({
-      where: { dispositivoId: id },
+      where: { dispositivoId: id,  },
       include: { alertaTipo: true, dispositivo: true }
     });
     res.status(200).json(alertas);

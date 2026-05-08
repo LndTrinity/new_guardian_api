@@ -21,10 +21,31 @@ export function criarAlertaTipo(nome: string, regra: string, valor: string, usua
     },
   });
 }
+export async function buscarAlertaTiposPorUsuario(usuario_id: string) {
+  
+  try {
+    const tipos = await prisma.alerta_tipo.findMany({
+      where: { usuario_id: { contains: usuario_id }},
+    });
 
+    const result = await Promise.all(
+      tipos.map(async (tipo) => {
+        const dispositivo = await prisma.dispositivo.findUnique({
+          where: { id: tipo.dispositivoId },
+          select: { nome: true },
+        });
+        return { ...tipo, dispositivo_nome: dispositivo?.nome ?? null };
+      })
+    );
+
+    return result;
+  } catch (error) {
+    throw new Error(`Erro ao buscar tipos de alerta ativos: ${error}`);
+  }
+
+}
 router.post("/", async (req, res) => {
   const { nome, regra, valor, usuario_id, dispositivo_id: dispositivoId } = req.body;
-
 
 
   try {
@@ -69,7 +90,7 @@ router.get("/", async (_req: Request, res: Response) => {
     res.status(500).json({ erro: "Erro ao buscar tipos de alerta.", detalhes: error });
   }
 });
-// READ 
+// READ ID DO ALERTA 
 router.get("/usr/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
@@ -82,7 +103,7 @@ router.get("/usr/:id", async (req: Request, res: Response) => {
   }
 });
 
-
+// READ ID USUARIO 
 router.get("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
@@ -106,11 +127,35 @@ router.get("/:id", async (req: Request, res: Response) => {
   }
 });
 
+router.get("/_/:dispositivo_id", async (req: Request, res: Response) => {
+  const { dispositivo_id } = req.params;
+  try {
+    const tipos = await prisma.alerta_tipo.findMany({
+      where: { dispositivoId: dispositivo_id },
+    });
+
+    const result = await Promise.all(
+      tipos.map(async (tipo) => {
+        const dispositivo = await prisma.dispositivo.findUnique({
+          where: { id: tipo.dispositivoId },
+          select: { nome: true },
+        });
+        return { ...tipo, dispositivo_nome: dispositivo?.nome ?? null };
+      })
+    );
+
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ erro: "Erro ao buscar tipos de alerta ativos.", detalhes: error });
+  }
+});
+
 // UPDATE 
 
 router.put("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   const { nome, regra, valor, usuario_id, dispositivoId, ativo } = req.body;
+  console.log("att")
 
   try {
   
@@ -122,6 +167,7 @@ router.put("/:id", async (req: Request, res: Response) => {
     res.json(tipo);
   } catch (error) {
     res.status(400).json({ erro: "Erro ao atualizar tipo de alerta.", detalhes: error });
+    console.log("Erro ao atualizar tipo de alerta:", error);
   }
 });
 
