@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `localizacoes` ADD COLUMN `gprs` VARCHAR(20) NOT NULL DEFAULT '',
+    ADD COLUMN `gps` VARCHAR(20) NOT NULL DEFAULT '';
