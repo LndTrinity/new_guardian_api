@@ -1,11 +1,37 @@
+import { Dispositivo } from "@prisma/client"
 import { PrismaClient } from "../utils/prisma-client"
 import bcrypt from 'bcrypt'
 import { Router } from "express"
 
 const prisma = new PrismaClient()
 const router = Router()
+const TIMEOUT_OFFLINE_MS = 10 * 60 * 1000; // 10 minutos
 
 //                                              CRUD
+export async function attualiza_status_dispositivo(id: Dispositivo["id"]) {
+  
+    const agora = new Date();
+    const tempo = await prisma.dispositivo.findUnique({
+      where: { id },
+      select: {
+        localizacoes: {
+          orderBy: { data_hora: "desc" },
+          take: 1
+        }
+      }
+    });
+    if (tempo?.localizacoes[0]?.data_hora) {
+      const diferenca = agora.getTime() - tempo.localizacoes[0].data_hora.getTime();
+      if (diferenca > TIMEOUT_OFFLINE_MS) {
+        await prisma.dispositivo.update({
+          where: { id },
+          data: { status: "Desligado" }
+        });
+      }
+    }
+    
+    
+}
 // CREATE
 router.post('/cadastro', async (req, res) => {
   const { modelo, numero_de_serie, data_fabricacao } = req.body;
@@ -63,25 +89,33 @@ router.post('/cadastro', async (req, res) => {
 
 // READ
 router.get("/", async (req, res) => {
-  try {
-    const dispositivo = await prisma.dispositivo.findMany({
 
-    })
-    res.status(200).json(dispositivo)
+  try {
+    const dispositivos = await prisma.dispositivo.findMany({})
+    for (const disp of dispositivos) {
+      await attualiza_status_dispositivo(disp.id)
+    }
+    const dispositivos2 = await prisma.dispositivo.findMany({})
+
+
+    res.status(200).json(dispositivos2)
   } catch (error) {
     res.status(400).json(error)
   }
 })
 // READ ID
 export async function retorna_por_id(id: string) {
+  const att = await attualiza_status_dispositivo(id)
   const dispositivo = await prisma.dispositivo.findMany({
     where: { id },
-    include: { alertas: true, config: true, localizacoes:{ orderBy:{data_hora: "desc" }} }
+    include: { alertas: true, config: true, localizacoes: { orderBy: { data_hora: "desc" } } }
   })
+  
   return dispositivo
 
 }
 export async function retorna_alertas_por_id(id: string) {
+  const att = await attualiza_status_dispositivo(id)
   try {
     const dispositivo = await prisma.dispositivo.findMany({
       where: {
@@ -96,15 +130,16 @@ export async function retorna_alertas_por_id(id: string) {
 
     })
     return dispositivo
-  } catch (error){
+  } catch (error) {
     return error
   }
-  
+
 }
 router.get("/:id", async (req, res) => {
-  try {
-    const { id } = req.params
+  const { id } = req.params
 
+  try {
+    
     const dispositivo = await retorna_por_id(id)
     res.status(200).json(dispositivo)
   } catch (error) {

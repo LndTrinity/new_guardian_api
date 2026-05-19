@@ -4,6 +4,7 @@ import { PrismaClient } from "../utils/prisma-client"
 import { validaSenha } from "../utils/utils"
 
 import { criarAlertaTipo } from "./alerta_tipo"
+import { attualiza_status_dispositivo } from './dispositivo'
 
 
 
@@ -94,8 +95,33 @@ router.post("/cadastro/token", async (req, res) => {
 })
 // READ DISPOSITIVO
 router.get("/dispos/:id", async (req, res) => {
+   const { id } = req.params;
   try {
-    const { id } = req.params;
+     const dispositivos = await prisma.dispositivo.findMany({
+      where: { usuarioId: id },
+      select: {
+        id: true,
+        nome: true,
+        modelo: true,
+        config: true,
+        status:true,
+        bateria:true,
+        localizacoes: {
+          orderBy: { data_hora: "desc" },
+          take: 1,
+          select: { data_hora: true }
+        }
+      }
+    });
+    for (const disp of dispositivos) {
+      await attualiza_status_dispositivo(disp.id)
+    }
+    
+  } catch (error) {
+    
+  }
+  try {
+   
 
     const dispositivos = await prisma.dispositivo.findMany({
       where: { usuarioId: id },

@@ -152,7 +152,8 @@ router.post("/", async (req: Request, res: Response) => {
   const dispositivoId = BuscaId[0].id
   // salva no log
 
-  descricao = `Satellites: ${satellites}, HDOP: ${hdop}, CSQ: ${csq}, CREG: ${creg}, SAPBR: ${sapbr}`;
+  descricao = `Sat: ${satellites}, HDOP: ${hdop}, CSQ: ${csq}`;
+  console.log("descricao: ", descricao)
   try {
     if (longitude === undefined || latitude === undefined || BuscaId.length == 0) {
       throw error
