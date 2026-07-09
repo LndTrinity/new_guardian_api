@@ -188,7 +188,9 @@ exports.Prisma.LocalizacaoScalarFieldEnum = {
   longitude: 'longitude',
   latitude: 'latitude',
   data_hora: 'data_hora',
-  dispositivoId: 'dispositivoId'
+  dispositivoId: 'dispositivoId',
+  gprs: 'gprs',
+  gps: 'gps'
 };
 
 exports.Prisma.Dispositivo_logScalarFieldEnum = {
@@ -260,7 +262,9 @@ exports.Prisma.Alerta_tipoOrderByRelevanceFieldEnum = {
 };
 
 exports.Prisma.LocalizacaoOrderByRelevanceFieldEnum = {
-  dispositivoId: 'dispositivoId'
+  dispositivoId: 'dispositivoId',
+  gprs: 'gprs',
+  gps: 'gps'
 };
 
 exports.Prisma.Dispositivo_logOrderByRelevanceFieldEnum = {

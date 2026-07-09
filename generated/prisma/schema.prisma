@@ -111,6 +111,8 @@ model Localizacao {
   data_hora     DateTime
   dispositivo   Dispositivo @relation(fields: [dispositivoId], references: [id])
   dispositivoId String
+  gprs          String      @default("") @db.VarChar(20)
+  gps           String      @default("") @db.VarChar(20)
 
   @@map("localizacoes")
 }

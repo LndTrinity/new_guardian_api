@@ -56,7 +56,7 @@ router.get("/:id", async (req, res) => {
 // UPDATE
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
-  const { intervalo_envio, monitoramentoLigado, dispositivoId,alerta_sem_sinal, alerta_bateria_valor,alerta_bateria } = req.body;
+  const { intervalo_envio, monitoramentoLigado, dispositivoId,alerta_sem_sinal, alerta_bateria_valor,alerta_bateria, modo_eco } = req.body;
   // console.log(intervalo_envio, monitoramentoLigado, dispositivoId,alerta_sem_sinal, alerta_bateria_valor,alerta_bateria)
 
 
@@ -73,6 +73,7 @@ router.put("/:id", async (req, res) => {
         intervalo_envio: Number(intervalo_envio),
         monitoramentoLigado: Boolean(monitoramentoLigado),
         dispositivoId: String(dispositivoId),
+        modo_eco: Boolean(modo_eco),
 
         alerta_sem_sinal: Boolean(alerta_sem_sinal),
         alerta_bateria:Boolean(alerta_bateria),  

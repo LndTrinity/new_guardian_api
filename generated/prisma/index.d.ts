@@ -7862,6 +7862,8 @@ export namespace Prisma {
     latitude: Decimal | null
     data_hora: Date | null
     dispositivoId: string | null
+    gprs: string | null
+    gps: string | null
   }
 
   export type LocalizacaoMaxAggregateOutputType = {
@@ -7870,6 +7872,8 @@ export namespace Prisma {
     latitude: Decimal | null
     data_hora: Date | null
     dispositivoId: string | null
+    gprs: string | null
+    gps: string | null
   }
 
   export type LocalizacaoCountAggregateOutputType = {
@@ -7878,6 +7882,8 @@ export namespace Prisma {
     latitude: number
     data_hora: number
     dispositivoId: number
+    gprs: number
+    gps: number
     _all: number
   }
 
@@ -7900,6 +7906,8 @@ export namespace Prisma {
     latitude?: true
     data_hora?: true
     dispositivoId?: true
+    gprs?: true
+    gps?: true
   }
 
   export type LocalizacaoMaxAggregateInputType = {
@@ -7908,6 +7916,8 @@ export namespace Prisma {
     latitude?: true
     data_hora?: true
     dispositivoId?: true
+    gprs?: true
+    gps?: true
   }
 
   export type LocalizacaoCountAggregateInputType = {
@@ -7916,6 +7926,8 @@ export namespace Prisma {
     latitude?: true
     data_hora?: true
     dispositivoId?: true
+    gprs?: true
+    gps?: true
     _all?: true
   }
 
@@ -8011,6 +8023,8 @@ export namespace Prisma {
     latitude: Decimal
     data_hora: Date
     dispositivoId: string
+    gprs: string
+    gps: string
     _count: LocalizacaoCountAggregateOutputType | null
     _avg: LocalizacaoAvgAggregateOutputType | null
     _sum: LocalizacaoSumAggregateOutputType | null
@@ -8038,6 +8052,8 @@ export namespace Prisma {
     latitude?: boolean
     data_hora?: boolean
     dispositivoId?: boolean
+    gprs?: boolean
+    gps?: boolean
     dispositivo?: boolean | DispositivoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["localizacao"]>
 
@@ -8049,9 +8065,11 @@ export namespace Prisma {
     latitude?: boolean
     data_hora?: boolean
     dispositivoId?: boolean
+    gprs?: boolean
+    gps?: boolean
   }
 
-  export type LocalizacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "longitude" | "latitude" | "data_hora" | "dispositivoId", ExtArgs["result"]["localizacao"]>
+  export type LocalizacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "longitude" | "latitude" | "data_hora" | "dispositivoId" | "gprs" | "gps", ExtArgs["result"]["localizacao"]>
   export type LocalizacaoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     dispositivo?: boolean | DispositivoDefaultArgs<ExtArgs>
   }
@@ -8067,6 +8085,8 @@ export namespace Prisma {
       latitude: Prisma.Decimal
       data_hora: Date
       dispositivoId: string
+      gprs: string
+      gps: string
     }, ExtArgs["result"]["localizacao"]>
     composites: {}
   }
@@ -8442,6 +8462,8 @@ export namespace Prisma {
     readonly latitude: FieldRef<"Localizacao", 'Decimal'>
     readonly data_hora: FieldRef<"Localizacao", 'DateTime'>
     readonly dispositivoId: FieldRef<"Localizacao", 'String'>
+    readonly gprs: FieldRef<"Localizacao", 'String'>
+    readonly gps: FieldRef<"Localizacao", 'String'>
   }
     
 
@@ -10848,7 +10870,9 @@ export namespace Prisma {
     longitude: 'longitude',
     latitude: 'latitude',
     data_hora: 'data_hora',
-    dispositivoId: 'dispositivoId'
+    dispositivoId: 'dispositivoId',
+    gprs: 'gprs',
+    gps: 'gps'
   };
 
   export type LocalizacaoScalarFieldEnum = (typeof LocalizacaoScalarFieldEnum)[keyof typeof LocalizacaoScalarFieldEnum]
@@ -10953,7 +10977,9 @@ export namespace Prisma {
 
 
   export const LocalizacaoOrderByRelevanceFieldEnum: {
-    dispositivoId: 'dispositivoId'
+    dispositivoId: 'dispositivoId',
+    gprs: 'gprs',
+    gps: 'gps'
   };
 
   export type LocalizacaoOrderByRelevanceFieldEnum = (typeof LocalizacaoOrderByRelevanceFieldEnum)[keyof typeof LocalizacaoOrderByRelevanceFieldEnum]
@@ -11493,6 +11519,8 @@ export namespace Prisma {
     latitude?: DecimalFilter<"Localizacao"> | Decimal | DecimalJsLike | number | string
     data_hora?: DateTimeFilter<"Localizacao"> | Date | string
     dispositivoId?: StringFilter<"Localizacao"> | string
+    gprs?: StringFilter<"Localizacao"> | string
+    gps?: StringFilter<"Localizacao"> | string
     dispositivo?: XOR<DispositivoScalarRelationFilter, DispositivoWhereInput>
   }
 
@@ -11502,6 +11530,8 @@ export namespace Prisma {
     latitude?: SortOrder
     data_hora?: SortOrder
     dispositivoId?: SortOrder
+    gprs?: SortOrder
+    gps?: SortOrder
     dispositivo?: DispositivoOrderByWithRelationInput
     _relevance?: LocalizacaoOrderByRelevanceInput
   }
@@ -11515,6 +11545,8 @@ export namespace Prisma {
     latitude?: DecimalFilter<"Localizacao"> | Decimal | DecimalJsLike | number | string
     data_hora?: DateTimeFilter<"Localizacao"> | Date | string
     dispositivoId?: StringFilter<"Localizacao"> | string
+    gprs?: StringFilter<"Localizacao"> | string
+    gps?: StringFilter<"Localizacao"> | string
     dispositivo?: XOR<DispositivoScalarRelationFilter, DispositivoWhereInput>
   }, "id">
 
@@ -11524,6 +11556,8 @@ export namespace Prisma {
     latitude?: SortOrder
     data_hora?: SortOrder
     dispositivoId?: SortOrder
+    gprs?: SortOrder
+    gps?: SortOrder
     _count?: LocalizacaoCountOrderByAggregateInput
     _avg?: LocalizacaoAvgOrderByAggregateInput
     _max?: LocalizacaoMaxOrderByAggregateInput
@@ -11540,6 +11574,8 @@ export namespace Prisma {
     latitude?: DecimalWithAggregatesFilter<"Localizacao"> | Decimal | DecimalJsLike | number | string
     data_hora?: DateTimeWithAggregatesFilter<"Localizacao"> | Date | string
     dispositivoId?: StringWithAggregatesFilter<"Localizacao"> | string
+    gprs?: StringWithAggregatesFilter<"Localizacao"> | string
+    gps?: StringWithAggregatesFilter<"Localizacao"> | string
   }
 
   export type Dispositivo_logWhereInput = {
@@ -12127,6 +12163,8 @@ export namespace Prisma {
     longitude: Decimal | DecimalJsLike | number | string
     latitude: Decimal | DecimalJsLike | number | string
     data_hora: Date | string
+    gprs?: string
+    gps?: string
     dispositivo: DispositivoCreateNestedOneWithoutLocalizacoesInput
   }
 
@@ -12136,12 +12174,16 @@ export namespace Prisma {
     latitude: Decimal | DecimalJsLike | number | string
     data_hora: Date | string
     dispositivoId: string
+    gprs?: string
+    gps?: string
   }
 
   export type LocalizacaoUpdateInput = {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
+    gprs?: StringFieldUpdateOperationsInput | string
+    gps?: StringFieldUpdateOperationsInput | string
     dispositivo?: DispositivoUpdateOneRequiredWithoutLocalizacoesNestedInput
   }
 
@@ -12151,6 +12193,8 @@ export namespace Prisma {
     latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
     dispositivoId?: StringFieldUpdateOperationsInput | string
+    gprs?: StringFieldUpdateOperationsInput | string
+    gps?: StringFieldUpdateOperationsInput | string
   }
 
   export type LocalizacaoCreateManyInput = {
@@ -12159,12 +12203,16 @@ export namespace Prisma {
     latitude: Decimal | DecimalJsLike | number | string
     data_hora: Date | string
     dispositivoId: string
+    gprs?: string
+    gps?: string
   }
 
   export type LocalizacaoUpdateManyMutationInput = {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
+    gprs?: StringFieldUpdateOperationsInput | string
+    gps?: StringFieldUpdateOperationsInput | string
   }
 
   export type LocalizacaoUncheckedUpdateManyInput = {
@@ -12173,6 +12221,8 @@ export namespace Prisma {
     latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
     dispositivoId?: StringFieldUpdateOperationsInput | string
+    gprs?: StringFieldUpdateOperationsInput | string
+    gps?: StringFieldUpdateOperationsInput | string
   }
 
   export type Dispositivo_logCreateInput = {
@@ -12810,6 +12860,8 @@ export namespace Prisma {
     latitude?: SortOrder
     data_hora?: SortOrder
     dispositivoId?: SortOrder
+    gprs?: SortOrder
+    gps?: SortOrder
   }
 
   export type LocalizacaoAvgOrderByAggregateInput = {
@@ -12824,6 +12876,8 @@ export namespace Prisma {
     latitude?: SortOrder
     data_hora?: SortOrder
     dispositivoId?: SortOrder
+    gprs?: SortOrder
+    gps?: SortOrder
   }
 
   export type LocalizacaoMinOrderByAggregateInput = {
@@ -12832,6 +12886,8 @@ export namespace Prisma {
     latitude?: SortOrder
     data_hora?: SortOrder
     dispositivoId?: SortOrder
+    gprs?: SortOrder
+    gps?: SortOrder
   }
 
   export type LocalizacaoSumOrderByAggregateInput = {
@@ -13975,6 +14031,8 @@ export namespace Prisma {
     longitude: Decimal | DecimalJsLike | number | string
     latitude: Decimal | DecimalJsLike | number | string
     data_hora: Date | string
+    gprs?: string
+    gps?: string
   }
 
   export type LocalizacaoUncheckedCreateWithoutDispositivoInput = {
@@ -13982,6 +14040,8 @@ export namespace Prisma {
     longitude: Decimal | DecimalJsLike | number | string
     latitude: Decimal | DecimalJsLike | number | string
     data_hora: Date | string
+    gprs?: string
+    gps?: string
   }
 
   export type LocalizacaoCreateOrConnectWithoutDispositivoInput = {
@@ -14172,6 +14232,8 @@ export namespace Prisma {
     latitude?: DecimalFilter<"Localizacao"> | Decimal | DecimalJsLike | number | string
     data_hora?: DateTimeFilter<"Localizacao"> | Date | string
     dispositivoId?: StringFilter<"Localizacao"> | string
+    gprs?: StringFilter<"Localizacao"> | string
+    gps?: StringFilter<"Localizacao"> | string
   }
 
   export type Dispositivo_logUpsertWithWhereUniqueWithoutDispositivoInput = {
@@ -15001,6 +15063,8 @@ export namespace Prisma {
     longitude: Decimal | DecimalJsLike | number | string
     latitude: Decimal | DecimalJsLike | number | string
     data_hora: Date | string
+    gprs?: string
+    gps?: string
   }
 
   export type Dispositivo_logCreateManyDispositivoInput = {
@@ -15081,6 +15145,8 @@ export namespace Prisma {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
+    gprs?: StringFieldUpdateOperationsInput | string
+    gps?: StringFieldUpdateOperationsInput | string
   }
 
   export type LocalizacaoUncheckedUpdateWithoutDispositivoInput = {
@@ -15088,6 +15154,8 @@ export namespace Prisma {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
+    gprs?: StringFieldUpdateOperationsInput | string
+    gps?: StringFieldUpdateOperationsInput | string
   }
 
   export type LocalizacaoUncheckedUpdateManyWithoutDispositivoInput = {
@@ -15095,6 +15163,8 @@ export namespace Prisma {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     data_hora?: DateTimeFieldUpdateOperationsInput | Date | string
+    gprs?: StringFieldUpdateOperationsInput | string
+    gps?: StringFieldUpdateOperationsInput | string
   }
 
   export type Dispositivo_logUpdateWithoutDispositivoInput = {
