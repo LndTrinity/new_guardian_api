@@ -77,13 +77,28 @@ router.put("/:id", async (req, res) => {
 
         alerta_sem_sinal: Boolean(alerta_sem_sinal),
         alerta_bateria:Boolean(alerta_bateria),  
-        alerta_bateria_valor:Number(alerta_bateria_valor)
+        alerta_bateria_valor:Number(alerta_bateria_valor),
+        pendente: true,
       },
     });
     res.status(200).json(config);
   } catch (error) {
     console.log(error)
     res.status(400).json({ erro: "Erro ao atualizar configuração", detalhes: error });
+  }
+});
+
+// REINICIAR
+router.post("/:id/reiniciar", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const config = await prisma.dispositivo_config.update({
+      where: { id: Number(id) },
+      data: { comando: "REINICIAR" },
+    });
+    res.status(200).json({ mensagem: "Comando de reinicialização enviado.", config });
+  } catch (error) {
+    res.status(400).json({ erro: "Erro ao enviar comando de reinicialização", detalhes: error });
   }
 });
 

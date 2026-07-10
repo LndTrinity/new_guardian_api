@@ -223,7 +223,32 @@ router.post("/", async (req: Request, res: Response) => {
       },
     });
 
-    res.status(201).json(localizacao);
+    const config = await prisma.dispositivo_config.findFirst({
+      where: { dispositivoId },
+    });
+
+    const temPendente = config?.pendente === true;
+    const temComando = config?.comando != null;
+
+    if (temPendente || temComando) {
+      await prisma.dispositivo_config.update({
+        where: { id: config!.id },
+        data: { pendente: false, comando: null },
+      });
+    }
+
+    res.status(201).json({
+      localizacao,
+      config: temPendente ? {
+        intervalo_envio: config!.intervalo_envio,
+        monitoramentoLigado: config!.monitoramentoLigado,
+        modo_eco: config!.modo_eco,
+        alerta_sem_sinal: config!.alerta_sem_sinal,
+        alerta_bateria: config!.alerta_bateria,
+        alerta_bateria_valor: config!.alerta_bateria_valor,
+      } : null,
+      comando: temComando ? config!.comando : null,
+    });
   } catch (error) {
     res.status(500).json({ erro: "Erro ao registrar localização.", detalhes: error });
   }

@@ -4876,6 +4876,8 @@ export namespace Prisma {
     alerta_sem_sinal: boolean | null
     alerta_bateria: boolean | null
     alerta_bateria_valor: number | null
+    pendente: boolean | null
+    comando: string | null
   }
 
   export type Dispositivo_configMaxAggregateOutputType = {
@@ -4887,6 +4889,8 @@ export namespace Prisma {
     alerta_sem_sinal: boolean | null
     alerta_bateria: boolean | null
     alerta_bateria_valor: number | null
+    pendente: boolean | null
+    comando: string | null
   }
 
   export type Dispositivo_configCountAggregateOutputType = {
@@ -4898,6 +4902,8 @@ export namespace Prisma {
     alerta_sem_sinal: number
     alerta_bateria: number
     alerta_bateria_valor: number
+    pendente: number
+    comando: number
     _all: number
   }
 
@@ -4923,6 +4929,8 @@ export namespace Prisma {
     alerta_sem_sinal?: true
     alerta_bateria?: true
     alerta_bateria_valor?: true
+    pendente?: true
+    comando?: true
   }
 
   export type Dispositivo_configMaxAggregateInputType = {
@@ -4934,6 +4942,8 @@ export namespace Prisma {
     alerta_sem_sinal?: true
     alerta_bateria?: true
     alerta_bateria_valor?: true
+    pendente?: true
+    comando?: true
   }
 
   export type Dispositivo_configCountAggregateInputType = {
@@ -4945,6 +4955,8 @@ export namespace Prisma {
     alerta_sem_sinal?: true
     alerta_bateria?: true
     alerta_bateria_valor?: true
+    pendente?: true
+    comando?: true
     _all?: true
   }
 
@@ -5043,6 +5055,8 @@ export namespace Prisma {
     alerta_sem_sinal: boolean
     alerta_bateria: boolean
     alerta_bateria_valor: number
+    pendente: boolean
+    comando: string | null
     _count: Dispositivo_configCountAggregateOutputType | null
     _avg: Dispositivo_configAvgAggregateOutputType | null
     _sum: Dispositivo_configSumAggregateOutputType | null
@@ -5073,6 +5087,8 @@ export namespace Prisma {
     alerta_sem_sinal?: boolean
     alerta_bateria?: boolean
     alerta_bateria_valor?: boolean
+    pendente?: boolean
+    comando?: boolean
     dispositivo?: boolean | DispositivoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dispositivo_config"]>
 
@@ -5087,9 +5103,11 @@ export namespace Prisma {
     alerta_sem_sinal?: boolean
     alerta_bateria?: boolean
     alerta_bateria_valor?: boolean
+    pendente?: boolean
+    comando?: boolean
   }
 
-  export type Dispositivo_configOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "intervalo_envio" | "monitoramentoLigado" | "dispositivoId" | "modo_eco" | "alerta_sem_sinal" | "alerta_bateria" | "alerta_bateria_valor", ExtArgs["result"]["dispositivo_config"]>
+  export type Dispositivo_configOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "intervalo_envio" | "monitoramentoLigado" | "dispositivoId" | "modo_eco" | "alerta_sem_sinal" | "alerta_bateria" | "alerta_bateria_valor" | "pendente" | "comando", ExtArgs["result"]["dispositivo_config"]>
   export type Dispositivo_configInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     dispositivo?: boolean | DispositivoDefaultArgs<ExtArgs>
   }
@@ -5108,6 +5126,8 @@ export namespace Prisma {
       alerta_sem_sinal: boolean
       alerta_bateria: boolean
       alerta_bateria_valor: number
+      pendente: boolean
+      comando: string | null
     }, ExtArgs["result"]["dispositivo_config"]>
     composites: {}
   }
@@ -5486,6 +5506,8 @@ export namespace Prisma {
     readonly alerta_sem_sinal: FieldRef<"Dispositivo_config", 'Boolean'>
     readonly alerta_bateria: FieldRef<"Dispositivo_config", 'Boolean'>
     readonly alerta_bateria_valor: FieldRef<"Dispositivo_config", 'Int'>
+    readonly pendente: FieldRef<"Dispositivo_config", 'Boolean'>
+    readonly comando: FieldRef<"Dispositivo_config", 'String'>
   }
     
 
@@ -10832,7 +10854,9 @@ export namespace Prisma {
     modo_eco: 'modo_eco',
     alerta_sem_sinal: 'alerta_sem_sinal',
     alerta_bateria: 'alerta_bateria',
-    alerta_bateria_valor: 'alerta_bateria_valor'
+    alerta_bateria_valor: 'alerta_bateria_valor',
+    pendente: 'pendente',
+    comando: 'comando'
   };
 
   export type Dispositivo_configScalarFieldEnum = (typeof Dispositivo_configScalarFieldEnum)[keyof typeof Dispositivo_configScalarFieldEnum]
@@ -10947,7 +10971,8 @@ export namespace Prisma {
 
 
   export const Dispositivo_configOrderByRelevanceFieldEnum: {
-    dispositivoId: 'dispositivoId'
+    dispositivoId: 'dispositivoId',
+    comando: 'comando'
   };
 
   export type Dispositivo_configOrderByRelevanceFieldEnum = (typeof Dispositivo_configOrderByRelevanceFieldEnum)[keyof typeof Dispositivo_configOrderByRelevanceFieldEnum]
@@ -11303,6 +11328,8 @@ export namespace Prisma {
     alerta_sem_sinal?: BoolFilter<"Dispositivo_config"> | boolean
     alerta_bateria?: BoolFilter<"Dispositivo_config"> | boolean
     alerta_bateria_valor?: IntFilter<"Dispositivo_config"> | number
+    pendente?: BoolFilter<"Dispositivo_config"> | boolean
+    comando?: StringNullableFilter<"Dispositivo_config"> | string | null
     dispositivo?: XOR<DispositivoScalarRelationFilter, DispositivoWhereInput>
   }
 
@@ -11315,6 +11342,8 @@ export namespace Prisma {
     alerta_sem_sinal?: SortOrder
     alerta_bateria?: SortOrder
     alerta_bateria_valor?: SortOrder
+    pendente?: SortOrder
+    comando?: SortOrderInput | SortOrder
     dispositivo?: DispositivoOrderByWithRelationInput
     _relevance?: Dispositivo_configOrderByRelevanceInput
   }
@@ -11331,6 +11360,8 @@ export namespace Prisma {
     alerta_sem_sinal?: BoolFilter<"Dispositivo_config"> | boolean
     alerta_bateria?: BoolFilter<"Dispositivo_config"> | boolean
     alerta_bateria_valor?: IntFilter<"Dispositivo_config"> | number
+    pendente?: BoolFilter<"Dispositivo_config"> | boolean
+    comando?: StringNullableFilter<"Dispositivo_config"> | string | null
     dispositivo?: XOR<DispositivoScalarRelationFilter, DispositivoWhereInput>
   }, "id">
 
@@ -11343,6 +11374,8 @@ export namespace Prisma {
     alerta_sem_sinal?: SortOrder
     alerta_bateria?: SortOrder
     alerta_bateria_valor?: SortOrder
+    pendente?: SortOrder
+    comando?: SortOrderInput | SortOrder
     _count?: Dispositivo_configCountOrderByAggregateInput
     _avg?: Dispositivo_configAvgOrderByAggregateInput
     _max?: Dispositivo_configMaxOrderByAggregateInput
@@ -11362,6 +11395,8 @@ export namespace Prisma {
     alerta_sem_sinal?: BoolWithAggregatesFilter<"Dispositivo_config"> | boolean
     alerta_bateria?: BoolWithAggregatesFilter<"Dispositivo_config"> | boolean
     alerta_bateria_valor?: IntWithAggregatesFilter<"Dispositivo_config"> | number
+    pendente?: BoolWithAggregatesFilter<"Dispositivo_config"> | boolean
+    comando?: StringNullableWithAggregatesFilter<"Dispositivo_config"> | string | null
   }
 
   export type AlertaWhereInput = {
@@ -11946,6 +11981,8 @@ export namespace Prisma {
     alerta_sem_sinal?: boolean
     alerta_bateria?: boolean
     alerta_bateria_valor?: number
+    pendente?: boolean
+    comando?: string | null
     dispositivo: DispositivoCreateNestedOneWithoutConfigInput
   }
 
@@ -11958,6 +11995,8 @@ export namespace Prisma {
     alerta_sem_sinal?: boolean
     alerta_bateria?: boolean
     alerta_bateria_valor?: number
+    pendente?: boolean
+    comando?: string | null
   }
 
   export type Dispositivo_configUpdateInput = {
@@ -11967,6 +12006,8 @@ export namespace Prisma {
     alerta_sem_sinal?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria_valor?: IntFieldUpdateOperationsInput | number
+    pendente?: BoolFieldUpdateOperationsInput | boolean
+    comando?: NullableStringFieldUpdateOperationsInput | string | null
     dispositivo?: DispositivoUpdateOneRequiredWithoutConfigNestedInput
   }
 
@@ -11979,6 +12020,8 @@ export namespace Prisma {
     alerta_sem_sinal?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria_valor?: IntFieldUpdateOperationsInput | number
+    pendente?: BoolFieldUpdateOperationsInput | boolean
+    comando?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type Dispositivo_configCreateManyInput = {
@@ -11990,6 +12033,8 @@ export namespace Prisma {
     alerta_sem_sinal?: boolean
     alerta_bateria?: boolean
     alerta_bateria_valor?: number
+    pendente?: boolean
+    comando?: string | null
   }
 
   export type Dispositivo_configUpdateManyMutationInput = {
@@ -11999,6 +12044,8 @@ export namespace Prisma {
     alerta_sem_sinal?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria_valor?: IntFieldUpdateOperationsInput | number
+    pendente?: BoolFieldUpdateOperationsInput | boolean
+    comando?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type Dispositivo_configUncheckedUpdateManyInput = {
@@ -12010,6 +12057,8 @@ export namespace Prisma {
     alerta_sem_sinal?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria_valor?: IntFieldUpdateOperationsInput | number
+    pendente?: BoolFieldUpdateOperationsInput | boolean
+    comando?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AlertaCreateInput = {
@@ -12704,6 +12753,8 @@ export namespace Prisma {
     alerta_sem_sinal?: SortOrder
     alerta_bateria?: SortOrder
     alerta_bateria_valor?: SortOrder
+    pendente?: SortOrder
+    comando?: SortOrder
   }
 
   export type Dispositivo_configAvgOrderByAggregateInput = {
@@ -12721,6 +12772,8 @@ export namespace Prisma {
     alerta_sem_sinal?: SortOrder
     alerta_bateria?: SortOrder
     alerta_bateria_valor?: SortOrder
+    pendente?: SortOrder
+    comando?: SortOrder
   }
 
   export type Dispositivo_configMinOrderByAggregateInput = {
@@ -12732,6 +12785,8 @@ export namespace Prisma {
     alerta_sem_sinal?: SortOrder
     alerta_bateria?: SortOrder
     alerta_bateria_valor?: SortOrder
+    pendente?: SortOrder
+    comando?: SortOrder
   }
 
   export type Dispositivo_configSumOrderByAggregateInput = {
@@ -13977,6 +14032,8 @@ export namespace Prisma {
     alerta_sem_sinal?: boolean
     alerta_bateria?: boolean
     alerta_bateria_valor?: number
+    pendente?: boolean
+    comando?: string | null
   }
 
   export type Dispositivo_configUncheckedCreateWithoutDispositivoInput = {
@@ -13987,6 +14044,8 @@ export namespace Prisma {
     alerta_sem_sinal?: boolean
     alerta_bateria?: boolean
     alerta_bateria_valor?: number
+    pendente?: boolean
+    comando?: string | null
   }
 
   export type Dispositivo_configCreateOrConnectWithoutDispositivoInput = {
@@ -14176,6 +14235,8 @@ export namespace Prisma {
     alerta_sem_sinal?: BoolFilter<"Dispositivo_config"> | boolean
     alerta_bateria?: BoolFilter<"Dispositivo_config"> | boolean
     alerta_bateria_valor?: IntFilter<"Dispositivo_config"> | number
+    pendente?: BoolFilter<"Dispositivo_config"> | boolean
+    comando?: StringNullableFilter<"Dispositivo_config"> | string | null
   }
 
   export type AlertaUpsertWithWhereUniqueWithoutDispositivoInput = {
@@ -15047,6 +15108,8 @@ export namespace Prisma {
     alerta_sem_sinal?: boolean
     alerta_bateria?: boolean
     alerta_bateria_valor?: number
+    pendente?: boolean
+    comando?: string | null
   }
 
   export type AlertaCreateManyDispositivoInput = {
@@ -15092,6 +15155,8 @@ export namespace Prisma {
     alerta_sem_sinal?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria_valor?: IntFieldUpdateOperationsInput | number
+    pendente?: BoolFieldUpdateOperationsInput | boolean
+    comando?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type Dispositivo_configUncheckedUpdateWithoutDispositivoInput = {
@@ -15102,6 +15167,8 @@ export namespace Prisma {
     alerta_sem_sinal?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria_valor?: IntFieldUpdateOperationsInput | number
+    pendente?: BoolFieldUpdateOperationsInput | boolean
+    comando?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type Dispositivo_configUncheckedUpdateManyWithoutDispositivoInput = {
@@ -15112,6 +15179,8 @@ export namespace Prisma {
     alerta_sem_sinal?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria?: BoolFieldUpdateOperationsInput | boolean
     alerta_bateria_valor?: IntFieldUpdateOperationsInput | number
+    pendente?: BoolFieldUpdateOperationsInput | boolean
+    comando?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AlertaUpdateWithoutDispositivoInput = {

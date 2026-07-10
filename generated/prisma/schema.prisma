@@ -71,6 +71,9 @@ model Dispositivo_config {
   alerta_bateria       Boolean @default(false)
   alerta_bateria_valor Int     @default(15)
 
+  pendente Boolean @default(false)
+  comando  String? @db.VarChar(20)
+
   @@map("dispositivo_config")
 }
 

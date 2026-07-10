@@ -159,7 +159,9 @@ exports.Prisma.Dispositivo_configScalarFieldEnum = {
   modo_eco: 'modo_eco',
   alerta_sem_sinal: 'alerta_sem_sinal',
   alerta_bateria: 'alerta_bateria',
-  alerta_bateria_valor: 'alerta_bateria_valor'
+  alerta_bateria_valor: 'alerta_bateria_valor',
+  pendente: 'pendente',
+  comando: 'comando'
 };
 
 exports.Prisma.AlertaScalarFieldEnum = {
@@ -241,7 +243,8 @@ exports.Prisma.DispositivoOrderByRelevanceFieldEnum = {
 };
 
 exports.Prisma.Dispositivo_configOrderByRelevanceFieldEnum = {
-  dispositivoId: 'dispositivoId'
+  dispositivoId: 'dispositivoId',
+  comando: 'comando'
 };
 
 exports.Prisma.AlertaOrderByRelevanceFieldEnum = {
