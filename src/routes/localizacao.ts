@@ -9,7 +9,7 @@ const prisma = new PrismaClient();
 const router = Router();
 
 const intervalo_Bateria = 60 * 60 * 1000; // 1h
-const intervalo_Zona = 10 * 60 * 1000; // 10min
+const intervalo_Zona = 60 * 60 * 1000 *4; // 4h
 const intervalo_Saida_Zona = 60 * 60 * 1000 * 23; // 23h
 // CREATE
 function pointInPolygon(lat: number, lng: number, polygon: { lat: number; lng: number }[]): boolean {
