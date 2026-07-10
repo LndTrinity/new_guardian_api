@@ -101,7 +101,7 @@ model Alerta_tipo{
   dispositivoId  String
   usuario          Usuario?    @relation(fields: [usuarioId], references: [id])
   usuarioId        String?
-  ativo         Boolean        @default(false)
+  ativo         Boolean        @default(true)
   alerta        Alerta[]
 
   @@map("alertas_tipo")

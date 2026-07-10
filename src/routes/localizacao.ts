@@ -140,7 +140,11 @@ router.post("/", async (req: Request, res: Response) => {
   })
   console.log(csq)
 
-  BuscaId[0].usuarioId && verificaAlertasTipo(BuscaId[0].usuarioId, status_bateria, latitude, longitude)
+  if (BuscaId[0].usuarioId) {
+    await verificaAlertasTipo(BuscaId[0].usuarioId, status_bateria, latitude, longitude);
+  } else {
+    console.warn(`[alertas] Dispositivo ${BuscaId[0].id} sem usuarioId vinculado, alertas ignorados.`);
+  }
 
 
   var banda_dados_ = 0
