@@ -33,12 +33,11 @@ function parseLatLngString(value: string): { lat: number; lng: number }[] {
 
 async function possoCriarAlerta(usuario_id: string, alerta_tipo_nome: string) {
   const alertas = await buscarAlertasPorUsuarioId(usuario_id);
+  
   for (const alerta of alertas) {
-    // console.log("alerta_tipo_nome: ", alerta_tipo_nome)
-    // if (alerta.alertaTipo.nome === alerta_tipo_nome && alerta.alertaTipo.regra === "Bateria >" ){
-    //   console.log("encontrou alerta do mesmo tipo")
-    //   }
-    if (alerta.alertaTipo.nome === alerta_tipo_nome && alerta.alertaTipo.regra === "Bateria >") {
+    console.log(alerta)
+
+    if (alerta.alertaTipo.nome === alerta_tipo_nome && alerta.alertaTipo.regra === "Bateria abaixo") {
       const agora = new Date();
       const criadoEm = new Date(alerta.createdAt);
       const resultado = agora.getTime() - criadoEm.getTime()
@@ -75,8 +74,8 @@ async function possoCriarAlerta(usuario_id: string, alerta_tipo_nome: string) {
 async function verificaAlertasTipo(usuario_id: string, status_bateria: number, lat: number, lng: number) {
   const alertasTipo = await buscarAlertaTiposPorUsuario(usuario_id);
 
-  for (const alerta_tipo of alertasTipo) {
 
+  for (const alerta_tipo of alertasTipo) {
     // if (alerta_tipo.regra == "Bateria >") {
     //   console.log("entrou no if bateria >")
     //   if (alerta_tipo.ativo) {
@@ -90,8 +89,11 @@ async function verificaAlertasTipo(usuario_id: string, status_bateria: number, l
     //     // }
     //   }
     // }
-    if (alerta_tipo.regra === "Bateria >" && alerta_tipo.ativo && status_bateria) {
+    if (alerta_tipo.regra === "Bateria abaixo" && alerta_tipo.ativo && status_bateria) {
       const valorAlerta = Number(alerta_tipo.valor);
+      const possoCriar = await possoCriarAlerta(usuario_id, alerta_tipo.nome);
+      console.log("pode criar alerta de bateria baixa? ", possoCriar)
+
       if (status_bateria <= valorAlerta && await possoCriarAlerta(usuario_id, alerta_tipo.nome)) {
         const criar_Alerta = criarAlerta(`Bateria Baixa ${status_bateria}%`, true, alerta_tipo.dispositivoId, alerta_tipo.id, "Aviso_amarelo")
         console.log("criou alerta de bateria baixa")
@@ -136,9 +138,8 @@ router.post("/", async (req: Request, res: Response) => {
   let gps = ""
   let gprs = ""
   const BuscaId = await prisma.dispositivo.findMany({
-    where: { numero_de_serie: String(NumSerie) }, select: { id: true, usuarioId: true }
+    where: { numero_de_serie: String(NumSerie) }
   })
-  console.log(csq)
 
   if (BuscaId[0].usuarioId) {
     await verificaAlertasTipo(BuscaId[0].usuarioId, status_bateria, latitude, longitude);

@@ -401,6 +401,7 @@ router.get('/alertas/all/:usuarioId', async (req, res) => {
 //LOGIN
 router.post("/login", async (req, res) => {
   const { email, senha } = req.body
+  console.log("fui acionado ")
 
   const mensaPadrao = "Login ou senha incorretos"
   if (!email || !senha) {
@@ -416,6 +417,7 @@ router.post("/login", async (req, res) => {
 
     if (usuario == null) {
       res.status(400).json({ erro: mensaPadrao })
+      console.log("usuario null")
 
       return
     }
@@ -428,8 +430,10 @@ router.post("/login", async (req, res) => {
     } else {
 
       res.status(400).json({ erro: mensaPadrao })
+    
     }
   } catch (error) {
+    console.error(error);
     res.status(400).json(error)
   }
 })

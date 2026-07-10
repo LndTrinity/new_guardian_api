@@ -23,6 +23,8 @@ const adapter = new PrismaMariaDb({
 	database: url.pathname.slice(1),
 	allowPublicKeyRetrieval: true,
 	ssl: { rejectUnauthorized: false },
+	connectTimeout: 10000,
+	socketTimeout: 30000,
 });
 
 export class PrismaClient extends GeneratedPrismaClient {
